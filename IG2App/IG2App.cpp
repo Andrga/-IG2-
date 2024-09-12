@@ -122,9 +122,9 @@ void IG2App::setupScene(void){
     mDragonNode->setPosition(0, 0, 0);
 
     // Set scale of Sinbad
-    mDragonNode->setScale(200, 200, 200);
+    mDragonNode->setScale(1, 1, 1);
 
-    //mDragonNode->yaw(Ogre::Degree(-45));
+    mDragonNode->yaw(Ogre::Degree(-180));
     //mDragonNode->setVisible(false);  
 }
 
