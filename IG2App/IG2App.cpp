@@ -91,23 +91,62 @@ void IG2App::setupScene(void) {
 
 
 	//------------------------------------------------------------------------
-	// Creating Sword
+	// Creating Sinbad
 
-	Ogre::Entity* ent = mSM->createEntity("facial.mesh");
-	mFacialNode = mSM->getRootSceneNode()->createChildSceneNode("nfacial");
-	mFacialNode->attachObject(ent);
+	Ogre::Entity* ent1 = mSM->createEntity("Sinbad.mesh");
+	mSinbad = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
+	mSinbad->attachObject(ent1);
 
 	// Show bounding box
-	mFacialNode->showBoundingBox(true);
+	mSinbad->showBoundingBox(true);
 
 	// Set position of Sword
-	//mFacialNode->setPosition(x, y, z);
+	mSinbad->setPosition(0, 100, 0);
 
 	// Set scale of Sword
-	mFacialNode->setScale(20, 20, 20);
+	mSinbad->setScale(20, 20, 20);
 
 	//mFacialNode->yaw(Ogre::Degree(-45));
 	//mFacialNode->setVisible(false);    
+	
+	//------------------------------------------------------------------------
+	// Creating lowBath
+
+	Ogre::Entity* ent2 = mSM->createEntity("RomanBathLower.mesh");
+	mRBLower = mSM->getRootSceneNode()->createChildSceneNode("nRBLower");
+	mRBLower->attachObject(ent2);
+
+	// Show bounding box
+	mRBLower->showBoundingBox(true);
+
+	// Set scale of Sword
+	mRBLower->setScale(1, 1, 1);
+	
+	//------------------------------------------------------------------------
+	// Creating upBath
+
+	Ogre::Entity* ent3 = mSM->createEntity("RomanBathUpper.mesh");
+	mRBUpper = mSM->getRootSceneNode()->createChildSceneNode("nRBUpper");
+	mRBUpper->attachObject(ent3);
+
+	// Show bounding box
+	mRBUpper->showBoundingBox(true);
+
+	// Set scale of Sword
+	mRBUpper->setScale(1, 1, 1);
+
+	//------------------------------------------------------------------------
+	// Creating Coljums
+
+	Ogre::Entity* ent4 = mSM->createEntity("Columns.mesh");
+	mColums = mSM->getRootSceneNode()->createChildSceneNode("nColumns");
+	mColums->attachObject(ent4);
+
+	// Show bounding box
+	mColums->showBoundingBox(true);
+
+	// Set scale of Sword
+	mColums->setScale(1, 1, 1);
 
 }
 

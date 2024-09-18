@@ -26,8 +26,11 @@ protected:
     virtual void shutdown();
     virtual void setupScene();
     
-    
-    Ogre::SceneNode* mFacialNode = nullptr;
+
+    Ogre::SceneNode* mSinbad = nullptr;
+    Ogre::SceneNode* mColums = nullptr;
+    Ogre::SceneNode* mRBUpper = nullptr;
+    Ogre::SceneNode* mRBLower = nullptr;
       
     Ogre::SceneManager* mSM = nullptr;
     OgreBites::TrayManager* mTrayMgr = nullptr;
