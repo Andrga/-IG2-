@@ -27,8 +27,7 @@ protected:
     virtual void setupScene();
     
     
-    Ogre::SceneNode* mSinbadNode = nullptr;
-    Ogre::SceneNode* mDragonNode = nullptr;
+    Ogre::SceneNode* mFacialNode = nullptr;
       
     Ogre::SceneManager* mSM = nullptr;
     OgreBites::TrayManager* mTrayMgr = nullptr;
