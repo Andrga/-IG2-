@@ -146,7 +146,7 @@ void IG2App::setupScene(void) {
 	//mColums->showBoundingBox(true);
 
 	// Set scale of Sword
-	mColums->setScale(1, 1, 1);
+	//mColums->setScale(1, 1, 1);
 
 	laberinto = new Labyrinth(LABERINTO1, mSM->getRootSceneNode(), mSM);
 

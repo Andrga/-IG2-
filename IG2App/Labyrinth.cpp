@@ -17,32 +17,49 @@ Labyrinth::Labyrinth(string root, SceneNode* _sNode, SceneManager* _sCMan)
 	archivo >> nFilas;
 	archivo >> nColumnas;
 
-	std::vector<string> filas(nFilas);
+	std::vector<string> filas;
 
-	for (auto f : filas)
+	/*for (auto f : filas)
 	{
 		archivo >> f;
+	}*/
+	for (int i = 0; i < nFilas; i++)
+	{
+		string fila = " ";
+		archivo >> fila;
+		filas.push_back(fila);
 	}
 
-	for (int i = 0; i < nFilas; i++)
+
+	/*for (int i = 0; i < nFilas; i++)
 	{
 		for (int j = 0; j < nColumnas; j++)
 		{
-			if (filas[nColumnas * i + j] == "x")
+			if (filas[i][j] == 'x')
 			{
-				objs.push_back(new Wall({ i * LADO_CUBO,j * LADO_CUBO,0 }, _sNode, _sCMan));
+				IG2Object* object = nullptr;
+				object = new Wall({ (float)i, (float)j, 0 }, _sNode, _sCMan);
+				Vector3 v = object->calculateBoxSize();
+				object->setPosition({ i * v.x,j * v.y , 0 });
+				objs.push_back(object);
 			}
-			else if (filas[nColumnas * i + j] == "o")
+			else if (filas[i][j] == 'o')
 			{
-				objs.push_back(new Pearl({ i * LADO_CUBO,j * LADO_CUBO,0 }, _sNode, _sCMan));
+				//objs.push_back(new Pearl({ (float)i, (float)j, 0 }, _sNode, _sCMan));
 			}
 		}
+	}*/
+	for (int i = 0; i < 100; i++)
+	{
+		IG2Object* object = nullptr;
+		object = new Wall({ 0, 0, 0 }, _sNode, _sCMan);
+		Vector3 v = object->calculateBoxSize();
+		object->setScale(v * 5);
+		object->setPosition({ i * v.x, 0 , 0 });
+		//objs.push_back(object);
 	}
 
-
-
-
-
+	archivo.close();
 }
 
 Labyrinth::~Labyrinth()
