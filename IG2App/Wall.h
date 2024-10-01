@@ -4,9 +4,10 @@
 
 class Wall : public IG2Object
 {
+public:
 	Wall() : IG2Object() {}
 	Wall(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh = "cube.mesh");
-	void init() override{}
+	void init() override {}
 
 };
 

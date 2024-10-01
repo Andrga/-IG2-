@@ -14,6 +14,15 @@
 #include <iostream>
 #include <string>
 
+
+#include "Labyrinth.h"
+
+
+const string LABERINTO1 = "../Labyrinths/stage1.txt";
+const string LABERINTO2 = "../Labyrinths/stage2.txt";
+
+
+
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener{
 
 public:
@@ -31,6 +40,8 @@ protected:
     Ogre::SceneNode* mColums = nullptr;
     Ogre::SceneNode* mRBUpper = nullptr;
     Ogre::SceneNode* mRBLower = nullptr;
+
+    Labyrinth* laberinto = nullptr;
       
     Ogre::SceneManager* mSM = nullptr;
     OgreBites::TrayManager* mTrayMgr = nullptr;
