@@ -475,10 +475,13 @@ C:\Users\pablo\Documents\GitHub\-IG2-\OGREsdk\include\OGRE\Bites\OgreTrays.h(117
 C:\Users\pablo\Documents\GitHub\-IG2-\OGREsdk\include\OGRE\Bites\OgreTrays.h(189,18): message : vea la declaración de 'std::vector<OgreBites::Widget *,std::allocator<OgreBites::Widget *>>'
 C:\Users\pablo\Documents\GitHub\-IG2-\OGREsdk\include\OGRE\Bites\OgreTrays.h(1174,20): warning C4251: 'OgreBites::TrayManager::mWidgetDeathRow': class 'std::vector<OgreBites::Widget *,std::allocator<OgreBites::Widget *>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OgreBites::TrayManager'
 C:\Users\pablo\Documents\GitHub\-IG2-\OGREsdk\include\OGRE\Bites\OgreTrays.h(189,18): message : vea la declaración de 'std::vector<OgreBites::Widget *,std::allocator<OgreBites::Widget *>>'
+C:\Users\pablo\Documents\GitHub\-IG2-\IG2App\IG2App.cpp(71,54): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\pablo\Documents\GitHub\-IG2-\IG2App\IG2App.cpp(71,49): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\pablo\Documents\GitHub\-IG2-\IG2App\IG2App.cpp(71,44): warning C4305: 'argumento': truncamiento de 'double' a 'float'
   Generando código
-  4 of 608 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
-    3 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  27 of 757 functions ( 3.6%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    26 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
 SDL2main.lib(SDL_windows_main.obj) : warning LNK4099: no se encontró PDB '' con 'SDL2main.lib(SDL_windows_main.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
   IG2App.vcxproj -> C:\Users\pablo\Documents\GitHub\-IG2-\bin\IG2AppRelease.exe
