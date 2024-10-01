@@ -1,16 +1,25 @@
 #pragma once
+#include "fstream"
 
 #include "IG2Object.h"
+#include "string"
 #include "Wall.h"
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <vector>
 
-class Labyrinth : public IG2Object
+const float LADO_CUBO = 10;
+
+class Labyrinth
 {
+private:
+	vector<IG2Object> objs;
+
 public:
-	Labyrinth() : IG2Object() {}
+	Labyrinth(string root);
 
-	Labyrinth(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh) : IG2Object(initPos, node, sceneMng, mesh) {}
-
-	void init() override;
+	~Labyrinth();
 
 
 

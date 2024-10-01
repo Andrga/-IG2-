@@ -1,0 +1,33 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.Cpp.WindowsSDK.targets(46,5): error MSB8036: No se encontró la versión de Windows SDK 10.0.17134.0. Instale la versión requerida de Windows SDK o cambie la versión del SDK; para ello, vaya a las páginas de propiedades de proyecto o haga clic con el botón derecho en la solución y seleccione "Redestinar solución".
+
+Resumen del rendimiento del proyecto:
+       45 ms D:\Archivos de usuario\Andrés\Documentos\Repositorios\-IG2-\IG2App\IG2App.vcxproj   1 llamadas
+                 45 ms Build                                      1 llamadas
+
+Resumen del rendimiento de destino:
+        0 ms _AddOutputPathToGlobalPropertiesToRemove   1 llamadas
+        0 ms _PrepareForReferenceResolution             1 llamadas
+        0 ms BeforeResolveReferences                    1 llamadas
+        0 ms IgnoreJavaScriptOutputAssembly             1 llamadas
+        0 ms _SplitProjectReferencesByFileExistence     1 llamadas
+        0 ms GetResolvedWinMD                           1 llamadas
+        0 ms AddExternalIncludDirectoriesToPaths        1 llamadas
+        0 ms PrepareProjectReferences                   1 llamadas
+        0 ms GetFrameworkPaths                          1 llamadas
+        0 ms GetReferenceAssemblyPaths                  1 llamadas
+        1 ms _PrepareForBuild                           1 llamadas
+        1 ms AssignProjectConfiguration                 1 llamadas
+        1 ms SetBuildDefaultEnvironmentVariables        1 llamadas
+        1 ms ResolveProjectReferences                   1 llamadas
+        4 ms _CheckWindowsSDKInstalled                  1 llamadas
+        4 ms SetTelemetryEnvironmentVariables           1 llamadas
+        6 ms _CheckForInvalidConfigurationAndPlatform   1 llamadas
+       26 ms _GetProjectReferenceTargetFrameworkProperties   1 llamadas
+
+Resumen del rendimiento de la tarea:
+        0 ms SetRidAgnosticValueForProjects             1 llamadas
+        1 ms Message                                    2 llamadas
+        1 ms AssignProjectConfiguration                 1 llamadas
+        1 ms MSBuild                                    1 llamadas
+        2 ms SetEnv                                    10 llamadas
+        4 ms VCMessage                                  1 llamadas

@@ -1,12 +1,33 @@
+
 #include "Labyrinth.h"
 
-void Labyrinth::init()
+using namespace std;
+
+Labyrinth::Labyrinth(string root)
 {
-	for (size_t i = 0; i < 3; i++)
-	{
-		SceneNode wal();
-		Ogre::Vector3 pos(i * 10.0, 0.0, 0.0);
-		Wall wall(pos , wal, mSM);
-		mNode->addChild(new)
+	ifstream archivo(root);
+
+	if (!archivo.is_open()) {
+		cout << "NO SE HA ABIERTO EL ARCHIVO" << endl;
 	}
+
+	int nFilas = 0, nColumnas = 0;
+
+	archivo >> nFilas;
+	archivo >> nColumnas;
+
+	vector<string> filas;
+
+	for (int i = 0; i < nColumnas; i++)
+	{
+		string e;
+
+		archivo >> e;
+		filas.push_Back(e);
+	}
+}
+
+Labyrinth::~Labyrinth()
+{
+
 }
