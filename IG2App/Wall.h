@@ -6,7 +6,7 @@ class Wall : public IG2Object
 {
 public:
 	Wall() : IG2Object() {}
-	Wall(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh = "cube.mesh");
+	Wall(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh = "cube.mesh", string name = "wall");
 	void init() override {}
 
 };

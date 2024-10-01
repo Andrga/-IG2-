@@ -3,6 +3,8 @@
 using namespace Ogre;
 using namespace std;
 
+#include "Wall.h"
+
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
 
 	// ESC key finished the rendering...
@@ -149,9 +151,6 @@ void IG2App::setupScene(void) {
 	//mColums->setScale(1, 1, 1);
 
 	laberinto = new Labyrinth(LABERINTO1, mSM->getRootSceneNode(), mSM);
-
-
-
 
 
 }

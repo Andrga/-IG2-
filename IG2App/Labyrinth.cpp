@@ -30,33 +30,35 @@ Labyrinth::Labyrinth(string root, SceneNode* _sNode, SceneManager* _sCMan)
 		filas.push_back(fila);
 	}
 
-
-	/*for (int i = 0; i < nFilas; i++)
+	int cont = 0;
+	for (int i = 0; i < nFilas; i++)
 	{
 		for (int j = 0; j < nColumnas; j++)
 		{
 			if (filas[i][j] == 'x')
 			{
-				IG2Object* object = nullptr;
-				object = new Wall({ (float)i, (float)j, 0 }, _sNode, _sCMan);
-				Vector3 v = object->calculateBoxSize();
-				object->setPosition({ i * v.x,j * v.y , 0 });
-				objs.push_back(object);
+				auto w = new Wall({ 0,0,0 }, _sNode, _sCMan, "cube.mesh", "Wall" + to_string(i * nColumnas + j));
+				if (boxSize == Vector3{0, 0, 0}) {
+					boxSize = w->calculateBoxSize();
+
+				}
+
+				w->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
+
+				objs.push_back(w);
 			}
 			else if (filas[i][j] == 'o')
 			{
-				//objs.push_back(new Pearl({ (float)i, (float)j, 0 }, _sNode, _sCMan));
+				auto w = new Pearl({ 0,0,0 }, _sNode, _sCMan, "sphere.mesh", "Pearl" + to_string(i * nColumnas + j));
+				w->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
+
+				w->setScale({ .2,.2,.2 });
+
+				objs.push_back(w);
 			}
+
+			cont++;
 		}
-	}*/
-	for (int i = 0; i < 100; i++)
-	{
-		IG2Object* object = nullptr;
-		object = new Wall({ 0, 0, 0 }, _sNode, _sCMan);
-		Vector3 v = object->calculateBoxSize();
-		object->setScale(v * 5);
-		object->setPosition({ i * v.x, 0 , 0 });
-		//objs.push_back(object);
 	}
 
 	archivo.close();

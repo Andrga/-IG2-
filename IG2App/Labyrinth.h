@@ -14,12 +14,12 @@
 #include <fstream>
 #include <vector>
 
-const float LADO_CUBO = 10;
-
 class Labyrinth
 {
 private:
 	std::vector<IG2Object*> objs;
+
+	Vector3 boxSize = { 0,0,0 };
 
 	SceneNode* sNode;
 public:

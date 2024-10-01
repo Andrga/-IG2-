@@ -13,7 +13,7 @@ private:
 public:
 
 	Pearl() : IG2Object() {}
-	Pearl(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh = "sphere.mesh");
+	Pearl(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh = "sphere.mesh", string name = "pearl");
 	~Pearl();
 
 	void init() override {}
