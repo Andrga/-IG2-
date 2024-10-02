@@ -7,6 +7,7 @@
 
 #include "Wall.h"
 #include "Pearl.h"
+#include "Hero.h"
 
 
 #include <iostream>
