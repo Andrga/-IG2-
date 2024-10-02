@@ -24,7 +24,7 @@ private:
 
 	SceneNode* sNode;
 public:
-	Labyrinth(string root, SceneNode* _sNode, SceneManager* _sCMan);
+	Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan, IG2Object* hero);
 
 	~Labyrinth();
 

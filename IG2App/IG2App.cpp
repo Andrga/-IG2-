@@ -12,6 +12,27 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
 		getRoot()->queueEndRendering();
 	}
 
+	if (hero == nullptr)
+		return false;
+	cout << "AAAAAAAAAAAAAAAAAAAAAa";
+	switch (evt.keysym.sym)
+	{
+	case SDLK_UP:
+		hero->setPosition(hero->getPosition() + Vector3{ 0, 0, 50 });
+		hero->getOrientation();
+		break;
+	case SDLK_DOWN:
+		hero->setPosition(hero->getPosition() + Vector3{ 0, 0, -50 });
+		break;
+	case SDLK_LEFT:
+		hero->setPosition(hero->getPosition() + Vector3{ -50, 0, 0 });
+		break;
+	case SDLK_RIGHT:
+		hero->setPosition(hero->getPosition() + Vector3{ 50, 0, 0 });
+		break;
+	default:
+		break;
+	}
 	return true;
 }
 
@@ -150,7 +171,7 @@ void IG2App::setupScene(void) {
 	// Set scale of Sword
 	//mColums->setScale(1, 1, 1);
 
-	laberinto = new Labyrinth(LABERINTO1, mSM->getRootSceneNode(), mSM);
+	laberinto = new Labyrinth(LABERINTO1, mSM->getRootSceneNode(), mSM, hero);
 
 
 }

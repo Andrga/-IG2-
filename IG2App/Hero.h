@@ -6,6 +6,8 @@ class Hero : public IG2Object
 {
 private:
 
+	float speed = 50.0;
+
 public:
 
 	Hero() : IG2Object() {}
@@ -14,4 +16,6 @@ public:
 
 	void init() override {}
 
+
+	bool keyPressed(const OgreBites::KeyboardEvent& evt) override;
 };

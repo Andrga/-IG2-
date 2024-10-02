@@ -52,6 +52,8 @@ protected:
     
     Ogre::SceneNode* mCamNode = nullptr;
     OgreBites::CameraMan* mCamMgr = nullptr;
+
+    IG2Object* hero = nullptr;
 };
 
 #endif

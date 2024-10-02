@@ -127,6 +127,7 @@ public:
 	 */
 	static void addListener(IG2Object* entidad) { appListeners.push_back(entidad); };
 
+
 protected:
 
 	// Scene node representing this element in the scene
