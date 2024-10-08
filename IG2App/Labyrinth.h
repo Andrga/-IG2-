@@ -19,16 +19,15 @@ class Labyrinth
 {
 private:
 	std::vector<IG2Object*> objs;
-
+	Hero* hero = nullptr;
 	Vector3 boxSize = { 0,0,0 };
 
 	SceneNode* sNode;
 public:
-	Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan, IG2Object* hero);
-
+	Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan);
 	~Labyrinth();
 
-
+	Hero* getHero() { return hero; }
 
 
 };

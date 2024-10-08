@@ -28,7 +28,7 @@ class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListene
 public:
     explicit IG2App() : IG2ApplicationContext("IG2App") { };  // new -> setup()
     virtual ~IG2App() { };                                    // delete -> shutdown()
- 
+
 protected:
     virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
     virtual void setup();

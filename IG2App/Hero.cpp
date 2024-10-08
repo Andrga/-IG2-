@@ -9,29 +9,44 @@ Hero::~Hero()
 
 }
 
+void Hero::frameRendered(const Ogre::FrameEvent& evt)
+{
+	mNode->translate(direction);
+}
+
 bool Hero::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
 
-	mNode->translate(0, 0, speed);
-	std::cout << "movimiento" << std::endl;
-
-	return false;
-	/*switch (key)
+	switch (evt.keysym.sym)
 	{
 	case SDLK_UP:
-		setPosition(getPosition() + Vector3{ 0, 0, speed });
-		getOrientation();
+		direction = { 0, 0,1 };
+
 		break;
 	case SDLK_DOWN:
-		setPosition(getPosition() + Vector3{ 0, 0, -speed });
+		direction = { 0, 0, -1};
+
 		break;
 	case SDLK_LEFT:
-		setPosition(getPosition() + Vector3{ -speed, 0, 0 });
+
+		direction = { 1, 0,0 };
+
 		break;
 	case SDLK_RIGHT:
-		setPosition(getPosition() + Vector3{ speed, 0, 0 });
+		
+		direction = { -1, 0,0 };
 		break;
 	default:
 		break;
-	}*/
+	}
+
+	return false;
+}
+
+void Hero::rotate()
+{
+	if (direction != Vector3{0, 0, 0})
+	{
+
+	}
 }

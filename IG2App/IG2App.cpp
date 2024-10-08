@@ -14,25 +14,8 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
 
 	if (hero == nullptr)
 		return false;
-	cout << "AAAAAAAAAAAAAAAAAAAAAa";
-	switch (evt.keysym.sym)
-	{
-	case SDLK_UP:
-		hero->setPosition(hero->getPosition() + Vector3{ 0, 0, 50 });
-		hero->getOrientation();
-		break;
-	case SDLK_DOWN:
-		hero->setPosition(hero->getPosition() + Vector3{ 0, 0, -50 });
-		break;
-	case SDLK_LEFT:
-		hero->setPosition(hero->getPosition() + Vector3{ -50, 0, 0 });
-		break;
-	case SDLK_RIGHT:
-		hero->setPosition(hero->getPosition() + Vector3{ 50, 0, 0 });
-		break;
-	default:
-		break;
-	}
+
+	hero->keyPressed(evt);
 	return true;
 }
 
@@ -113,67 +96,10 @@ void IG2App::setupScene(void) {
 
 
 
-	////------------------------------------------------------------------------
-	//// Creating Sinbad
+	//------------------------------------------------------------------------//
+	
+	laberinto = new Labyrinth(LABERINTO1, mSM->getRootSceneNode(), mSM);
 
-	//Ogre::Entity* ent1 = mSM->createEntity("Sinbad.mesh");
-	//mSinbad = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
-	//mSinbad->attachObject(ent1);
-
-	//// Show bounding box
-	//mSinbad->showBoundingBox(true);
-
-	//// Set position of Sword
-	//mSinbad->setPosition(0, 100, 0);
-
-	//// Set scale of Sword
-	//mSinbad->setScale(20, 20, 20);
-
-	////mFacialNode->yaw(Ogre::Degree(-45));
-	////mFacialNode->setVisible(false);    
-	//
-	////------------------------------------------------------------------------
-	//// Creating lowBath
-
-	//Ogre::Entity* ent2 = mSM->createEntity("RomanBathLower.mesh");
-	//mRBLower = mSM->getRootSceneNode()->createChildSceneNode("nRBLower");
-	//mRBLower->attachObject(ent2);
-
-	//// Show bounding box
-	//mRBLower->showBoundingBox(true);
-
-	//// Set scale of Sword
-	//mRBLower->setScale(1, 1, 1);
-	//
-	////------------------------------------------------------------------------
-	//// Creating upBath
-
-	//Ogre::Entity* ent3 = mSM->createEntity("RomanBathUpper.mesh");
-	//mRBUpper = mSM->getRootSceneNode()->createChildSceneNode("nRBUpper");
-	//mRBUpper->attachObject(ent3);
-
-	//// Show bounding box
-	//mRBUpper->showBoundingBox(true);
-
-	//// Set scale of Sword
-	//mRBUpper->setScale(1, 1, 1);
-
-	////------------------------------------------------------------------------
-	//// Creating Coljums
-
-	//Ogre::Entity* ent4 = mSM->createEntity("Columns.mesh");
-	//mColums = mSM->getRootSceneNode()->createChildSceneNode("nColumns");
-	//mColums->attachObject(ent4);
-
-	//// Show bounding box
-	//mColums->showBoundingBox(true);
-
-	// Set scale of Sword
-	//mColums->setScale(1, 1, 1);
-
-	laberinto = new Labyrinth(LABERINTO1, mSM->getRootSceneNode(), mSM, hero);
-
-
+	hero = laberinto->getHero();
+	addInputListener(hero);
 }
-
-

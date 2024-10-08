@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan, IG2Object* hero)
+Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 {
 	ifstream archivo(root);
 
@@ -35,24 +35,15 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan, IG2Obje
 	{
 		for (int j = 0; j < nColumnas; j++)
 		{
-			if (filas[i][j] == 'x')
-			{
-
-			}
-			else if (filas[i][j] == 'o')
-			{
-
-			}
 			IG2Object* obj = nullptr;
 
 			switch (filas[i][j])
 			{
 			case 'x':
 				obj = new Wall({ 0, 0, 0 }, sNode, sCMan, "cube.mesh", "Wall" + to_string(i * nColumnas + j));
+				
 				if (boxSize == Vector3{ 0, 0, 0 })
-				{
 					boxSize = obj->calculateBoxSize();
-				}
 
 				break;
 			case 'o':
@@ -62,17 +53,16 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan, IG2Obje
 
 				break;
 			case 'h':
-				obj = new Hero({ 0,0,0 }, sNode, sCMan, "Sinbad.mesh", "Wall" + to_string(i * nColumnas + j));
+				hero = new Hero({ 0,0,0 }, sNode, sCMan, "Sinbad.mesh", "Wall" + to_string(i * nColumnas + j));
 
-				obj->setScale({ 15, 15, 15 });
+				hero->setScale({ 15, 15, 15 });
 
-				obj->addListener(obj);
-				hero = obj;
+				obj = hero;
+
 				break;
-				/*case 'x':
-					break;*/
 			default:
 				obj = nullptr;
+
 				break;
 			}
 
