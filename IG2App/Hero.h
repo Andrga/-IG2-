@@ -2,6 +2,9 @@
 
 #include "IG2Object.h"
 
+class Labyrinth;
+
+
 class Hero : public IG2Object
 {
 private:
@@ -11,10 +14,12 @@ private:
 
 	Vector2 labPos;
 
+	Labyrinth* laberynth;
+
 public:
 
 	Hero() : IG2Object() {}
-	Hero(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh = "sinbad.mesh", string name = "hero");
+	Hero(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh = "sinbad.mesh", string name = "hero", Labyrinth* lab);
 	~Hero();
 
 	void init() override {}

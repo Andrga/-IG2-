@@ -12,10 +12,10 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 		return;
 	}
 
-	int nFilas = 0, nColumnas = 0;
-
 	archivo >> nFilas;
 	archivo >> nColumnas;
+
+
 
 	std::vector<string> filas;
 
@@ -35,13 +35,13 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 	{
 		for (int j = 0; j < nColumnas; j++)
 		{
-			IG2Object* obj = nullptr;
+			Block* obj = nullptr;
 
 			switch (filas[i][j])
 			{
 			case 'x':
 				obj = new Wall({ 0, 0, 0 }, sNode, sCMan, "cube.mesh", "Wall" + to_string(i * nColumnas + j));
-				
+
 				if (boxSize == Vector3{ 0, 0, 0 })
 					boxSize = obj->calculateBoxSize();
 
@@ -53,11 +53,10 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 
 				break;
 			case 'h':
-				hero = new Hero({ 0,0,0 }, sNode, sCMan, "Sinbad.mesh", "Wall" + to_string(i * nColumnas + j));
+				hero = new Hero({ 0,0,0 }, sNode, sCMan, "Sinbad.mesh", "Wall" + to_string(i * nColumnas + j),this);
 
 				hero->setScale({ 15, 15, 15 });
 
-				obj = hero;
 
 				break;
 			default:
@@ -80,4 +79,13 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 Labyrinth::~Labyrinth()
 {
 
+}
+
+bool Labyrinth::checkDirection(Vector3 dir)
+{
+	Vector3 posHero = hero->getPosition() / boxSize; // Posicion en el laberinto normalizado.
+	posHero += dir;
+	if (objs[posHero.z * nColumnas + posHero.x] == nullptr) return true; // Para cuando pase por la poscion donde aparece el personaje.
+
+	return objs[posHero.z * nColumnas + posHero.x]->getType() != BLOCK_TYPE::WALL;
 }

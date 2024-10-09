@@ -12,6 +12,9 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
 		getRoot()->queueEndRendering();
 	}
 
+	cout << "Orientacion: " << mCamMgr->getCamera()->getOrientation() << endl;
+	cout << "Posicion: " << mCamMgr->getCamera()->getPosition() << endl;
+
 	if (hero == nullptr)
 		return false;
 
@@ -68,8 +71,7 @@ void IG2App::setupScene(void) {
 	mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
 	mCamNode->attachObject(cam);
 
-	mCamNode->setPosition(0, 0, 1000);
-	mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
+	mCamNode->lookAt(Ogre::Vector3(0, 1, 0), Ogre::Node::TS_WORLD);
 
 	// and tell it to render into the main window
 	Viewport* vp = getRenderWindow()->addViewport(cam);
@@ -79,6 +81,8 @@ void IG2App::setupScene(void) {
 	mCamMgr = new OgreBites::CameraMan(mCamNode);
 	addInputListener(mCamMgr);
 	mCamMgr->setStyle(OgreBites::CS_ORBIT);
+
+	mCamNode->setPosition(900, 2600, 1000); // PAIGRO AQUI: deberia cambiar dependiendo del mapa.
 
 
 	//------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 #include "Hero.h"
 
-Hero::Hero(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh, string name)
-	: IG2Object(initPos, node->createChildSceneNode(name), sceneMng, mesh)
+Hero::Hero(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh, string name, Labyrinth* lab)
+	: IG2Object(initPos, node->createChildSceneNode(name), sceneMng, mesh), laberynth(lab)
 {}
 
 Hero::~Hero()
@@ -11,6 +11,7 @@ Hero::~Hero()
 
 void Hero::frameRendered(const Ogre::FrameEvent& evt)
 {
+	
 	mNode->translate(Vector3{ 0, 0, 1 }, Ogre::Node::TransformSpace::TS_LOCAL);
 }
 

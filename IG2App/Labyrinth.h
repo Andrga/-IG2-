@@ -18,9 +18,12 @@
 class Labyrinth
 {
 private:
-	std::vector<IG2Object*> objs;
+	std::vector<Block*> objs;
 	Hero* hero = nullptr;
 	Vector3 boxSize = { 0,0,0 };
+
+	int nFilas = 0;
+	int nColumnas = 0;
 
 	SceneNode* sNode;
 public:
@@ -29,6 +32,6 @@ public:
 
 	Hero* getHero() { return hero; }
 
-
+	bool checkDirection(Vector3 dir);
 };
 

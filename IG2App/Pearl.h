@@ -1,8 +1,8 @@
 #pragma once
 
-#include "IG2Object.h"
+#include "Block.h"
 
-class Pearl : public IG2Object
+class Pearl : public Block
 {
 private:
 
@@ -12,11 +12,12 @@ private:
 
 public:
 
-	Pearl() : IG2Object() {}
+	Pearl() : Block() {}
 	Pearl(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh = "sphere.mesh", string name = "pearl");
 	~Pearl();
 
 	void init() override {}
 
+	
 };
 
