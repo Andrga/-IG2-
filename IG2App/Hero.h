@@ -19,7 +19,7 @@ private:
 public:
 
 	Hero() : IG2Object() {}
-	Hero(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh = "sinbad.mesh", string name = "hero", Labyrinth* lab);
+	Hero(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh = "sinbad.mesh", string name = "hero", Labyrinth* lab = nullptr);
 	~Hero();
 
 	void init() override {}
