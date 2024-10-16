@@ -19,10 +19,6 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 
 	std::vector<string> filas;
 
-	/*for (auto f : filas)
-	{
-		archivo >> f;
-	}*/
 	for (int i = 0; i < nFilas; i++)
 	{
 		string fila = " ";
@@ -53,10 +49,11 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 
 				break;
 			case 'h':
-				hero = new Hero({ 0,0,0 }, sNode, sCMan, "Sinbad.mesh", "Wall" + to_string(i * nColumnas + j),this);
+				hero = new Hero({ 0,0,0 }, sNode, sCMan, "Sinbad.mesh", "Wall" + to_string(i * nColumnas + j), this);
 
 				hero->setScale({ 15, 15, 15 });
 
+				hero->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
 
 				break;
 			default:
@@ -65,9 +62,13 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 				break;
 			}
 
+			objs.push_back(obj);
+
+			if (obj == nullptr)
+				continue;
+
 			obj->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
 
-			objs.push_back(obj);
 
 			cont++;
 		}
@@ -83,9 +84,27 @@ Labyrinth::~Labyrinth()
 
 bool Labyrinth::checkDirection(Vector3 dir)
 {
-	Vector3 posHero = hero->getPosition() / boxSize; // Posicion en el laberinto normalizado.
-	posHero += dir;
-	if (objs[posHero.z * nColumnas + posHero.x] == nullptr) return true; // Para cuando pase por la poscion donde aparece el personaje.
+	Vector3 posHero = (hero->getPosition()) / boxSize; // Posicion en el laberinto normalizado.
 
-	return objs[posHero.z * nColumnas + posHero.x]->getType() != BLOCK_TYPE::WALL;
+
+	int id = trunc(posHero.z) * nColumnas + trunc(posHero.x);
+
+	//if (objs[id] == nullptr) return true; // Para cuando pase por la poscion donde aparece el personaje.
+	/*
+	Vector3 boxCentrePos = objs[id]->getPosition() + Vector3(boxSize.x / 2, 0, boxSize.z / 2);
+	if (hero->getPosition() == boxCentrePos) {
+		cout << "ONCENTRE" << endl;
+		return false;
+	}*/
+
+	if (dir == Vector3(1, 0, 0) || dir == Vector3(0, 0, 1))
+		posHero += dir;
+
+	id = trunc(posHero.z) * nColumnas + trunc(posHero.x);
+	//cout << "Check Direction" << endl;
+	if (objs[id] == nullptr) return true; // Para cuando pase por la poscion donde aparece el personaje.
+
+	if(objs[id]->getType() != BLOCK_TYPE::WALL)
+	return true;
+	return false;
 }

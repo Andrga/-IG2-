@@ -12,8 +12,8 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
 		getRoot()->queueEndRendering();
 	}
 
-	cout << "Orientacion: " << mCamMgr->getCamera()->getOrientation() << endl;
-	cout << "Posicion: " << mCamMgr->getCamera()->getPosition() << endl;
+	//cout << "Orientacion: " << mCamMgr->getCamera()->getOrientation() << endl;
+	//cout << "Posicion: " << mCamMgr->getCamera()->getPosition() << endl;
 
 	if (hero == nullptr)
 		return false;
