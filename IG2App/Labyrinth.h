@@ -42,6 +42,7 @@ public:
 	// Destructora de Labyrinth.
 	~Labyrinth();
 
+
 	//------Getters y setters:
 
 	// Gettea el heroe.
@@ -52,4 +53,6 @@ public:
 
 	// Devuelve si se puede mover en esa direccion (si hay una pared o no)
 	bool checkDirection(Vector3 dir);
+	// Devuelve la distancia entre un enemigo y el hero.
+	float getDistanceWithHero(Vector3 enemyPos);
 };

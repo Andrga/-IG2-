@@ -136,3 +136,13 @@ bool Labyrinth::checkDirection(Vector3 dir)
 		return true;
 	return false;
 }
+
+float Labyrinth::getDistanceWithHero(Vector3 enemyPos)
+{
+	Vector3 heroPos = hero->getPosition();
+
+	return std::sqrt(
+		std::pow(enemyPos.x - heroPos.x, 2) +
+		std::pow(enemyPos.y - heroPos.y, 2) +
+		std::pow(enemyPos.z - heroPos.z, 2));
+}
