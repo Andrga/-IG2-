@@ -27,11 +27,13 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 	}
 
 	int cont = 0;
+	int nEnemies = 0;
 	for (int i = 0; i < nFilas; i++)
 	{
 		for (int j = 0; j < nColumnas; j++)
 		{
-			Block* obj = nullptr;
+			Block* obj = nullptr; // Que sea de tipo bloque para los enemigos no sirve...
+			Enemy* ene = nullptr; // Mal?
 
 			switch (filas[i][j])
 			{
@@ -56,9 +58,17 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 				hero->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
 
 				break;
+			case 'v':
+				ene = new Enemy({ 0, 0, 0 }, sNode, sCMan, "ogrehead.mesh", "Enemy" + to_string(nEnemies),this);
+				// PAIGRO AQUI: se tiene que hacer de otra forma lo del ene.
+				nEnemies++;
+				break;
+			case 'V':
+
+				break;
 			default:
 				obj = nullptr;
-
+				ene = nullptr;
 				break;
 			}
 
@@ -104,7 +114,7 @@ bool Labyrinth::checkDirection(Vector3 dir)
 	//cout << "Check Direction" << endl;
 	if (objs[id] == nullptr) return true; // Para cuando pase por la poscion donde aparece el personaje.
 
-	if(objs[id]->getType() != BLOCK_TYPE::WALL)
-	return true;
+	if (objs[id]->getType() != BLOCK_TYPE::WALL)
+		return true;
 	return false;
 }

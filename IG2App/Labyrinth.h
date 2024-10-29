@@ -8,6 +8,8 @@
 #include "Wall.h"
 #include "Pearl.h"
 #include "Hero.h"
+#include "Enemy.h"
+#include "MasterEnemy.h"
 
 
 #include <iostream>
