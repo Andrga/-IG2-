@@ -27,6 +27,7 @@ public:
 
 	void frameRendered(const Ogre::FrameEvent& evt) override;
 	bool keyPressed(const OgreBites::KeyboardEvent& evt) override;
+	void setDirection(Vector3 newDir);
 
 	void rotate();
 };

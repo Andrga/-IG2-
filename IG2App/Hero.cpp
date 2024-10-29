@@ -45,14 +45,19 @@ bool Hero::keyPressed(const OgreBites::KeyboardEvent& evt)
 		break;
 	}
 
+	setDirection(newDir);
+
+	return false;
+}
+
+void Hero::setDirection(Vector3 newDir)
+{
 	if (newDir != rotateDirection) {
 		rotateDirection = newDir;
 		if (laberynth->checkDirection(rotateDirection))
 			rotate();
 		//cout << direction << endl;
 	}
-
-	return false;
 }
 
 void Hero::rotate()
