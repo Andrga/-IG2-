@@ -16,11 +16,6 @@ void Character::frameRendered(const Ogre::FrameEvent& evt)
 		mNode->translate(Vector3{ 0, 0, 1 }, Ogre::Node::TransformSpace::TS_LOCAL);
 }
 
-bool Character::keyPressed(const OgreBites::KeyboardEvent& evt)
-{
-	return false;
-}
-
 void Character::setDirection(Vector3 newDir)
 {
 	if (newDir != rotateDirection) {

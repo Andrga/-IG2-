@@ -13,15 +13,19 @@ MasterEnemy::MasterEnemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
 	// Cuerpo
 	mBody = mMaster->createChildSceneNode("body");
 	// Creamos entidades
-	Ogre::Entity* penguin1 = sceneMng->createEntity("penguin.mesh");
+	Ogre::Entity* penguin = sceneMng->createEntity("penguin.mesh");
+	Ogre::SceneNode* penguin1 = mBody->createChildSceneNode("penguin1");
+	penguin1->attachObject(penguin);
 	Ogre::Entity* penguin2 = sceneMng->createEntity("penguin.mesh");
 	Ogre::Entity* penguin3 = sceneMng->createEntity("penguin.mesh");
 	Ogre::Entity* razor = sceneMng->createEntity("razor.mesh");
 	// Aniadimos entidades al nodo
-	mBody->attachObject(penguin1);
+	/*mBody->attachObject(penguin1);
 	mBody->attachObject(penguin2);
 	mBody->attachObject(penguin3);
-	mBody->attachObject(razor);
+	mBody->attachObject(razor);*/
+	//colocacion de las entidades en su posicion
+	
 
 	// Brazo izq
 	mBDer = mMaster->createChildSceneNode("BrazoDer");
