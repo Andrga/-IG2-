@@ -154,20 +154,16 @@ Vector3 Labyrinth::getDirection(Enemy* ene)
 
 
 	Vector3 aux1 = enemyPos + Vector3(1, 0, 0);
-	int id1 = trunc(aux1.z) * nColumnas + trunc(aux1.x);
-	float dis1 = getDistanceWithHero(objs[id1]->getPosition());
+	float dis1 = getDistanceWithHero(aux1);
 
 	Vector3 aux2 = enemyPos + Vector3(-1, 0, 0);
-	int id2 = trunc(aux2.z) * nColumnas + trunc(aux2.x);
-	float dis2 = getDistanceWithHero(objs[id2]->getPosition());
+	float dis2 = getDistanceWithHero(aux2);
 
 	Vector3 aux3 = enemyPos + Vector3(0, 0, 1);
-	int id3 = trunc(aux3.z) * nColumnas + trunc(aux3.x);
-	float dis3 = getDistanceWithHero(objs[id3]->getPosition());
+	float dis3 = getDistanceWithHero(aux3);
 
 	Vector3 aux4 = enemyPos + Vector3(0, 0, -1);
-	int id4 = trunc(aux4.z) * nColumnas + trunc(aux4.x);
-	float dis4 = getDistanceWithHero(objs[id4]->getPosition());
+	float dis4 = getDistanceWithHero(aux4);
 
 	if (dis4 > dis1 && dis4 > dis2 && dis4 > dis3)
 	{
