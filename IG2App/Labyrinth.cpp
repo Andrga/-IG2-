@@ -137,12 +137,52 @@ bool Labyrinth::checkDirection(Vector3 dir)
 	return false;
 }
 
-float Labyrinth::getDistanceWithHero(Vector3 enemyPos)
+float Labyrinth::getDistanceWithHero(Vector3 otherPos)
 {
 	Vector3 heroPos = hero->getPosition();
 
 	return std::sqrt(
-		std::pow(enemyPos.x - heroPos.x, 2) +
-		std::pow(enemyPos.y - heroPos.y, 2) +
-		std::pow(enemyPos.z - heroPos.z, 2));
+		std::pow(otherPos.x - heroPos.x, 2) +
+		std::pow(otherPos.y - heroPos.y, 2) +
+		std::pow(otherPos.z - heroPos.z, 2));
+}
+
+Vector3 Labyrinth::getDirection(Enemy* ene)
+{
+	Vector3 newDIr;
+	Vector3 enemyPos = ene->getPosition();
+
+
+	Vector3 aux1 = enemyPos + Vector3(1, 0, 0);
+	int id1 = trunc(aux1.z) * nColumnas + trunc(aux1.x);
+	float dis1 = getDistanceWithHero(objs[id1]->getPosition());
+
+	Vector3 aux2 = enemyPos + Vector3(-1, 0, 0);
+	int id2 = trunc(aux2.z) * nColumnas + trunc(aux2.x);
+	float dis2 = getDistanceWithHero(objs[id2]->getPosition());
+
+	Vector3 aux3 = enemyPos + Vector3(0, 0, 1);
+	int id3 = trunc(aux3.z) * nColumnas + trunc(aux3.x);
+	float dis3 = getDistanceWithHero(objs[id3]->getPosition());
+
+	Vector3 aux4 = enemyPos + Vector3(0, 0, -1);
+	int id4 = trunc(aux4.z) * nColumnas + trunc(aux4.x);
+	float dis4 = getDistanceWithHero(objs[id4]->getPosition());
+
+	if (dis4 > dis1 && dis4 > dis2 && dis4 > dis3)
+	{
+		return { 0, 0, -1 };
+	}
+	else if (dis3 > dis1 && dis3 > dis2 && dis3 > dis4)
+	{
+		return { 0, 0, 1 };
+	}
+	else if (dis2 > dis1 && dis2 > dis3 && dis2 > dis4)
+	{
+		return { -1, 0, 0 };
+	}
+	else if (dis1 > dis2 && dis1 > dis3 && dis1 > dis4)
+	{
+		return { 1, 0, 0 };
+	}
 }

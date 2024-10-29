@@ -55,4 +55,6 @@ public:
 	bool checkDirection(Vector3 dir);
 	// Devuelve la distancia entre un enemigo y el hero.
 	float getDistanceWithHero(Vector3 enemyPos);
+	// 
+	Vector3 getDirection(Enemy* ene);
 };
