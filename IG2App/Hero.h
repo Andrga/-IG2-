@@ -19,7 +19,7 @@ private:
 
 public:
 
-	Hero() : IG2Object() {}
+	Hero() : IG2Object(), laberynth(nullptr) {}
 	Hero(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh = "sinbad.mesh", string name = "hero", Labyrinth* lab = nullptr);
 	~Hero();
 

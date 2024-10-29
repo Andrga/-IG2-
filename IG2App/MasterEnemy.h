@@ -2,16 +2,17 @@
 
 #include "Enemy.h"
 
-class Labyrinth;
+//class Labyrinth;
 
 class MasterEnemy : public Enemy
 {
 private:
 
 	Ogre::SceneNode* mMaster = nullptr;
-	Ogre::SceneNode* mFish = nullptr;
-	Ogre::SceneNode* mPenguin = nullptr;
-	Ogre::SceneNode* mNinja = nullptr;
+	Ogre::SceneNode* mBDer = nullptr;
+	Ogre::SceneNode* mBody = nullptr;
+	Ogre::SceneNode* mBIzq = nullptr;
+
 
 public:
 

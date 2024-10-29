@@ -4,6 +4,7 @@ using namespace Ogre;
 using namespace std;
 
 #include "Wall.h"
+#include "MasterEnemy.h"
 
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
 
@@ -108,9 +109,6 @@ void IG2App::setupScene(void) {
 	addInputListener(hero);
 
 
-
-	/*mSinbad = mSM->getRootSceneNode()->createChildSceneNode("fish");
-	Ogre::Entity* ent1 = mSM->createEntity("jaiqua.mesh");
-	mSinbad->attachObject(ent1);
-	mSinbad->setScale(40, 40, 40);*/
+	//MasterEnemy master({0,10,0}, mSM->getRootSceneNode(), mSM, "ogrehead.mesh", "Amai", laberinto);
+	
 }

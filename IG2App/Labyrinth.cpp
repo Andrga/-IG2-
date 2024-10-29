@@ -59,7 +59,7 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 
 				break;
 			case 'v':
-				ene = new Enemy({ 0, 0, 0 }, sNode, sCMan, "ogrehead.mesh", "Enemy" + to_string(nEnemies),this);
+				//ene = new Enemy({ 0, 0, 0 }, sNode, sCMan, "ogrehead.mesh", "Enemy" + to_string(nEnemies),this);
 				// PAIGRO AQUI: se tiene que hacer de otra forma lo del ene.
 				nEnemies++;
 				break;

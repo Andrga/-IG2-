@@ -3,7 +3,7 @@
 #include "IG2Object.h"
 #include "Hero.h"
 
-class Labyrinth;
+//class Labyrinth;
 
 class Enemy : public Hero
 {
