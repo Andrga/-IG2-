@@ -120,22 +120,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Block.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="IG2ApplicationContext.h" />
     <ClInclude Include="IG2App.h" />
     <ClInclude Include="IG2Object.h" />
     <ClInclude Include="Labyrinth.h" />
+    <ClInclude Include="MasterEnemy.h" />
     <ClInclude Include="Pearl.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="IG2ApplicationContext.cpp" />
     <ClCompile Include="IG2Main.cpp" />
     <ClCompile Include="IG2App.cpp" />
     <ClCompile Include="IG2Object.cpp" />
     <ClCompile Include="Labyrinth.cpp" />
+    <ClCompile Include="MasterEnemy.cpp" />
     <ClCompile Include="Pearl.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>

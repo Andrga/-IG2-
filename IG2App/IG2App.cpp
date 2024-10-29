@@ -101,9 +101,16 @@ void IG2App::setupScene(void) {
 
 
 	//------------------------------------------------------------------------//
-	
+
 	laberinto = new Labyrinth(LABERINTO1, mSM->getRootSceneNode(), mSM);
 
 	hero = laberinto->getHero();
 	addInputListener(hero);
+
+
+
+	/*mSinbad = mSM->getRootSceneNode()->createChildSceneNode("fish");
+	Ogre::Entity* ent1 = mSM->createEntity("jaiqua.mesh");
+	mSinbad->attachObject(ent1);
+	mSinbad->setScale(40, 40, 40);*/
 }
