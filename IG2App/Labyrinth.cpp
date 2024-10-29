@@ -51,7 +51,7 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 
 				break;
 			case 'h':
-				hero = new Hero({ 0, 0, 0 }, sNode, sCMan, "Sinbad.mesh", "Wall" + to_string(i * nColumnas + j), this);
+				hero = new Hero({ 0, 0, 0 }, sNode, sCMan, this);
 
 				hero->setScale({ 15, 15, 15 });
 
@@ -59,7 +59,7 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 
 				break;
 			case 'v':
-				ene = new Enemy({ 0, 0, 0 }, sNode, sCMan, "ogrehead.mesh", "Enemy" + to_string(nEnemies), this);
+				ene = new Enemy({ 0, 0, 0 }, sNode, sCMan, "Enemy" + to_string(nEnemies), this);
 				nEnemies++;
 				enemies.push_back(ene);
 				if (ene != nullptr)
@@ -72,7 +72,7 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 				}
 				break;
 			case 'V':
-				ene = new MasterEnemy({ 0, 0, 0 }, sNode, sCMan, "ogrehead.mesh", "MasterEnemy" + to_string(nEnemies), this);
+				ene = new MasterEnemy({ 0, 0, 0 }, sNode, sCMan, "MasterEnemy" + to_string(nEnemies), this);
 				nEnemies++;
 				enemies.push_back(ene);
 				if (ene != nullptr)

@@ -20,7 +20,7 @@ private:
 public:
 
 	Hero() : Character(), laberynth(nullptr) {}
-	Hero(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh = "sinbad.mesh", string name = "hero", Labyrinth* lab = nullptr);
+	Hero(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, Labyrinth* lab = nullptr);
 	~Hero();
 	bool keyPressed(const OgreBites::KeyboardEvent& evt) override;
 };

@@ -1,16 +1,16 @@
 #include "Hero.h"
 #include "Labyrinth.h"
-Hero::Hero(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh, string name, Labyrinth* lab)
+Hero::Hero(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, Labyrinth* lab)
 	:Character(initPos, node, sceneMng, "hero", lab)
 {
-	entity = sceneMng->createEntity("sinbad.mesh");
+	entity = sceneMng->createEntity("Sinbad.mesh");
 	mNode->attachObject(entity);
 	this->setPosition(initialPosition);
 }
 
 Hero::~Hero()
 {
-
+	cout << "---Sinbad Eliminado---" << endl;
 }
 
 bool Hero::keyPressed(const OgreBites::KeyboardEvent& evt)
