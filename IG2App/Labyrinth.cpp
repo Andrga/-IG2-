@@ -32,8 +32,8 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 	{
 		for (int j = 0; j < nColumnas; j++)
 		{
-			Block* obj = nullptr; // Que sea de tipo bloque para los enemigos no sirve...
-			Enemy* ene = nullptr; // Mal?
+			Block* obj = nullptr;
+			Enemy* ene = nullptr;
 
 			switch (filas[i][j])
 			{
@@ -62,27 +62,13 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 				ene = new Enemy({ 0, 0, 0 }, sNode, sCMan, "Enemy" + to_string(nEnemies), this);
 				nEnemies++;
 				enemies.push_back(ene);
-				if (ene != nullptr)
-				{
-					ene->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
-				}
-				else
-				{
-					std::cout << "Enemigo" << nEnemies << " null" << std::endl;
-				}
+				ene->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
 				break;
 			case 'V':
 				ene = new MasterEnemy({ 0, 0, 0 }, sNode, sCMan, "MasterEnemy" + to_string(nEnemies), this);
 				nEnemies++;
 				enemies.push_back(ene);
-				if (ene != nullptr)
-				{
-					ene->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
-				}
-				else
-				{
-					std::cout << "MasterEnemy null" << std::endl;
-				}
+				ene->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
 				break;
 			default:
 				obj = nullptr;

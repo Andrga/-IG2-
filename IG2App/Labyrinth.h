@@ -47,7 +47,7 @@ public:
 
 	// Gettea el heroe.
 	Hero* getHero() { return hero; }
-
+	std::vector<Enemy*> getEnemies() { return enemies; }
 
 	//------Metodos sobre el movimiento de entidades:
 

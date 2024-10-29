@@ -15,14 +15,16 @@ Enemy::Enemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string na
 
 void Enemy::frameRendered(const Ogre::FrameEvent& evt)
 {
-	Character::frameRendered(evt);
+	cout << "aaaaaaaaaaAAAAAAAAA" << endl;
+
 
 	if (laberynth == nullptr)
 		return;
 
 	// comprueba la direccion que se acerca mas al jugador y si puede girar lo hace
-	if (laberynth->checkDirection(Vector3(0, 0, 1))) {
-		//setDirection();
+	Vector3 newDir = laberynth->getDirection(this);
+	if (laberynth->checkDirection(newDir)) {
+		setDirection(newDir);
 	}
 
 	// si delante no tiene huecho, gira 180º
