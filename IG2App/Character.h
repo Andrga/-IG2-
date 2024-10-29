@@ -7,7 +7,7 @@ class Labyrinth;
 
 class Character : public IG2Object
 {
-private:
+protected:
 
 	float speed = 1;
 	Vector3 direction{ 0,0,1 };
@@ -26,7 +26,6 @@ public:
 	void init() override {}
 
 	void frameRendered(const Ogre::FrameEvent& evt) override;
-	bool keyPressed(const OgreBites::KeyboardEvent& evt) override;
 	void setDirection(Vector3 newDir);
 
 	void rotate();

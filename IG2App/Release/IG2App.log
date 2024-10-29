@@ -1,7 +1,12 @@
-﻿  Generando código
-  1 of 880 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
-  Generación de código finalizada
-SDL2main.lib(SDL_windows_main.obj) : warning LNK4099: no se encontró PDB '' con 'SDL2main.lib(SDL_windows_main.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-  IG2App.vcxproj -> C:\Users\pablo\Documents\GitHub\-IG2-\bin\IG2AppRelease.exe
+﻿  Enemy.cpp
+C:\Users\Andrés\Documents\GitHub\-IG2-\OGREsdk\include\OGRE\OgreHardwareBuffer.h(180,45): warning C4251: 'Ogre::HardwareBuffer::mShadowBuffer': class 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Ogre::HardwareBuffer'
+  (compilando archivo de origen "Enemy.cpp")
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(3172,7):
+  vea la declaración de 'std::unique_ptr<Ogre::HardwareBuffer,std::default_delete<Ogre::HardwareBuffer>>'
+  
+C:\Users\Andrés\Documents\GitHub\-IG2-\IG2App\Enemy.cpp(25,3): error C2660: 'Character::setDirection': la función no acepta 0 argumentos
+  C:\Users\Andrés\Documents\GitHub\-IG2-\IG2App\Character.h(29,7):
+  vea la declaración de 'Character::setDirection'
+  C:\Users\Andrés\Documents\GitHub\-IG2-\IG2App\Enemy.cpp(25,3):
+  al hacer coincidir la lista de argumentos '()'
+  
