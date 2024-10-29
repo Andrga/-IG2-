@@ -1,22 +1,16 @@
 #include "Hero.h"
 #include "Labyrinth.h"
 Hero::Hero(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh, string name, Labyrinth* lab)
-	: IG2Object(initPos, node->createChildSceneNode(name), sceneMng, mesh), laberynth(lab)
-{}
+	:Character(initPos, node, sceneMng, "hero", lab)
+{
+	entity = sceneMng->createEntity("sinbad.mesh");
+	mNode->attachObject(entity);
+	this->setPosition(initialPosition);
+}
 
 Hero::~Hero()
 {
 
-}
-
-void Hero::frameRendered(const Ogre::FrameEvent& evt)
-{
-
-
-
-
-	if (laberynth->checkDirection(direction))
-		mNode->translate(Vector3{ 0, 0, 1 }, Ogre::Node::TransformSpace::TS_LOCAL);
 }
 
 bool Hero::keyPressed(const OgreBites::KeyboardEvent& evt)
@@ -48,21 +42,4 @@ bool Hero::keyPressed(const OgreBites::KeyboardEvent& evt)
 	setDirection(newDir);
 
 	return false;
-}
-
-void Hero::setDirection(Vector3 newDir)
-{
-	if (newDir != rotateDirection) {
-		rotateDirection = newDir;
-		if (laberynth->checkDirection(rotateDirection))
-			rotate();
-		//cout << direction << endl;
-	}
-}
-
-void Hero::rotate()
-{
-	Quaternion q = this->getOrientation().getRotationTo(rotateDirection);
-	mNode->rotate(q);
-	direction = rotateDirection;
 }

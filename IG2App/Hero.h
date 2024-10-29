@@ -1,11 +1,11 @@
 #pragma once
 
-#include "IG2Object.h"
+#include "Character.h"
 
 class Labyrinth;
 
 
-class Hero : public IG2Object
+class Hero : public Character
 {
 private:
 
@@ -19,15 +19,8 @@ private:
 
 public:
 
-	Hero() : IG2Object(), laberynth(nullptr) {}
+	Hero() : Character(), laberynth(nullptr) {}
 	Hero(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh = "sinbad.mesh", string name = "hero", Labyrinth* lab = nullptr);
 	~Hero();
-
-	void init() override {}
-
-	void frameRendered(const Ogre::FrameEvent& evt) override;
 	bool keyPressed(const OgreBites::KeyboardEvent& evt) override;
-	void setDirection(Vector3 newDir);
-
-	void rotate();
 };

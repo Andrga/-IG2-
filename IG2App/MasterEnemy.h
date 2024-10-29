@@ -17,6 +17,6 @@ private:
 public:
 
 	MasterEnemy();
-	MasterEnemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh = "ogrehead.mesh", string name = "enemy", Labyrinth* lab = nullptr);
+	MasterEnemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string name = "enemy", Labyrinth* lab = nullptr);
 
 };

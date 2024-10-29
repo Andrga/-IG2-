@@ -4,16 +4,10 @@ Enemy::Enemy()
 {
 }
 
-Enemy::Enemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh, string name, Labyrinth* lab)
-	: Hero(initPos, node, sceneMng, mesh, name, lab)
-
+Enemy::Enemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string name, Labyrinth* lab)
+	: Character(initPos, node, sceneMng, name, lab)
 {
-
-
-
-}
-
-bool Enemy::keyPressed(const OgreBites::KeyboardEvent& evt)
-{
-	return false;
+	entity = sceneMng->createEntity("ogrehead.mesh");
+	mNode->attachObject(entity);
+	this->setPosition(initialPosition);
 }

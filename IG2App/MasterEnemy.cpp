@@ -4,8 +4,8 @@ MasterEnemy::MasterEnemy()
 {
 }
 
-MasterEnemy::MasterEnemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh, string name, Labyrinth* lab)
-	: Enemy(initPos, node, sceneMng, mesh, name, lab)
+MasterEnemy::MasterEnemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string name, Labyrinth* lab)
+	: Enemy(initPos, node, sceneMng, name, lab)
 {
 	
 	mMaster = node->createChildSceneNode("master");

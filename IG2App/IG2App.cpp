@@ -107,8 +107,5 @@ void IG2App::setupScene(void) {
 
 	hero = laberinto->getHero();
 	addInputListener(hero);
-
-
-	//MasterEnemy master({0,10,0}, mSM->getRootSceneNode(), mSM, "ogrehead.mesh", "Amai", laberinto);
 	
 }
