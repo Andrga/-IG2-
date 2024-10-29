@@ -45,13 +45,13 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 
 				break;
 			case 'o':
-				obj = new Pearl({ 0,0,0 }, sNode, sCMan, "sphere.mesh", "Pearl" + to_string(i * nColumnas + j));
+				obj = new Pearl({ 0, 0, 0 }, sNode, sCMan, "sphere.mesh", "Pearl" + to_string(i * nColumnas + j));
 
 				obj->setScale({ .2, .2, .2 });
 
 				break;
 			case 'h':
-				hero = new Hero({ 0,0,0 }, sNode, sCMan, "Sinbad.mesh", "Wall" + to_string(i * nColumnas + j), this);
+				hero = new Hero({ 0, 0, 0 }, sNode, sCMan, "Sinbad.mesh", "Wall" + to_string(i * nColumnas + j), this);
 
 				hero->setScale({ 15, 15, 15 });
 
@@ -59,12 +59,30 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 
 				break;
 			case 'v':
-				//ene = new Enemy({ 0, 0, 0 }, sNode, sCMan, "ogrehead.mesh", "Enemy" + to_string(nEnemies),this);
-				// PAIGRO AQUI: se tiene que hacer de otra forma lo del ene.
+				ene = new Enemy({ 0, 0, 0 }, sNode, sCMan, "ogrehead.mesh", "Enemy" + to_string(nEnemies), this);
 				nEnemies++;
+				enemies.push_back(ene);
+				if (ene != nullptr)
+				{
+					ene->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
+				}
+				else
+				{
+					std::cout << "Enemigo" << nEnemies << " null" << std::endl;
+				}
 				break;
 			case 'V':
-
+				ene = new MasterEnemy({ 0, 0, 0 }, sNode, sCMan, "ogrehead.mesh", "MasterEnemy" + to_string(nEnemies), this);
+				nEnemies++;
+				enemies.push_back(ene);
+				if (ene != nullptr)
+				{
+					ene->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
+				}
+				else
+				{
+					std::cout << "MasterEnemy null" << std::endl;
+				}
 				break;
 			default:
 				obj = nullptr;
