@@ -108,10 +108,14 @@ void IG2App::setupScene(void) {
 	hero = laberinto->getHero();
 	std::vector<Enemy*> enemies = laberinto->getEnemies();
 
-	for (auto e: enemies)
+	for (auto e : enemies)
 	{
 		addInputListener(e);
 	}
 	addInputListener(hero);
-	
+
+
+
+	SceneNode* nPrueba = mSM->getRootSceneNode()->createChildSceneNode("prueba");
+	Enemy* ene = new MasterEnemy({ 0,300,0 }, nPrueba, mSM, "masterEnemy", laberinto);
 }

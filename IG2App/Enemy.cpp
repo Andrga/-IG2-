@@ -13,9 +13,15 @@ Enemy::Enemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string na
 	this->setPosition(initialPosition);
 }
 
+Enemy::Enemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int n, string name, Labyrinth* lab)
+	: Character(initPos, node, sceneMng, name, lab)
+{
+
+}
+
 void Enemy::frameRendered(const Ogre::FrameEvent& evt)
 {
-	cout << "aaaaaaaaaaAAAAAAAAA" << endl;
+	//cout << "aaaaaaaaaaAAAAAAAAA" << endl;
 
 
 	if (laberynth == nullptr)

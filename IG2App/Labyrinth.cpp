@@ -65,10 +65,10 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 				ene->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
 				break;
 			case 'V':
-				ene = new MasterEnemy({ 0, 0, 0 }, sNode, sCMan, "MasterEnemy" + to_string(nEnemies), this);
-				nEnemies++;
-				enemies.push_back(ene);
-				ene->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
+				//ene = new MasterEnemy({ 0, 0, 0 }, sNode, sCMan, "MasterEnemy" + to_string(nEnemies), this);
+				//nEnemies++;
+				//enemies.push_back(ene);
+				//ene->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
 				break;
 			default:
 				obj = nullptr;

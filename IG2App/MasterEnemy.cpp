@@ -2,52 +2,89 @@
 
 MasterEnemy::MasterEnemy()
 {
+
 }
 
 MasterEnemy::MasterEnemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string name, Labyrinth* lab)
-	: Enemy(initPos, node, sceneMng, name, lab)
+	: Enemy(initPos, node, sceneMng, 1, name, lab)
 {
-	
-	mMaster = node->createChildSceneNode("master");
+	Vector3 auxPos = initPos; // Vector auxiliar porque si.
+	//----Cuerpo:
+	mBody = mNode->createChildSceneNode("body");
+	// Primer pinguino que es el cuerpo como tal.
+	Ogre::SceneNode* nPenguin1 = mBody->createChildSceneNode("penguin1");
+	Ogre::Entity* ePenguin1 = sceneMng->createEntity("penguin.mesh");
+	nPenguin1->attachObject(ePenguin1);
+	nPenguin1->setPosition(auxPos);
+	// Segundo pinguino que es como la pata derecha
+	Ogre::SceneNode* nPenguin2 = mBody->createChildSceneNode("penguin2");
+	Ogre::Entity* ePenguin2 = sceneMng->createEntity("penguin.mesh");
+	nPenguin2->attachObject(ePenguin2);
+	nPenguin2->setPosition(auxPos + Vector3(15, -45, 0)); // PAIGRO AQUI: no numero magicos hacerlos en constexpr llamados offsert.
+	// Tercer pinguino que es como la pata izquierda.
+	Ogre::SceneNode* nPenguin3 = mBody->createChildSceneNode("penguin3");
+	Ogre::Entity* ePenguin3 = sceneMng->createEntity("penguin.mesh");
+	nPenguin3->attachObject(ePenguin3);
+	nPenguin3->setPosition(auxPos + Vector3(-15, -45, 0));
+	// Razor que es como el sombrero.
+	Ogre::SceneNode* nRazor = mBody->createChildSceneNode("razor");
+	Ogre::Entity* eRazor = sceneMng->createEntity("razor.mesh");
+	nRazor->attachObject(eRazor);
+	nRazor->setScale(0.4, 0.4, 0.4);
+	nRazor->setPosition(nPenguin1->getPosition() + Vector3(0, 25, 10));
 
-	// Cuerpo
-	mBody = mMaster->createChildSceneNode("body");
-	// Creamos entidades
-	Ogre::Entity* penguin = sceneMng->createEntity("penguin.mesh");
-	Ogre::SceneNode* penguin1 = mBody->createChildSceneNode("penguin1");
-	penguin1->attachObject(penguin);
-	Ogre::Entity* penguin2 = sceneMng->createEntity("penguin.mesh");
-	Ogre::Entity* penguin3 = sceneMng->createEntity("penguin.mesh");
-	Ogre::Entity* razor = sceneMng->createEntity("razor.mesh");
-	// Aniadimos entidades al nodo
-	/*mBody->attachObject(penguin1);
-	mBody->attachObject(penguin2);
-	mBody->attachObject(penguin3);
-	mBody->attachObject(razor);*/
-	//colocacion de las entidades en su posicion
-	
+	//----Brazo derecho:
+	mBDer = mBody->createChildSceneNode("brazoDer");
+	// Pinguino que es como el brazo derecho.
+	Ogre::SceneNode* nPenguinDer = mBDer->createChildSceneNode("penguinDer");
+	Ogre::Entity* ePenguinDer = sceneMng->createEntity("penguin.mesh");
+	nPenguinDer->attachObject(ePenguinDer);
+	nPenguinDer->setScale(0.7, 1.5, 0.7);
+	nPenguinDer->setPosition(auxPos + Vector3(40, -20, 0));
+	nPenguinDer->roll(Ogre::Degree(90));
+	//--Pescados brazo derecho:
+	mFDer = mBDer->createChildSceneNode("pescadosDer");
+	// Pescado 1 del brazo derecho.
+	Ogre::SceneNode* nFishDer1 = mFDer->createChildSceneNode("fishDer1");
+	Ogre::Entity* eFishDer1 = sceneMng->createEntity("fish.mesh");
+	nFishDer1->attachObject(eFishDer1);
+	nFishDer1->setScale(7, 7, 7);
+	nFishDer1->setPosition(nPenguinDer->getPosition() + Vector3(40, 0, 30));
+	nFishDer1->yaw(Ogre::Degree(-90));
+	// Pescado 2 del brazo derecho.
+	Ogre::SceneNode* nFishDer2 = mFDer->createChildSceneNode("fishDer2");
+	Ogre::Entity* eFishDer2 = sceneMng->createEntity("fish.mesh");
+	nFishDer2->attachObject(eFishDer2);
+	nFishDer2->setScale(7, 7, 7);
+	nFishDer2->setPosition(nPenguinDer->getPosition() + Vector3(40, 0, -30));
+	nFishDer2->yaw(Ogre::Degree(90));
 
-	// Brazo izq
-	mBDer = mMaster->createChildSceneNode("BrazoDer");
-	Ogre::Entity* penguin4 = sceneMng->createEntity("penguin.mesh");
-	Ogre::Entity* fish1 = sceneMng->createEntity("fish.mesh");
-	Ogre::Entity* fish2 = sceneMng->createEntity("fish.mesh");
-	mBDer->attachObject(penguin4);
-	mBDer->attachObject(fish1);
-	mBDer->attachObject(fish2);
+	//----Brazo izquierdo:
+	mBIzq = mBody->createChildSceneNode("brazoIzq");
+	// Pinguino que es como el brazo izquierdo.
+	Ogre::SceneNode* nPenguinIzq = mBIzq->createChildSceneNode("penguinIzq");
+	Ogre::Entity* ePenguinIzq = sceneMng->createEntity("penguin.mesh");
+	nPenguinIzq->attachObject(ePenguinIzq);
+	nPenguinIzq->setScale(0.7, 1.5, 0.7);
+	nPenguinIzq->setPosition(auxPos + Vector3(-40, -20, 0));
+	nPenguinIzq->roll(Ogre::Degree(-90));
 
+	//--Pescados brazo izquierdo:
+	mFIzq = mBIzq->createChildSceneNode("pescadosIzq");
+	// Pescado 1 del brazo izquierdo.
+	Ogre::SceneNode* nFishIzq1 = mFDer->createChildSceneNode("fishIzq1");
+	Ogre::Entity* eFishIzq1 = sceneMng->createEntity("fish.mesh");
+	nFishIzq1->attachObject(eFishIzq1);
+	nFishIzq1->setScale(7, 7, 7);
+	nFishIzq1->setPosition(nPenguinIzq->getPosition() + Vector3(-40, 0, 30));
+	nFishIzq1->yaw(Ogre::Degree(-90));
+	// Pescado 1 del brazo izquierdo.
+	Ogre::SceneNode* nFishIzq2 = mFDer->createChildSceneNode("fishIzq2");
+	Ogre::Entity* eFishIzq2 = sceneMng->createEntity("fish.mesh");
+	nFishIzq2->attachObject(eFishIzq2);
+	nFishIzq2->setScale(7, 7, 7);
+	nFishIzq2->setPosition(nPenguinIzq->getPosition() + Vector3(-40, 0, -30));
+	nFishIzq2->yaw(Ogre::Degree(90));
 
-	// Brazo der
-	mBIzq = mMaster->createChildSceneNode("BrazoIzq");
-	Ogre::Entity* penguin5 = sceneMng->createEntity("penguin.mesh");
-	Ogre::Entity* fish3 = sceneMng->createEntity("fish.mesh");
-	Ogre::Entity* fish4 = sceneMng->createEntity("fish.mesh");
-	mBDer->attachObject(penguin5);
-	mBDer->attachObject(fish3);
-	mBDer->attachObject(fish4);
-
-
-
-
-	
+	// PAIGRO AQUI: hacer que giren los brazos.
 }
