@@ -28,6 +28,7 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 
 	int cont = 0;
 	int nEnemies = 0;
+	std::vector<Block*> auxBloq;
 	for (int i = 0; i < nFilas; i++)
 	{
 		for (int j = 0; j < nColumnas; j++)
@@ -54,7 +55,7 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 				hero = new Hero({ 0, 0, 0 }, sNode, sCMan, this);
 
 				hero->setScale({ 15, 15, 15 });
-
+				cout << objs.size() << endl;
 				hero->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
 
 				break;
@@ -76,7 +77,7 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 				break;
 			}
 
-			objs.push_back(obj);
+			auxBloq.push_back(obj);
 
 			if (obj == nullptr)
 				continue;
@@ -86,6 +87,8 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 
 			cont++;
 		}
+		objs.push_back(auxBloq);
+		auxBloq.clear();
 	}
 
 	archivo.close();
@@ -96,30 +99,20 @@ Labyrinth::~Labyrinth()
 
 }
 
-bool Labyrinth::checkDirection(Vector3 dir)
+bool Labyrinth::checkDirection(Character* charac, Vector3 dir)
 {
-	Vector3 posHero = (hero->getPosition()) / boxSize; // Posicion en el laberinto normalizado.
+	int idx = trunc((charac->getPosition().x) / boxSize.x);
+	int idz = trunc((charac->getPosition().z) / boxSize.z);
 
+	if(charac == hero)
+		std::cout << "x: " << idx << " z: " << idz << std::endl;
 
-	int id = trunc(posHero.z) * nColumnas + trunc(posHero.x);
+	//if (objs[idx][idz] == nullptr)
+	//	return true; // Para cuando pase por la poscion donde aparece el personaje.
+	//if (objs[idx][idz]->getType() != BLOCK_TYPE::WALL)
+	//	return true;
+	//
 
-	//if (objs[id] == nullptr) return true; // Para cuando pase por la poscion donde aparece el personaje.
-	/*
-	Vector3 boxCentrePos = objs[id]->getPosition() + Vector3(boxSize.x / 2, 0, boxSize.z / 2);
-	if (hero->getPosition() == boxCentrePos) {
-		cout << "ONCENTRE" << endl;
-		return false;
-	}*/
-
-	if (dir == Vector3(1, 0, 0) || dir == Vector3(0, 0, 1))
-		posHero += dir;
-
-	id = trunc(posHero.z) * nColumnas + trunc(posHero.x);
-	//cout << "Check Direction" << endl;
-	if (objs[id] == nullptr) return true; // Para cuando pase por la poscion donde aparece el personaje.
-
-	if (objs[id]->getType() != BLOCK_TYPE::WALL)
-		return true;
 	return false;
 }
 
@@ -129,7 +122,6 @@ float Labyrinth::getDistanceWithHero(Vector3 otherPos)
 
 	return std::sqrt(
 		std::pow(otherPos.x - heroPos.x, 2) +
-		std::pow(otherPos.y - heroPos.y, 2) +
 		std::pow(otherPos.z - heroPos.z, 2));
 }
 
@@ -153,18 +145,18 @@ Vector3 Labyrinth::getDirection(Enemy* ene)
 
 	if (dis4 > dis1 && dis4 > dis2 && dis4 > dis3)
 	{
-		return { 0, 0, -1 };
+		return { 0, 0, 1 };
 	}
 	else if (dis3 > dis1 && dis3 > dis2 && dis3 > dis4)
 	{
-		return { 0, 0, 1 };
+		return { 0, 0, -1 };
 	}
 	else if (dis2 > dis1 && dis2 > dis3 && dis2 > dis4)
 	{
-		return { -1, 0, 0 };
+		return { 1, 0, 0 };
 	}
 	else if (dis1 > dis2 && dis1 > dis3 && dis1 > dis4)
 	{
-		return { 1, 0, 0 };
+		return { -1, 0, 0 };
 	}
 }

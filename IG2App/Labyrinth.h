@@ -22,7 +22,7 @@ class Labyrinth
 {
 private:
 
-	std::vector<Block*> objs; // Vector de bloques.
+	std::vector<std::vector<Block*>> objs; // Vector de bloques.
 	std::vector<Enemy*> enemies; // Vector de enemigos, incluye el master enemy.
 	Hero* hero = nullptr; // Referencia al heroe.
 
@@ -52,7 +52,7 @@ public:
 	//------Metodos sobre el movimiento de entidades:
 
 	// Devuelve si se puede mover en esa direccion (si hay una pared o no)
-	bool checkDirection(Vector3 dir);
+	bool checkDirection(Character* charac, Vector3 dir);
 	// Devuelve la distancia entre un enemigo y el hero.
 	float getDistanceWithHero(Vector3 enemyPos);
 	// 
