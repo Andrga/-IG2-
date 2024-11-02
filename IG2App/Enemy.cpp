@@ -20,7 +20,7 @@ Enemy::Enemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int n, st
 }
 
 void Enemy::frameRendered(const Ogre::FrameEvent& evt)
-{/*
+{
 	Character::frameRendered(evt);
 
 	if (laberynth == nullptr)
@@ -30,7 +30,10 @@ void Enemy::frameRendered(const Ogre::FrameEvent& evt)
 	Vector3 newDir = laberynth->getDirection(this);
 	if (laberynth->checkDirection(this, newDir)) {
 		setDirection(newDir);
+		cout << "Nueva direccion de enemigo" << newDir << endl;
+		return;
 	}
+
 	// si delante no tiene huecho, gira 180º
 	else if (!laberynth->checkDirection(this, direction))
 	{
@@ -42,5 +45,5 @@ void Enemy::frameRendered(const Ogre::FrameEvent& evt)
 			setDirection(Vector3{ -1,0,0 });
 		else
 			setDirection(Vector3{ 1,0,0 });
-	}*/
+	}
 }

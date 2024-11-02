@@ -13,6 +13,7 @@ class Block : public IG2Object
 protected:
 
 	BLOCK_TYPE blockType;
+	bool visible = true;
 
 
 public:
@@ -22,5 +23,11 @@ public:
 	~Block();
 
 	BLOCK_TYPE getType();
+
+	void setVisible(bool vis) override {
+		visible = vis;
+		IG2Object::setVisible(vis);
+	}
+	bool getVisible() { return visible; }
 
 };

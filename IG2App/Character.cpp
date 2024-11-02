@@ -14,14 +14,13 @@ Character::~Character()
 void Character::frameRendered(const Ogre::FrameEvent& evt)
 {
 	if (isCenter()) {
-		if (laberynth->checkDirection(this, rotateDirection)) {
+		if (laberynth->checkDirection(this, rotateDirection) && rotateDirection != direction) {
 			rotate();
 			cout << "rota" << endl;
-
 		}
 		if (!laberynth->checkDirection(this, direction)) {
 			direction = Vector3(0, 0, 0);
-			cout << "No puede andar" << endl;
+			//cout << "No puede andar" << endl;
 		}
 	}
 
@@ -29,9 +28,10 @@ void Character::frameRendered(const Ogre::FrameEvent& evt)
 	if (direction != Vector3(0, 0, 0))
 	{
 		mNode->translate(direction);
-		cout << "ANDA" << endl;
+		//cout << "ANDA" << endl;
 		//cout << direction << endl;
 	}
+
 }
 
 void Character::setDirection(Vector3 newDir)

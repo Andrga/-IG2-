@@ -32,7 +32,9 @@ private:
 	int nColumnas = 0; // Columnas del laberinto.
 
 	SceneNode* sNode; // Referencia al sceneNode en el que esta el laberinto.
-
+	// puntos para ganar
+	int maxPoints;
+	int actualPoints = 0;
 public:
 
 	//------Constructoras y destructoras:
@@ -60,4 +62,9 @@ public:
 	Vector3 getDirection(Enemy* ene);
 
 	void createGround(SceneManager* sCMan);
+
+	//---Ganar:
+	void eatPerl(int idx, int idz);
+	int getPoints() { return actualPoints; };
+	int getMaxPoints() { return maxPoints; };
 };

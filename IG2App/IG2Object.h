@@ -84,7 +84,7 @@ public:
 	 * Sets if this element is visible or not.
 	 * @param visible If true, the element is visible. The element is not visible otherwise.
 	 */
-	void setVisible(bool visible);
+	virtual void setVisible(bool visible);
 
 	/**
 	 * Gets the AABB for this element.

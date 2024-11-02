@@ -23,37 +23,48 @@ const string LABERINTO2 = "../Labyrinths/stage2.txt";
 
 
 
-class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener{
+class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener {
 
 public:
-    explicit IG2App() : IG2ApplicationContext("IG2App") { };  // new -> setup()
-    virtual ~IG2App() { };                                    // delete -> shutdown()
+	explicit IG2App() : IG2ApplicationContext("IG2App") { };  // new -> setup()
+	virtual ~IG2App() { };                                    // delete -> shutdown()
+
+	void setLives(int l) { lives = l; }
+	void nextLaberynth();
 
 protected:
-    virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
-    virtual void setup();
-    virtual void shutdown();
-    virtual void setupScene();
-    
+	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
+	virtual void setup();
+	virtual void shutdown();
+	virtual void setupScene();
+	bool frameEnded(const Ogre::FrameEvent& evt) override;
 
-    Ogre::SceneNode* mSinbad = nullptr;
-    Ogre::SceneNode* mColums = nullptr;
-    Ogre::SceneNode* mRBUpper = nullptr;
-    Ogre::SceneNode* mRBLower = nullptr;
 
-    Labyrinth* laberinto = nullptr;
-      
-    Ogre::SceneManager* mSM = nullptr;
-    OgreBites::TrayManager* mTrayMgr = nullptr;
-    
-    Ogre::Light* light = nullptr;
-    Ogre::SceneNode* mLightParent = nullptr;
-    Ogre::SceneNode* mLightNode = nullptr;
-    
-    Ogre::SceneNode* mCamNode = nullptr;
-    OgreBites::CameraMan* mCamMgr = nullptr;
+	Ogre::SceneNode* mSinbad = nullptr;
+	Ogre::SceneNode* mColums = nullptr;
+	Ogre::SceneNode* mRBUpper = nullptr;
+	Ogre::SceneNode* mRBLower = nullptr;
 
-    IG2Object* hero = nullptr;
+	Labyrinth* laberinto = nullptr;
+
+	Ogre::SceneManager* mSM = nullptr;
+	OgreBites::TrayManager* mTrayMgr = nullptr;
+
+	Ogre::Light* light = nullptr;
+	Ogre::SceneNode* mLightParent = nullptr;
+	Ogre::SceneNode* mLightNode = nullptr;
+
+	Ogre::SceneNode* mCamNode = nullptr;
+	OgreBites::CameraMan* mCamMgr = nullptr;
+
+	IG2Object* hero = nullptr;
+	// Informacion del nivel
+	int lives = 10;
+
+	// UI nivel
+	OgreBites::Label* label;
+	OgreBites::TextBox* textBox;
+
 };
 
 #endif

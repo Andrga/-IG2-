@@ -49,6 +49,7 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 				obj = new Pearl({ 0, 0, 0 }, sNode, sCMan, "sphere.mesh", "Pearl" + to_string(i * nColumnas + j));
 
 				obj->setScale({ .2, .2, .2 });
+				maxPoints++;
 
 				break;
 			case 'h':
@@ -124,16 +125,22 @@ Labyrinth::~Labyrinth()
 
 bool Labyrinth::checkDirection(Character* charac, Vector3 dir)
 {
-	int idx = trunc((charac->getPosition().x) / 98) + dir.x;
-	int idz = trunc((charac->getPosition().z) / 98) + dir.y;
+	int idy = trunc((charac->getPosition().x) / 98) + dir.x;
+	int idx = trunc((charac->getPosition().z) / 98) + dir.y;
 
-	if (charac == hero)
-		std::cout << "x: " << idx << " z: " << idz << std::endl;
 
-	if (idx >= nColumnas || idz >= nFilas)
+	if (idx >= nColumnas || idy >= nFilas)
 		return false;
 
-	return objs[idx][idz] == nullptr || objs[idx][idz]->getType() != 0;
+
+	if (objs[idx][idy] == nullptr)
+		return true;
+
+	cout << "x: " << idx << " z: " << idy << endl;
+	if (charac == hero && objs[idx][idy]->getType() == 1 && objs[idx][idy]->getVisible())
+		eatPerl(idx, idy);
+
+	return  objs[idx][idy]->getType() != 0;
 }
 
 float Labyrinth::getDistanceWithHero(Vector3 otherPos)
@@ -203,4 +210,10 @@ void Labyrinth::createGround(SceneManager* sCMan)
 		((boxSize.x * nFilas) / 2) - (boxSize.x / 2),  // X ajustada.
 		-boxSize.y / 2, // Y ajustada.
 		((boxSize.z * nColumnas) / 2) - (boxSize.x / 2))); // Z ajustada.
+}
+
+void Labyrinth::eatPerl(int idx, int idz)
+{
+	objs[idx][idz]->setVisible(false);
+	actualPoints++;
 }

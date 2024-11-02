@@ -6,6 +6,12 @@ using namespace std;
 #include "Wall.h"
 #include "MasterEnemy.h"
 
+void IG2App::nextLaberynth()
+{
+	delete laberinto;
+	laberinto = new Labyrinth(LABERINTO2, mSM->getRootSceneNode(), mSM);
+}
+
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
 
 	// ESC key finished the rendering...
@@ -113,4 +119,20 @@ void IG2App::setupScene(void) {
 		addInputListener(e);
 	}
 	addInputListener(hero);
+
+	//-------------CREACION DE LA UI------------//
+	label = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "StageInfo", "Stage 1", 250);
+	textBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "GameInfo:", "GameInfo:", 250, 100);
+}
+
+bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
+{
+	// Actualizamos la ui
+	textBox->clearText();
+	textBox->appendText(" Lives: " + to_string(lives) + "\nPoints: " + to_string(laberinto->getPoints()));
+
+	if (laberinto->getPoints() >= laberinto->getMaxPoints())
+		nextLaberynth();
+
+	return IG2ApplicationContext::frameEnded(evt);
 }
