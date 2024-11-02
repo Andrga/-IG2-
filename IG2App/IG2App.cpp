@@ -113,9 +113,4 @@ void IG2App::setupScene(void) {
 		addInputListener(e);
 	}
 	addInputListener(hero);
-
-
-
-	SceneNode* nPrueba = mSM->getRootSceneNode()->createChildSceneNode("prueba");
-	Enemy* ene = new MasterEnemy({ 0,300,0 }, nPrueba, mSM, "masterEnemy", laberinto);
 }

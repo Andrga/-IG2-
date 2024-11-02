@@ -23,4 +23,8 @@ public:
 	// Constructora de MasterEnemy con posicion, nodo, sceneManager, nombre y referencia al laberinto.
 	MasterEnemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string name = "enemy", Labyrinth* lab = nullptr);
 
+	//------Metodos heredados:
+
+	// Sobre carga del frameRenderer que hace de Update.
+	void frameRendered(const Ogre::FrameEvent& evt) override;
 };
