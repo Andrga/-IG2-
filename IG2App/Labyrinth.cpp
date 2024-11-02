@@ -140,13 +140,6 @@ bool Labyrinth::checkDirection(Character* charac, Vector3 dir)
 	if (charac == hero && objs[idy][idx]->getType() == 1 && objs[idy][idx]->getVisible())
 		eatPerl(idy, idx);
 
-	bool hola = checkCollision();
-	if (checkCollision()) {
-		std::cout << "COLISIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOON" << std::endl;
-		currentLives--;
-	}
-
-
 	return  objs[idx][idy]->getType() != 0;
 }
 
