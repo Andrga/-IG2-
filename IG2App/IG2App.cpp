@@ -110,6 +110,7 @@ void IG2App::setupScene(void) {
 	//------------------------------------------------------------------------//
 
 	laberinto = new Labyrinth(LABERINTO1, mSM->getRootSceneNode(), mSM);
+	laberinto->setLives(lives);
 
 	hero = laberinto->getHero();
 	std::vector<Enemy*> enemies = laberinto->getEnemies();
@@ -129,10 +130,16 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 {
 	// Actualizamos la ui
 	textBox->clearText();
-	textBox->appendText(" Lives: " + to_string(lives) + "\nPoints: " + to_string(laberinto->getPoints()));
+	textBox->appendText(" Lives: " + to_string(laberinto->getLives()) + "\nPoints: " + to_string(laberinto->getPoints()));
 
 	if (laberinto->getPoints() >= laberinto->getMaxPoints())
 		nextLaberynth();
+
+	std::cout << laberinto->getLives() << std::endl;
+	if (laberinto->getLives() <= 0)
+	{
+		getRoot()->queueEndRendering();
+	}
 
 	return IG2ApplicationContext::frameEnded(evt);
 }

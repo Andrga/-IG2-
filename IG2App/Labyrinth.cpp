@@ -140,6 +140,13 @@ bool Labyrinth::checkDirection(Character* charac, Vector3 dir)
 	if (charac == hero && objs[idx][idy]->getType() == 1 && objs[idx][idy]->getVisible())
 		eatPerl(idx, idy);
 
+	bool hola = checkCollision();
+	if (checkCollision()) {
+		std::cout << "COLISIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOON" << std::endl;
+		currentLives--;
+	}
+
+
 	return  objs[idx][idy]->getType() != 0;
 }
 
@@ -186,6 +193,25 @@ Vector3 Labyrinth::getDirection(Enemy* ene)
 	{
 		return { -1, 0, 0 };
 	}
+}
+
+bool Labyrinth::checkCollision()
+{
+	AxisAlignedBox eBox; // AAB del enemigo que toque.
+	AxisAlignedBox hBox = hero->getAABB(); // AAB del heroe.
+	bool collision = false; // Si ha habido colision o no.
+
+	int i = 0;
+	while (!collision && i < enemies.size())
+	{
+		eBox = enemies[i]->getAABB();
+
+		if (hBox.intersects(eBox)) { collision = true; }
+
+		i++;
+	}
+
+	return collision;
 }
 
 void Labyrinth::createGround(SceneManager* sCMan)

@@ -29,7 +29,6 @@ public:
 	explicit IG2App() : IG2ApplicationContext("IG2App") { };  // new -> setup()
 	virtual ~IG2App() { };                                    // delete -> shutdown()
 
-	void setLives(int l) { lives = l; }
 	void nextLaberynth();
 
 protected:

@@ -35,6 +35,8 @@ private:
 	// puntos para ganar
 	int maxPoints;
 	int actualPoints = 0;
+	int currentLives;
+
 public:
 
 	//------Constructoras y destructoras:
@@ -61,10 +63,29 @@ public:
 	// 
 	Vector3 getDirection(Enemy* ene);
 
+
+	//------Metodos de colisiones:
+
+	// Comprueba la colion entre el heroe y los enemigos.
+	bool checkCollision();
+
+
+	//------Metodos sobre el laberinto:
+
+	// Crea el plano del suelo.
 	void createGround(SceneManager* sCMan);
 
-	//---Ganar:
+
+	//------Metodos sobre la victoria y la vida del heroe:
+
+	//
 	void eatPerl(int idx, int idz);
+	//
 	int getPoints() { return actualPoints; };
+	//
 	int getMaxPoints() { return maxPoints; };
+	//
+	int getLives() { return currentLives; };
+	//
+	void setLives(int l) { currentLives = l; }
 };
