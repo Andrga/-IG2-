@@ -26,7 +26,6 @@ public:
 	void init() override {}
 
 	virtual void frameRendered(const Ogre::FrameEvent& evt) override;
-	void setDirection(Vector3 newDir);
 	bool isCenter();
 
 	void rotate();

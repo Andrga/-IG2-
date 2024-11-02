@@ -16,7 +16,7 @@ void Character::frameRendered(const Ogre::FrameEvent& evt)
 	if (isCenter()) {
 		if (laberynth->checkDirection(this, rotateDirection) && rotateDirection != direction) {
 			rotate();
-			cout << "rota" << endl;
+			//cout << "rota" << endl;
 		}
 		if (!laberynth->checkDirection(this, direction)) {
 			direction = Vector3(0, 0, 0);
@@ -32,18 +32,6 @@ void Character::frameRendered(const Ogre::FrameEvent& evt)
 		//cout << direction << endl;
 	}
 
-}
-
-void Character::setDirection(Vector3 newDir)
-{
-
-	if (newDir != direction) {
-
-		direction = newDir;
-
-		rotate();
-
-	}
 }
 
 bool Character::isCenter()

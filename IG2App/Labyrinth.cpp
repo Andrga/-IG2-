@@ -125,20 +125,20 @@ Labyrinth::~Labyrinth()
 
 bool Labyrinth::checkDirection(Character* charac, Vector3 dir)
 {
-	int idy = trunc((charac->getPosition().x) / 98) + dir.x;
-	int idx = trunc((charac->getPosition().z) / 98) + dir.y;
+	int idx = trunc((charac->getPosition().x) / 98) + dir.x;
+	int idy = trunc((charac->getPosition().z) / 98) + dir.y;
 
 
-	if (idx >= nColumnas || idy >= nFilas)
+	if (idy >= nColumnas || idx >= nFilas)
 		return false;
 
 
-	if (objs[idx][idy] == nullptr)
+	if (objs[idy][idx] == nullptr)
 		return true;
 
-	cout << "x: " << idx << " z: " << idy << endl;
-	if (charac == hero && objs[idx][idy]->getType() == 1 && objs[idx][idy]->getVisible())
-		eatPerl(idx, idy);
+	//cout << "x: " << idx << " z: " << idy << endl;
+	if (charac == hero && objs[idy][idx]->getType() == 1 && objs[idy][idx]->getVisible())
+		eatPerl(idy, idx);
 
 	bool hola = checkCollision();
 	if (checkCollision()) {
@@ -161,38 +161,36 @@ float Labyrinth::getDistanceWithHero(Vector3 otherPos)
 
 Vector3 Labyrinth::getDirection(Enemy* ene)
 {
-	Vector3 newDIr;
+	std::vector<Vector3> dirs;
 	Vector3 enemyPos = ene->getPosition();
-
-
-	Vector3 aux1 = enemyPos + Vector3(1, 0, 0);
-	float dis1 = getDistanceWithHero(aux1);
-
-	Vector3 aux2 = enemyPos + Vector3(-1, 0, 0);
-	float dis2 = getDistanceWithHero(aux2);
-
-	Vector3 aux3 = enemyPos + Vector3(0, 0, 1);
-	float dis3 = getDistanceWithHero(aux3);
-
-	Vector3 aux4 = enemyPos + Vector3(0, 0, -1);
-	float dis4 = getDistanceWithHero(aux4);
-
-	if (dis4 > dis1 && dis4 > dis2 && dis4 > dis3)
-	{
-		return { 0, 0, 1 };
+	// Cogemos las direcciones validas
+	if (checkDirection(ene, { 0,0,1 })) {
+		dirs.push_back({ 0,0,1 });
 	}
-	else if (dis3 > dis1 && dis3 > dis2 && dis3 > dis4)
-	{
-		return { 0, 0, -1 };
+	if (checkDirection(ene, { 0,0,-1 })) {
+		dirs.push_back({ 0,0,-1 });
 	}
-	else if (dis2 > dis1 && dis2 > dis3 && dis2 > dis4)
-	{
-		return { 1, 0, 0 };
+	if (checkDirection(ene, { 1,0,0 })) {
+		dirs.push_back({ 1,0,0 });
 	}
-	else if (dis1 > dis2 && dis1 > dis3 && dis1 > dis4)
-	{
-		return { -1, 0, 0 };
+	if (checkDirection(ene, { -1,0,0 })) {
+		dirs.push_back({ -1,0,0 });
 	}
+	//cout << "DirsSize: " << dirs.size() << endl;
+	// comprobamos de todas las direcciones validas la mas cercana al heroe
+	Vector3 newDir;
+	float minDist = -10;
+
+	for (int i = 0; i < dirs.size(); i++)
+	{
+		float auxdist = getDistanceWithHero(enemyPos + dirs[i]);
+		if (minDist < 0 || auxdist <= minDist) {
+			minDist = auxdist;
+			newDir = dirs[i];
+		}
+	}
+	//cout << newDir << endl;
+	return newDir;
 }
 
 bool Labyrinth::checkCollision()
