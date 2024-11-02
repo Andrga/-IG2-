@@ -58,4 +58,6 @@ public:
 	float getDistanceWithHero(Vector3 enemyPos);
 	// 
 	Vector3 getDirection(Enemy* ene);
+
+	void createGround(SceneManager* sCMan);
 };

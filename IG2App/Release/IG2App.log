@@ -976,13 +976,9 @@ C:\Users\pablo\Documents\GitHub\-IG2-\OGREsdk\include\OGRE\OgreHardwareBuffer.h(
 C:\Users\pablo\Documents\GitHub\-IG2-\IG2App\Labyrinth.cpp(51,29): warning C4305: 'argumento': truncamiento de 'double' a 'const Ogre::Real'
 C:\Users\pablo\Documents\GitHub\-IG2-\IG2App\Labyrinth.cpp(51,25): warning C4305: 'argumento': truncamiento de 'double' a 'const Ogre::Real'
 C:\Users\pablo\Documents\GitHub\-IG2-\IG2App\Labyrinth.cpp(51,21): warning C4305: 'argumento': truncamiento de 'double' a 'const Ogre::Real'
-C:\Users\pablo\Documents\GitHub\-IG2-\IG2App\Labyrinth.cpp(124,10): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\pablo\Documents\GitHub\-IG2-\IG2App\Labyrinth.cpp(125,10): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\pablo\Documents\GitHub\-IG2-\IG2App\Labyrinth.cpp(140,18): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
-  Generando código
-  1 of 979 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
-  Generación de código finalizada
-SDL2main.lib(SDL_windows_main.obj) : warning LNK4099: no se encontró PDB '' con 'SDL2main.lib(SDL_windows_main.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-  IG2App.vcxproj -> C:\Users\pablo\Documents\GitHub\-IG2-\bin\IG2AppRelease.exe
+C:\Users\pablo\Documents\GitHub\-IG2-\IG2App\Labyrinth.cpp(94,2): error C2660: 'Labyrinth::createGround': la función no acepta 0 argumentos
+C:\Users\pablo\Documents\GitHub\-IG2-\IG2App\Labyrinth.h(62,7): message : vea la declaración de 'Labyrinth::createGround'
+C:\Users\pablo\Documents\GitHub\-IG2-\IG2App\Labyrinth.cpp(94,2): message : al hacer coincidir la lista de argumentos '()'
+C:\Users\pablo\Documents\GitHub\-IG2-\IG2App\Labyrinth.cpp(106,10): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\-IG2-\IG2App\Labyrinth.cpp(107,10): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\-IG2-\IG2App\Labyrinth.cpp(122,18): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
