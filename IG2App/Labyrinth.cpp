@@ -98,7 +98,28 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 
 Labyrinth::~Labyrinth()
 {
+	delete hero;
+	hero = nullptr;
 
+	for (auto o : objs)
+	{
+		for (auto b : o)
+		{
+			delete b;
+			b = nullptr;
+		}
+	}
+	objs.clear();
+
+	for (auto e : enemies)
+	{
+		delete e;
+		e = nullptr;
+	}
+	enemies.clear();
+
+	delete sNode;
+	sNode = nullptr;
 }
 
 bool Labyrinth::checkDirection(Character* charac, Vector3 dir)
@@ -173,11 +194,11 @@ void Labyrinth::createGround(SceneManager* sCMan)
 		true, 1, // Normales y numTexCoordSet.
 		5, 5, // repeticiones de la textura.
 		Vector3::UNIT_Z); // Orientacion.
-	
+
 	Entity* eGround = sCMan->createEntity("suelo", "ground");
 	SceneNode* nGround = sCMan->getRootSceneNode()->createChildSceneNode("groundNode");
 	nGround->attachObject(eGround);
-	
+
 	nGround->setPosition(Vector3(
 		((boxSize.x * nFilas) / 2) - (boxSize.x / 2),  // X ajustada.
 		-boxSize.y / 2, // Y ajustada.
