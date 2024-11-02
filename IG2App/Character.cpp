@@ -13,17 +13,13 @@ Character::~Character()
 
 void Character::frameRendered(const Ogre::FrameEvent& evt)
 {
-	if (isCenter()) {
+	if (isCenter() && laberynth->checkDirection(this, direction)) {
 		//cout << "HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA SOY INEPRIMO" << endl;
 		direction = rotateDirection;
 		rotate();
 
 
 	}
-		
-	if (laberynth->checkDirection(this, direction)) {
-	}
-
 
 	//mNode->translate(Vector3{ 0, 0, 1 }, Ogre::Node::TransformSpace::TS_LOCAL);
 	mNode->translate(direction);
