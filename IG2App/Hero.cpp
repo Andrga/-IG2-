@@ -47,8 +47,8 @@ bool Hero::keyPressed(const OgreBites::KeyboardEvent& evt)
 void Hero::frameRendered(const Ogre::FrameEvent& evt)
 {
 	Character::frameRendered(evt);
-	std::cout << invincible << std::endl;
-	if (timer->getMilliseconds() / 100 >= timeinvincible)
+
+	if (timer->getMilliseconds() / 1000 >= timeinvincible)
 	{
 		invincible = false;
 		timer->reset();

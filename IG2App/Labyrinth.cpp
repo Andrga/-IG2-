@@ -190,7 +190,7 @@ bool Labyrinth::checkCollision()
 {
 	if (hero->getInvincible())
 		return false;
-	
+
 	AxisAlignedBox eBox; // AAB del enemigo que toque.
 	AxisAlignedBox hBox = hero->getAABB(); // AAB del heroe.
 	bool collision = false; // Si ha habido colision o no.
