@@ -98,7 +98,7 @@ MasterEnemy::MasterEnemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
 void MasterEnemy::frameRendered(const Ogre::FrameEvent& evt)
 {
 	Enemy::frameRendered(evt);
-	if (timer->getMilliseconds()*100 <= timeToMove)
+	if (timer->getMilliseconds() / 100 <= timeToMove)
 	{
 		mBIzq->pitch(Ogre::Degree(-2), Ogre::Node::TS_LOCAL);
 		mFIzq->pitch(Ogre::Degree(4), Ogre::Node::TS_LOCAL);
