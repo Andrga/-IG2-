@@ -98,9 +98,15 @@ MasterEnemy::MasterEnemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
 void MasterEnemy::frameRendered(const Ogre::FrameEvent& evt)
 {
 	Enemy::frameRendered(evt);
-
-	mBIzq->pitch(Ogre::Degree(-2), Ogre::Node::TS_LOCAL);
-	mFIzq->pitch(Ogre::Degree(4), Ogre::Node::TS_LOCAL);
-	mBDer->pitch(Ogre::Degree(-2), Ogre::Node::TS_LOCAL);
-	mFDer->pitch(Ogre::Degree(4), Ogre::Node::TS_LOCAL);
+	if (timer->getMilliseconds()*100 <= timeToMove)
+	{
+		mBIzq->pitch(Ogre::Degree(-2), Ogre::Node::TS_LOCAL);
+		mFIzq->pitch(Ogre::Degree(4), Ogre::Node::TS_LOCAL);
+		mBDer->pitch(Ogre::Degree(-2), Ogre::Node::TS_LOCAL);
+		mFDer->pitch(Ogre::Degree(4), Ogre::Node::TS_LOCAL);
+	}
+	else
+	{
+		timer->reset();
+	}
 }

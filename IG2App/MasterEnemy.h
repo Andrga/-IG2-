@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Enemy.h"
-
+#include "OgreTimer.h"
 
 class MasterEnemy : public Enemy
 {
@@ -13,7 +13,8 @@ private:
 	Ogre::SceneNode* mFDer = nullptr; // Nodo que contiene los pescados del brazo derecho.
 	Ogre::SceneNode* mFIzq = nullptr; // Nodo que contiene los pescados del brazo izquierdo.
 
-
+	Ogre::Timer* timer;
+	float timeToMove = 3;
 public:
 	
 	//------Constructoras y destructoras:
