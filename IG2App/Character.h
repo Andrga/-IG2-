@@ -10,8 +10,8 @@ class Character : public IG2Object
 protected:
 
 	float speed = 1;
-	Vector3 direction{ 1,0,0 };
-	Vector3 rotateDirection{ 1,0,0 };
+	Vector3 direction{ 0,0,0 };
+	Vector3 rotateDirection{ 0,0,0 };
 
 	Vector2 labPos;
 

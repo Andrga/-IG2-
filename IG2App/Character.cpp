@@ -13,17 +13,25 @@ Character::~Character()
 
 void Character::frameRendered(const Ogre::FrameEvent& evt)
 {
-	if (isCenter() && laberynth->checkDirection(this, direction)) {
-		//cout << "HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA SOY INEPRIMO" << endl;
-		direction = rotateDirection;
-		rotate();
+	if (isCenter()) {
+		if (laberynth->checkDirection(this, rotateDirection)) {
+			rotate();
+			cout << "rota" << endl;
 
-
+		}
+		if (!laberynth->checkDirection(this, direction)) {
+			direction = Vector3(0, 0, 0);
+			cout << "No puede andar" << endl;
+		}
 	}
 
-	//mNode->translate(Vector3{ 0, 0, 1 }, Ogre::Node::TransformSpace::TS_LOCAL);
-	mNode->translate(direction);
 
+	if (direction != Vector3(0, 0, 0))
+	{
+		mNode->translate(direction);
+		cout << "ANDA" << endl;
+		//cout << direction << endl;
+	}
 }
 
 void Character::setDirection(Vector3 newDir)
@@ -33,11 +41,6 @@ void Character::setDirection(Vector3 newDir)
 
 		direction = newDir;
 
-		//cout << " is cneter? ??¿?¿¿????????????????¿¿?¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¡¡¡¡" << newDir << endl;
-
-		/*if (laberynth->checkDirection(this, rotateDirection))
-			*/
-		//cout << direction << endl;
 		rotate();
 
 	}
@@ -52,7 +55,7 @@ bool Character::isCenter()
 
 	Vector3 centro(x % 98, y % 98, z % 98);
 
-	//Si todos los numeros son multiplos de 100 esta en un centro
+	//Si todos los numeros son multiplos de 98 esta en un centro
 	if (centro == Vector3().ZERO)
 		return true;
 	return false;

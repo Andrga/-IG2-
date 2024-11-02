@@ -101,19 +101,16 @@ Labyrinth::~Labyrinth()
 
 bool Labyrinth::checkDirection(Character* charac, Vector3 dir)
 {
-	int idx = trunc((charac->getPosition().x) / boxSize.x);
-	int idz = trunc((charac->getPosition().z) / boxSize.z);
+	int idx = trunc((charac->getPosition().x) / 98) + dir.x;
+	int idz = trunc((charac->getPosition().z) / 98) + dir.y;
 
-	if(charac == hero)
+	if (charac == hero)
 		std::cout << "x: " << idx << " z: " << idz << std::endl;
 
-	//if (objs[idx][idz] == nullptr)
-	//	return true; // Para cuando pase por la poscion donde aparece el personaje.
-	//if (objs[idx][idz]->getType() != BLOCK_TYPE::WALL)
-	//	return true;
-	//
+	if (idx >= nColumnas || idz >= nFilas)
+		return false;
 
-	return false;
+	return objs[idx][idz] == nullptr || objs[idx][idz]->getType() != 0;
 }
 
 float Labyrinth::getDistanceWithHero(Vector3 otherPos)

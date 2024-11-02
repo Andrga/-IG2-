@@ -20,7 +20,7 @@ Enemy::Enemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int n, st
 }
 
 void Enemy::frameRendered(const Ogre::FrameEvent& evt)
-{
+{/*
 	Character::frameRendered(evt);
 
 	if (laberynth == nullptr)
@@ -42,5 +42,5 @@ void Enemy::frameRendered(const Ogre::FrameEvent& evt)
 			setDirection(Vector3{ -1,0,0 });
 		else
 			setDirection(Vector3{ 1,0,0 });
-	}
+	}*/
 }
