@@ -35,7 +35,6 @@ private:
 	// puntos para ganar
 	int maxPoints;
 	int actualPoints = 0;
-	int currentLives;
 
 public:
 
@@ -85,7 +84,5 @@ public:
 	//
 	int getMaxPoints() { return maxPoints; };
 	//
-	int getLives() { return currentLives; };
-	//
-	void setLives(int l) { currentLives = l; }
+	void setInvulnerable();
 };

@@ -110,7 +110,6 @@ void IG2App::setupScene(void) {
 	//------------------------------------------------------------------------//
 
 	laberinto = new Labyrinth(LABERINTO1, mSM->getRootSceneNode(), mSM);
-	laberinto->setLives(lives);
 
 	hero = laberinto->getHero();
 	std::vector<Enemy*> enemies = laberinto->getEnemies();
@@ -138,6 +137,7 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 	if (laberinto->checkCollision()) 
 	{
 		lives--;
+		laberinto->setInvulnerable();
 	}
 
 	if (lives <= 0)

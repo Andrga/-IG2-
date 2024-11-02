@@ -188,6 +188,9 @@ Vector3 Labyrinth::getDirection(Enemy* ene)
 
 bool Labyrinth::checkCollision()
 {
+	if (hero->getInvincible())
+		return false;
+	
 	AxisAlignedBox eBox; // AAB del enemigo que toque.
 	AxisAlignedBox hBox = hero->getAABB(); // AAB del heroe.
 	bool collision = false; // Si ha habido colision o no.
@@ -233,4 +236,9 @@ void Labyrinth::eatPerl(int idx, int idz)
 {
 	objs[idx][idz]->setVisible(false);
 	actualPoints++;
+}
+
+void Labyrinth::setInvulnerable()
+{
+	hero->setInvincible();
 }

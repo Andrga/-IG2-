@@ -8,6 +8,7 @@ MasterEnemy::MasterEnemy()
 MasterEnemy::MasterEnemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string name, Labyrinth* lab)
 	: Enemy(initPos, node, sceneMng, 1, name, lab)
 {
+	timer = new Timer();
 	Vector3 auxPos = initPos; // Vector auxiliar porque si.
 
 

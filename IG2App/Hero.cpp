@@ -6,6 +6,8 @@ Hero::Hero(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, Labyrinth* 
 	entity = sceneMng->createEntity("Sinbad.mesh");
 	mNode->attachObject(entity);
 	this->setPosition(initialPosition);
+
+	timer = new Timer();
 }
 
 Hero::~Hero()
@@ -40,4 +42,15 @@ bool Hero::keyPressed(const OgreBites::KeyboardEvent& evt)
 	}
 
 	return false;
+}
+
+void Hero::frameRendered(const Ogre::FrameEvent& evt)
+{
+	Character::frameRendered(evt);
+	std::cout << invincible << std::endl;
+	if (timer->getMilliseconds() / 100 >= timeinvincible)
+	{
+		invincible = false;
+		timer->reset();
+	}
 }
