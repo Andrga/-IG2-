@@ -49,6 +49,7 @@ public:
 	Hero* getHero() { return hero; }
 	std::vector<Enemy*> getEnemies() { return enemies; }
 
+
 	//------Metodos sobre el movimiento de entidades:
 
 	// Devuelve si se puede mover en esa direccion (si hay una pared o no)

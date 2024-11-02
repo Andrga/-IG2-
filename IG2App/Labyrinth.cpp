@@ -91,6 +91,26 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 		auxBloq.clear();
 	}
 
+	Plane ground(Vector3::UNIT_Y, 0); // Plano con orientacion hacia arriba.
+	Ogre::MeshManager::getSingleton().createPlane(
+		"ground", // Nombre de la nueva mesh.
+		ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, // Grupo.
+		ground, // Plano base.
+		boxSize.x * nFilas, boxSize.z * nColumnas, // Tamanyo.
+		20, 20, // Segmentos.
+		true, 1, // Normales y numTexCoordSet.
+		5, 5, // repeticiones de la textura.
+		Vector3::UNIT_Z); // Orientacion.
+	Entity* eGround = sCMan->createEntity("suelo", "ground");
+	SceneNode* nGround = sCMan->getRootSceneNode()->createChildSceneNode("groundNode");
+	nGround->attachObject(eGround);
+	nGround->setPosition(Vector3(
+		((boxSize.x * nFilas) / 2) - (boxSize.x / 2),  // X ajustada.
+		-boxSize.y / 2, // Y ajustada.
+		((boxSize.z * nColumnas) / 2) - (boxSize.x / 2))); // Z ajustada.
+
+
+
 	archivo.close();
 }
 
