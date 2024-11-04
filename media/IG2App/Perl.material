@@ -1,0 +1,13 @@
+material Perl
+{
+    technique
+    {
+        pass
+        {
+		    texture_unit
+			{
+			    texture steelhead.png
+			}
+        }
+    }
+}

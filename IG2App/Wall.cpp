@@ -4,4 +4,5 @@ Wall::Wall(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh
 	: Block(initPos, node->createChildSceneNode(name), sceneMng, mesh)
 {
 	blockType = BLOCK_TYPE::WALL;
+	entity->setMaterialName("Wall"); //Asignamos el material
 }

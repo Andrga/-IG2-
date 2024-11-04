@@ -131,9 +131,7 @@ bool Labyrinth::checkDirection(Character* charac, Vector3 dir)
 
 	if (idy >= nColumnas || idx >= nFilas)
 		return false;
-
-
-	if (objs[idy][idx] == nullptr)
+	else if (objs[idy][idx] == nullptr)
 		return true;
 
 	//cout << "x: " << idx << " z: " << idy << endl;

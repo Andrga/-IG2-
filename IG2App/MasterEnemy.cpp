@@ -58,6 +58,7 @@ MasterEnemy::MasterEnemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
 	nFishDer1->setScale(7, 7, 7);
 	nFishDer1->setPosition(Vector3(0, 0, 30));
 	nFishDer1->yaw(Ogre::Degree(-90));
+	eFishDer1->setMaterialName("Fish"); // textura pez
 	// Pescado 2 del brazo derecho.
 	Ogre::SceneNode* nFishDer2 = mFDer->createChildSceneNode("fishDer2");
 	Ogre::Entity* eFishDer2 = sceneMng->createEntity("fish.mesh");
@@ -65,6 +66,7 @@ MasterEnemy::MasterEnemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
 	nFishDer2->setScale(7, 7, 7);
 	nFishDer2->setPosition(Vector3(0, 0, -30));
 	nFishDer2->yaw(Ogre::Degree(90));
+	eFishDer2->setMaterialName("Fish"); // textura pez
 
 
 	//----Brazo izquierdo:
@@ -87,6 +89,7 @@ MasterEnemy::MasterEnemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
 	nFishIzq1->setScale(7, 7, 7);
 	nFishIzq1->setPosition(Vector3(0, 0, 30));
 	nFishIzq1->yaw(Ogre::Degree(-90));
+	eFishIzq1->setMaterialName("Fish"); // textura pez
 	// Pescado 1 del brazo izquierdo.
 	Ogre::SceneNode* nFishIzq2 = mFIzq->createChildSceneNode("fishIzq2");
 	Ogre::Entity* eFishIzq2 = sceneMng->createEntity("fish.mesh");
@@ -94,6 +97,7 @@ MasterEnemy::MasterEnemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
 	nFishIzq2->setScale(7, 7, 7);
 	nFishIzq2->setPosition(Vector3(0, 0, -30));
 	nFishIzq2->yaw(Ogre::Degree(90));
+	eFishIzq2->setMaterialName("Fish"); // textura pez
 }
 
 void MasterEnemy::frameRendered(const Ogre::FrameEvent& evt)
