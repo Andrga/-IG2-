@@ -31,6 +31,8 @@ public:
 
 	void nextLaberynth();
 
+	void createLight();
+
 protected:
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
 	virtual void setup();

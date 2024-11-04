@@ -15,6 +15,7 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 	archivo >> nFilas;
 	archivo >> nColumnas;
 
+	archivo >> lightType;
 
 
 	std::vector<string> filas;

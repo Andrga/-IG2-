@@ -36,6 +36,8 @@ private:
 	int maxPoints;
 	int actualPoints = 0;
 
+	char lightType = ' '; // Char para guardar el tipo de luz segun se lea del archivo.
+
 public:
 
 	//------Constructoras y destructoras:
@@ -85,4 +87,10 @@ public:
 	int getMaxPoints() { return maxPoints; };
 	//
 	void setInvulnerable();
+
+
+	//------Metodos sobre luces:
+
+	//
+	char getLightType() { return lightType; }
 };

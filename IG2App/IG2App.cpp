@@ -12,6 +12,8 @@ void IG2App::nextLaberynth()
 	laberinto = new Labyrinth(LABERINTO2, mSM->getRootSceneNode(), mSM);
 }
 
+
+
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
 
 	// ESC key finished the rendering...
@@ -92,7 +94,7 @@ void IG2App::setupScene(void) {
 	mCamNode->setPosition(900, 2600, 1000); // PAIGRO AQUI: deberia cambiar dependiendo del mapa.
 
 
-	//------------------------------------------------------------------------
+	/*//------------------------------------------------------------------------
 	// Creating the light
 
 	//mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
@@ -107,7 +109,7 @@ void IG2App::setupScene(void) {
 
 
 
-	//------------------------------------------------------------------------//
+	//------------------------------------------------------------------------//*/
 
 	laberinto = new Labyrinth(LABERINTO1, mSM->getRootSceneNode(), mSM);
 
@@ -123,6 +125,9 @@ void IG2App::setupScene(void) {
 	//-------------CREACION DE LA UI------------//
 	label = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "StageInfo", "Stage 1", 250);
 	textBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "GameInfo:", "GameInfo:", 250, 100);
+
+	
+	createLight();
 }
 
 bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
@@ -134,7 +139,7 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 	if (laberinto->getPoints() >= laberinto->getMaxPoints())
 		nextLaberynth();
 
-	if (laberinto->checkCollision()) 
+	if (laberinto->checkCollision())
 	{
 		lives--;
 		laberinto->setInvulnerable();
@@ -146,4 +151,37 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 	}
 
 	return IG2ApplicationContext::frameEnded(evt);
+}
+
+void IG2App::createLight()
+{
+	Light* luz = mSM->createLight("Luz");
+
+	switch (toupper(laberinto->getLightType()))
+	{
+	case 'D': // Luz direccional
+		luz->setType(Ogre::Light::LT_DIRECTIONAL);
+		break;
+
+	case 'S': // Luz spot.
+		luz->setType(Ogre::Light::LT_SPOTLIGHT);
+		break;
+
+	case 'P': // Luz point.
+		luz->setType(Ogre::Light::LT_POINT);
+		break;
+
+	default: // Default por si acaso.
+		luz->setType(Ogre::Light::LT_DIRECTIONAL);
+		break;
+	}
+
+	//mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
+
+
+	luz->setDiffuseColour(0.75, 0.75, 0.75);
+
+	mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
+	mLightNode->attachObject(luz);
+	mLightNode->setDirection(Ogre::Vector3(0.5, -1.0, 0.5));
 }
