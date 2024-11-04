@@ -217,7 +217,7 @@ void Labyrinth::createGround(SceneManager* sCMan, string matFloor)
 		"ground", // Nombre de la nueva mesh.
 		ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, // Grupo.
 		ground, // Plano base.
-		boxSize.x * nFilas, boxSize.z * nColumnas, // Tamanyo.
+		boxSize.x * nColumnas, boxSize.z * nFilas, // Tamanyo.
 		20, 20, // Segmentos.
 		true, 1, // Normales y numTexCoordSet.
 		5, 5, // repeticiones de la textura.
@@ -228,18 +228,18 @@ void Labyrinth::createGround(SceneManager* sCMan, string matFloor)
 	nGround->attachObject(eGround);
 
 	nGround->setPosition(Vector3(
-		((boxSize.x * nFilas) / 2) - (boxSize.x / 2),  // X ajustada.
+		((boxSize.x * nColumnas) / 2) - (boxSize.x / 2),  // X ajustada.
 		-boxSize.y / 2, // Y ajustada.
-		((boxSize.z * nColumnas) / 2) - (boxSize.x / 2))); // Z ajustada.
+		((boxSize.z * nFilas) / 2) - (boxSize.z / 2))); // Z ajustada.
 	eGround->setMaterialName(matFloor); // set material
 }
 
 Vector3 Labyrinth::getCenter()
 {
 	return Vector3(
-		((boxSize.x * nFilas) / 2) - (boxSize.x / 2),  // X ajustada.
+		((boxSize.x * nColumnas) / 2) - (boxSize.x / 2),  // X ajustada.
 		-boxSize.y / 2, // Y ajustada.
-		((boxSize.z * nColumnas) / 2) - (boxSize.x / 2)); // Z ajustada.
+		((boxSize.z * nFilas) / 2) - (boxSize.x / 2)); // Z ajustada.
 }
 
 void Labyrinth::eatPerl(int idx, int idz)

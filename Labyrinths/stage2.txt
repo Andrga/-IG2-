@@ -3,7 +3,7 @@ PerlMat2
 FloorMat2
 18
 26
-d
+s
 xxxxxxxxxxxxxxxxxxxxxxxxxx
 xvooooxxxxxoooooxxxxoooovx
 xoxxxoooooooxxxooooooxxxox
