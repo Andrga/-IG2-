@@ -1,6 +1,6 @@
-WallMat
-PerlMat
-FloorMat
+WallMat1
+PerlMat1
+FloorMat1
 19
 19
 s

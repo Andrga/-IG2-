@@ -1,6 +1,9 @@
+WallMat2
+PerlMat2
+FloorMat2
 18
 26
-s
+d
 xxxxxxxxxxxxxxxxxxxxxxxxxx
 xoooooxxxxxoooooxxxxooooox
 xoxxxoooooooxxxooooooxxxox
