@@ -158,6 +158,7 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 
 void IG2App::createLight()
 {
+	// PAIGRO AQUI: hacerlo en el laberinto. Porque hay que eliminarla tras cambiar de nivel etc...
 	Light* luz = mSM->createLight("Luz");
 
 	switch (toupper(laberinto->getLightType()))
