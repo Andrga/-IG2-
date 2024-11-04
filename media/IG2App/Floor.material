@@ -1,11 +1,31 @@
-material FloorMat
+material FloorMat1
 {
     technique
     {
         pass
         {
-		    diffuse 0.75 0.5 0.25
+            diffuse 0.2 0.5 0.75
             specular 1 1 0.2 1
+            texture_unit {
+                texture grass_1024.jpg
+                colour_op modulate
+            }
+        }
+    }
+}
+
+material FloorMat2
+{
+    technique
+    {
+        pass
+        {
+            diffuse 0.75 0.5 0.25
+            specular 1 1 0.2 1
+            texture_unit {
+                texture dirt01.jpg
+                colour_op modulate
+            }
         }
     }
 }

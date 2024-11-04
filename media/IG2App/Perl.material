@@ -1,10 +1,23 @@
-material PerlMat
+material PerlMat1
 {
     technique
     {
         pass
         {
 		    ambient 0.2 0.4 0.7
+			diffuse .2 0.5 .7
+			emissive 0.3 0.1 1
+        }
+    }
+}
+
+material PerlMat2
+{
+    technique
+    {
+        pass
+        {
+		    ambient 0.7 0.5 0.2
 			diffuse .2 0.5 .7
 			emissive 0.3 0.1 1
         }
