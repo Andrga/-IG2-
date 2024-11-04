@@ -4,10 +4,10 @@ material Perl
     {
         pass
         {
-		    texture_unit
-			{
-			    texture steelhead.png
-			}
+            
+			ambient 0.2 0.4 0.7
+			diffuse .2 0.5 .7
+			emissive 0.3 0.1 1
         }
     }
 }

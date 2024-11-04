@@ -1,0 +1,11 @@
+material Wall
+{
+    technique
+    {
+        pass
+        {
+		    diffuse 0.75 0.5 0.25
+            specular 1 1 0.2 1
+        }
+    }
+}
