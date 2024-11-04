@@ -151,7 +151,7 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 	}
 
 	if (lightMoves && hero != nullptr && mLightNode != nullptr)
-		mLightNode->setPosition(hero->getPosition().x - 300, 500, hero->getPosition().z - 300); // Por alguna razon tiene ese offset...
+		mLightNode->setPosition(hero->getPosition().x, 500, hero->getPosition().z); // Por alguna razon tiene ese offset...
 
 	return IG2ApplicationContext::frameEnded(evt);
 }
@@ -192,6 +192,6 @@ void IG2App::createLight()
 
 	mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
 	mLightNode->attachObject(luz);
-	mLightNode->setDirection(Ogre::Vector3(0.5, -1.0, 0.5));
+	mLightNode->setDirection(Ogre::Vector3(0.0, -1.0, 0.0)); // Apunta hacia abajo.
 	mLightNode->setPosition(laberinto->getCenter().x, laberinto->getCenter().y + 1000, laberinto->getCenter().z);
 }
