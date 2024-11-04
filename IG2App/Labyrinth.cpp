@@ -12,10 +12,6 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 		return;
 	}
 
-	//Materiales:
-	string penguin, fish, razor, Perl, Wall, Floor;
-	archivo >> penguin >> fish >> razor >> Perl >> Wall >> Floor;
-
 	archivo >> nFilas;
 	archivo >> nColumnas;
 
