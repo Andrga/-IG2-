@@ -9,7 +9,7 @@ private:
 
 public:
 	Wall() : Block() {}
-	Wall(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, String mesh = "cube.mesh", string name = "wall");
+	Wall(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string matName, String mesh = "cube.mesh", string name = "wall");
 	void init() override {}
 
 };

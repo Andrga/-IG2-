@@ -11,6 +11,8 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 		cout << "NO SE HA ABIERTO EL ARCHIVO" << endl;
 		return;
 	}
+	string wallMat, perlMat, flootMat;
+	archivo >> wallMat >> perlMat >> flootMat;
 
 	archivo >> nFilas;
 	archivo >> nColumnas;
@@ -40,14 +42,14 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 			switch (filas[i][j])
 			{
 			case 'x':
-				obj = new Wall({ 0, 0, 0 }, sNode, sCMan, "cube.mesh", "Wall" + to_string(i * nColumnas + j));
+				obj = new Wall({ 0, 0, 0 }, sNode, sCMan, wallMat, "cube.mesh", "Wall" + to_string(i * nColumnas + j));
 
 				if (boxSize == Vector3{ 0, 0, 0 })
 					boxSize = obj->calculateBoxSize();
 
 				break;
 			case 'o':
-				obj = new Pearl({ 0, 0, 0 }, sNode, sCMan, "sphere.mesh", "Pearl" + to_string(i * nColumnas + j));
+				obj = new Pearl({ 0, 0, 0 }, sNode, sCMan, perlMat, "sphere.mesh", "Pearl" + to_string(i * nColumnas + j));
 
 				obj->setScale({ .2, .2, .2 });
 				maxPoints++;
@@ -93,7 +95,7 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 		auxBloq.clear();
 	}
 
-	createGround(sCMan); // Se crea el suelo.
+	createGround(sCMan, flootMat); // Se crea el suelo.
 
 	archivo.close();
 }
@@ -207,7 +209,7 @@ bool Labyrinth::checkCollision()
 	return collision;
 }
 
-void Labyrinth::createGround(SceneManager* sCMan)
+void Labyrinth::createGround(SceneManager* sCMan, string matFloor)
 {
 	Plane ground(Vector3::UNIT_Y, 0); // Plano con orientacion.
 
@@ -229,6 +231,7 @@ void Labyrinth::createGround(SceneManager* sCMan)
 		((boxSize.x * nFilas) / 2) - (boxSize.x / 2),  // X ajustada.
 		-boxSize.y / 2, // Y ajustada.
 		((boxSize.z * nColumnas) / 2) - (boxSize.x / 2))); // Z ajustada.
+	eGround->setMaterialName(matFloor); // set material
 }
 
 Vector3 Labyrinth::getCenter()

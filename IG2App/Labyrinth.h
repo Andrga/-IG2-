@@ -74,7 +74,7 @@ public:
 	//------Metodos sobre el laberinto:
 
 	// Crea el plano del suelo.
-	void createGround(SceneManager* sCMan);
+	void createGround(SceneManager* sCMan, string matFloor);
 	//
 	Vector3 getCenter();
 
