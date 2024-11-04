@@ -149,10 +149,9 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 	{
 		getRoot()->queueEndRendering();
 	}
-	if (hero != nullptr && mLightNode != nullptr)
-		mLightNode->setPosition(hero->getPosition().x, 500, hero->getPosition().z);
-	//std::cout << mLightNode->getPosition()<<std::endl;
-	//std::cout << hero->getPosition()<<std::endl;
+
+	if (lightMoves && hero != nullptr && mLightNode != nullptr)
+		mLightNode->setPosition(hero->getPosition().x - 300, 500, hero->getPosition().z - 300); // Por alguna razon tiene ese offset...
 
 	return IG2ApplicationContext::frameEnded(evt);
 }
@@ -171,6 +170,7 @@ void IG2App::createLight()
 	case 'S': // Luz spot.
 		std::cout << "Luz spot." << std::endl;
 		luz->setType(Ogre::Light::LT_SPOTLIGHT);
+		lightMoves = true;
 		break;
 
 	case 'P': // Luz point.
@@ -192,5 +192,5 @@ void IG2App::createLight()
 	mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
 	mLightNode->attachObject(luz);
 	mLightNode->setDirection(Ogre::Vector3(0.5, -1.0, 0.5));
-	mLightNode->setPosition(laberinto->getCenter().x, laberinto->getCenter().y + 500, laberinto->getCenter().z);
+	mLightNode->setPosition(laberinto->getCenter().x, laberinto->getCenter().y + 1000, laberinto->getCenter().z);
 }

@@ -66,6 +66,7 @@ protected:
 	OgreBites::Label* label;
 	OgreBites::TextBox* textBox;
 
+	bool lightMoves = false;
 };
 
 #endif
