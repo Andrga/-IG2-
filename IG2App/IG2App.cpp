@@ -85,7 +85,7 @@ void IG2App::setupScene(void) {
 	// and tell it to render into the main window
 	Viewport* vp = getRenderWindow()->addViewport(cam);
 
-	vp->setBackgroundColour(Ogre::ColourValue(0.7, 0.8, 0.9));
+	vp->setBackgroundColour(Ogre::ColourValue(0, 0, 0, 1));
 
 	mCamMgr = new OgreBites::CameraMan(mCamNode);
 	addInputListener(mCamMgr);
@@ -126,7 +126,7 @@ void IG2App::setupScene(void) {
 	label = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "StageInfo", "Stage 1", 250);
 	textBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "GameInfo:", "GameInfo:", 250, 100);
 
-	
+
 	createLight();
 }
 
@@ -149,6 +149,10 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 	{
 		getRoot()->queueEndRendering();
 	}
+	if (hero != nullptr && mLightNode != nullptr)
+		mLightNode->setPosition(hero->getPosition().x, 500, hero->getPosition().z);
+	//std::cout << mLightNode->getPosition()<<std::endl;
+	//std::cout << hero->getPosition()<<std::endl;
 
 	return IG2ApplicationContext::frameEnded(evt);
 }
@@ -160,18 +164,22 @@ void IG2App::createLight()
 	switch (toupper(laberinto->getLightType()))
 	{
 	case 'D': // Luz direccional
+		std::cout << "Luz direccional." << std::endl;
 		luz->setType(Ogre::Light::LT_DIRECTIONAL);
 		break;
 
 	case 'S': // Luz spot.
+		std::cout << "Luz spot." << std::endl;
 		luz->setType(Ogre::Light::LT_SPOTLIGHT);
 		break;
 
 	case 'P': // Luz point.
+		std::cout << "Luz point." << std::endl;
 		luz->setType(Ogre::Light::LT_POINT);
 		break;
 
 	default: // Default por si acaso.
+		std::cout << "Luz default: direccional." << std::endl;
 		luz->setType(Ogre::Light::LT_DIRECTIONAL);
 		break;
 	}
@@ -184,4 +192,5 @@ void IG2App::createLight()
 	mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
 	mLightNode->attachObject(luz);
 	mLightNode->setDirection(Ogre::Vector3(0.5, -1.0, 0.5));
+	mLightNode->setPosition(laberinto->getCenter().x, laberinto->getCenter().y + 500, laberinto->getCenter().z);
 }

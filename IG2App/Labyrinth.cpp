@@ -231,6 +231,14 @@ void Labyrinth::createGround(SceneManager* sCMan)
 		((boxSize.z * nColumnas) / 2) - (boxSize.x / 2))); // Z ajustada.
 }
 
+Vector3 Labyrinth::getCenter()
+{
+	return Vector3(
+		((boxSize.x * nFilas) / 2) - (boxSize.x / 2),  // X ajustada.
+		-boxSize.y / 2, // Y ajustada.
+		((boxSize.z * nColumnas) / 2) - (boxSize.x / 2)); // Z ajustada.
+}
+
 void Labyrinth::eatPerl(int idx, int idz)
 {
 	objs[idx][idz]->setVisible(false);

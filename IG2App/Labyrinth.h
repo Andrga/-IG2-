@@ -75,6 +75,8 @@ public:
 
 	// Crea el plano del suelo.
 	void createGround(SceneManager* sCMan);
+	//
+	Vector3 getCenter();
 
 
 	//------Metodos sobre la victoria y la vida del heroe:
