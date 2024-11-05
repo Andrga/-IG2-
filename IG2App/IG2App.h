@@ -10,6 +10,12 @@
 #include <OgreInput.h>
 #include <SDL_keycode.h>
 #include <OgreMeshManager.h>
+#include <OgreEntity.h>
+#include <OgreSkeletonInstance.h>
+#include <OgreBone.h>
+#include <OgreKeyFrame.h>
+#include <OgreBillboardSet.h>
+#include <OgreParticleSystem.h>
 #include <sstream>
 #include <iostream>
 #include <string>
@@ -17,31 +23,27 @@
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener{
 
 public:
-    explicit IG2App() : IG2ApplicationContext("IG2App") { };  // new -> setup()
-    virtual ~IG2App() { };                                    // delete -> shutdown()
+    explicit IG2App() : IG2ApplicationContext("IG2App") { };
+    virtual ~IG2App() { };
  
 protected:
-    virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
+    virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
     virtual void setup();
     virtual void shutdown();
     virtual void setupScene();
+    virtual void frameRendered(const Ogre::FrameEvent& evt);
     
+private:
     
-    Ogre::SceneNode* mOgreheadNode = nullptr;
+    // Sinbad
+    Ogre::SceneNode* sinbadNode = nullptr;
+    Ogre::Entity* sinbadEnt;
     
-    // Nodes
-    Ogre::SceneNode* nodePoint = nullptr;
-    Ogre::SceneNode* nodeSpot1 = nullptr;
-    Ogre::SceneNode* nodeSpot2 = nullptr;
-    Ogre::SceneNode* nodeDir = nullptr;
-      
+    // Scene manager and tray system
     Ogre::SceneManager* mSM = nullptr;
     OgreBites::TrayManager* mTrayMgr = nullptr;
-    
-//    Ogre::Light* light = nullptr;
-//    Ogre::SceneNode* mLightParent = nullptr;
-//    Ogre::SceneNode* mLightNode = nullptr;
-    
+   
+    // Camera
     Ogre::SceneNode* mCamNode = nullptr;
     OgreBites::CameraMan* mCamMgr = nullptr;
 };
