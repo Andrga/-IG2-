@@ -3,7 +3,7 @@ PerlMat1
 FloorMat1
 19
 19
-s
+d
 xxxxxxxxxxxxxxxxxxx
 xvoooooooxooooooovx
 xoxxoxxxoxoxxxoxxox

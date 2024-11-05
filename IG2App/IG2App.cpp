@@ -122,7 +122,7 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 	if (laberinto->getPoints() >= laberinto->getMaxPoints())
 		nextLaberynth();
 
-	if (laberinto->checkCollision())
+	if (laberinto->checkEnemyCollision())
 	{
 		lives--;
 		laberinto->setInvulnerable();

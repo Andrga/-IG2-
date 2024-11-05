@@ -56,12 +56,13 @@ public:
 	// Gettea el heroe.
 	Hero* getHero() { return hero; }
 	std::vector<Enemy*> getEnemies() { return enemies; }
+	Block* getBlock(Vector3 pos, Vector3 dir);
 
 
 	//------Metodos sobre el movimiento de entidades:
 
 	// Devuelve si se puede mover en esa direccion (si hay una pared o no)
-	bool checkDirection(Character* charac, Vector3 dir);
+	bool checkDirectionAvailable(Character* charac, Vector3 dir);
 	// Devuelve la distancia entre un enemigo y el hero.
 	float getDistanceWithHero(Vector3 enemyPos);
 	// 
@@ -71,7 +72,7 @@ public:
 	//------Metodos de colisiones:
 
 	// Comprueba la colion entre el heroe y los enemigos.
-	bool checkCollision();
+	bool checkEnemyCollision();
 
 
 	//------Metodos sobre el laberinto:
@@ -85,7 +86,7 @@ public:
 	//------Metodos sobre la victoria y la vida del heroe:
 
 	//
-	void eatPerl(int idx, int idz);
+	void eatPerl(Block* bloq);
 	//
 	int getPoints() { return actualPoints; };
 	//

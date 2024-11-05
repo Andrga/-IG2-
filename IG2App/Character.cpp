@@ -14,11 +14,11 @@ Character::~Character()
 void Character::frameRendered(const Ogre::FrameEvent& evt)
 {
 	if (isCenter()) {
-		if (rotateDirection != direction && laberynth->checkDirection(this, rotateDirection)) {
+		if (rotateDirection != direction && laberynth->checkDirectionAvailable(this, rotateDirection)) {
 			rotate();
 			//cout << "rota" << endl;
 		}
-		if (!laberynth->checkDirection(this, direction)) {
+		if (!laberynth->checkDirectionAvailable(this, direction)) {
 			direction = Vector3(0, 0, 0);
 			//cout << "No puede andar" << endl;
 		}

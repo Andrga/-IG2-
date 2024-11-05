@@ -30,14 +30,14 @@ void Enemy::frameRendered(const Ogre::FrameEvent& evt)
 	if (isCenter()) {
 
 		Vector3 newDir = laberynth->getDirection(this);
-		if (laberynth->checkDirection(this, newDir)) {
+		if (laberynth->checkDirectionAvailable(this, newDir)) {
 			//cout << "Nueva direccion de enemigo" << newDir << endl;
 			rotateDirection = newDir;
 			return;
 		}
 
 		// si delante no tiene huecho, gira 180º
-		else if (!laberynth->checkDirection(this, direction))
+		else if (!laberynth->checkDirectionAvailable(this, direction))
 		{
 			rotateDirection = -direction;
 		}

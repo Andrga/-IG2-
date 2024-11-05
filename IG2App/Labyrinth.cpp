@@ -133,25 +133,32 @@ Labyrinth::~Labyrinth()
 	mLightNode = nullptr;
 }
 
-bool Labyrinth::checkDirection(Character* charac, Vector3 dir)
+Block* Labyrinth::getBlock(Vector3 pos, Vector3 dir)
 {
-	int idx = trunc((charac->getPosition().x) / 98) + dir.x;
-	int idy = trunc((charac->getPosition().z) / 98) + dir.y;
-	idy -= 1;
+	int idx = trunc((pos.x) / 98) + dir.x;
+	int idy = trunc((pos.z) / 98) + dir.y;
 
 	if (idy >= nColumnas || idx >= nFilas)
-		return false;
-	else if (objs[idy][idx] == nullptr)
+		return nullptr;
+
+	return objs[idy][idx];
+}
+
+bool Labyrinth::checkDirectionAvailable(Character* charac, Vector3 dir)
+{
+	Block* bloq = getBlock(charac->getPosition(), dir);
+
+	if (bloq == nullptr)
 		return true;
 
-	if (charac == hero && objs[idy][idx]->getType() == 1 && objs[idy][idx]->getVisible())
-		eatPerl(idy, idx);
+	if (charac == hero && bloq->getType() == 1 && bloq->getVisible())
+		eatPerl(bloq);
 
 	if (charac == hero) {
-		cout << objs[idx][idy]->getType() << endl;
-		cout << "x: " << idx << " z: " << idy << endl;
+		cout << bloq->getType() << endl;
+		//cout << "x: " << idx << " z: " << idy << endl;
 	}
-	return  objs[idx][idy]->getType() != 0;
+	return  bloq->getType() != 0;
 }
 
 float Labyrinth::getDistanceWithHero(Vector3 otherPos)
@@ -168,16 +175,16 @@ Vector3 Labyrinth::getDirection(Enemy* ene)
 	std::vector<Vector3> dirs;
 	Vector3 enemyPos = ene->getPosition();
 	// Cogemos las direcciones validas
-	if (checkDirection(ene, { 0,0,1 })) {
+	if (checkDirectionAvailable(ene, { 0,0,1 })) {
 		dirs.push_back({ 0,0,1 });
 	}
-	if (checkDirection(ene, { 0,0,-1 })) {
+	if (checkDirectionAvailable(ene, { 0,0,-1 })) {
 		dirs.push_back({ 0,0,-1 });
 	}
-	if (checkDirection(ene, { 1,0,0 })) {
+	if (checkDirectionAvailable(ene, { 1,0,0 })) {
 		dirs.push_back({ 1,0,0 });
 	}
-	if (checkDirection(ene, { -1,0,0 })) {
+	if (checkDirectionAvailable(ene, { -1,0,0 })) {
 		dirs.push_back({ -1,0,0 });
 	}
 	//cout << "DirsSize: " << dirs.size() << endl;
@@ -197,7 +204,7 @@ Vector3 Labyrinth::getDirection(Enemy* ene)
 	return newDir;
 }
 
-bool Labyrinth::checkCollision()
+bool Labyrinth::checkEnemyCollision()
 {
 	if (hero->getInvincible())
 		return false;
@@ -252,9 +259,9 @@ Vector3 Labyrinth::getCenter()
 		((boxSize.z * nFilas) / 2) - (boxSize.x / 2)); // Z ajustada.
 }
 
-void Labyrinth::eatPerl(int idx, int idz)
+void Labyrinth::eatPerl(Block* bloq)
 {
-	objs[idx][idz]->setVisible(false);
+	bloq->setVisible(false);
 	actualPoints++;
 }
 
