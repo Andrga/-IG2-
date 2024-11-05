@@ -98,7 +98,7 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan, SceneNo
 	createGround(sCMan, flootMat); // Se crea el suelo.
 	createLight(sCMan, lightType); // Se crea la luz.
 
-	cNode->setPosition(getCenter().x, getCenter().y - 3000, getCenter().z);
+	cNode->setPosition(getCenter().x, getCenter().y + 3000, getCenter().z);
 	//cNode->getChild("Cam")->setPosition(getCenter());
 
 	archivo.close();

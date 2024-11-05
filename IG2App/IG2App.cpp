@@ -80,7 +80,7 @@ void IG2App::setupScene(void) {
 	mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
 	mCamNode->attachObject(cam);
 
-	mCamNode->lookAt(Ogre::Vector3(0, -1, 0), Ogre::Node::TS_WORLD); // Mira hacia abajo.
+	mCamNode->lookAt(Ogre::Vector3(0, 1, 0), Ogre::Node::TS_WORLD); // Mira hacia abajo.
 
 	// and tell it to render into the main window
 	Viewport* vp = getRenderWindow()->addViewport(cam);
