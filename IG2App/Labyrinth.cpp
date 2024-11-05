@@ -125,6 +125,9 @@ Labyrinth::~Labyrinth()
 
 	delete sNode;
 	sNode = nullptr;
+
+	delete mLightNode;
+	mLightNode = nullptr;
 }
 
 bool Labyrinth::checkDirection(Character* charac, Vector3 dir)
