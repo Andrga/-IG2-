@@ -117,14 +117,14 @@ void IG2App::setupScene(void) {
 	sinbadNode->setInitialState();
 
 
-	//------------------------------------------------------------------------
+	/*//------------------------------------------------------------------------
 	// Billboard effect (smiley) in sphere
 
 	Entity* sphereEnt = mSM->createEntity("sphere.mesh");
 	SceneNode* sphereNode = mSM->getRootSceneNode()->createChildSceneNode();
 	sphereNode->attachObject(sphereEnt);
 	sphereNode->setPosition(Vector3(0, 100, 0));
-	sphereEnt->setMaterialName("example/esferaSmile");
+	sphereEnt->setMaterialName("example/esferaSmile");*/
 
 
 
@@ -143,7 +143,7 @@ void IG2App::setupScene(void) {
 	//------------------------------------------------------------------------
 	// Sistema de particulas:
 	SceneNode* nPSys = mSM->getRootSceneNode()->createChildSceneNode("particleSystem");
-	ParticleSystem * parSys = mSM->createParticleSystem("smoke", "example/smokeParticle");
+	ParticleSystem * parSys = mSM->createParticleSystem("smoke", "Examples/Smoke");
 	parSys->setEmitting(true);
 	nPSys->attachObject(parSys);
 }
