@@ -38,6 +38,7 @@ private:
     // Sinbad
     Ogre::SceneNode* sinbadNode = nullptr;
     Ogre::Entity* sinbadEnt;
+    SceneNode* phantomeNode;
     
     // Scene manager and tray system
     Ogre::SceneManager* mSM = nullptr;
