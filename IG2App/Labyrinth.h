@@ -46,7 +46,7 @@ public:
 	//------Constructoras y destructoras:
 
 	// Constructora base de Labyrinth.
-	Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan);
+	Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan, SceneNode* cNode);
 	// Destructora de Labyrinth.
 	~Labyrinth();
 

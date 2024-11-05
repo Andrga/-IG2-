@@ -18,14 +18,15 @@
 #include "Labyrinth.h"
 
 
-const string LABERINTO1 = "../Labyrinths/stage1.txt";
-const string LABERINTO2 = "../Labyrinths/stage2.txt";
+const string LABERINTO1 = "../Labyrinths/stage1.txt"; // Ruta del laberinto 1.
+const string LABERINTO2 = "../Labyrinths/stage2.txt"; // Ruta del laberinto 2.
 
 
 
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener {
 
 public:
+
 	explicit IG2App() : IG2ApplicationContext("IG2App") { };  // new -> setup()
 	virtual ~IG2App() { };                                    // delete -> shutdown()
 

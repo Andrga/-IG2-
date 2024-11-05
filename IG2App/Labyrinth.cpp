@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
+Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan, SceneNode* cNode)
 {
 	ifstream archivo(root);
 
@@ -96,7 +96,10 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 	}
 
 	createGround(sCMan, flootMat); // Se crea el suelo.
-	createLight(sCMan, lightType);
+	createLight(sCMan, lightType); // Se crea la luz.
+
+	cNode->setPosition(getCenter().x, getCenter().y - 3000, getCenter().z);
+	//cNode->getChild("Cam")->setPosition(getCenter());
 
 	archivo.close();
 }

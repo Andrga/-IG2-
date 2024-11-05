@@ -9,7 +9,7 @@ using namespace std;
 void IG2App::nextLaberynth()
 {
 	delete laberinto;
-	laberinto = new Labyrinth(LABERINTO2, mSM->getRootSceneNode(), mSM);
+	laberinto = new Labyrinth(LABERINTO2, mSM->getRootSceneNode(), mSM, mCamNode);
 }
 
 
@@ -80,43 +80,25 @@ void IG2App::setupScene(void) {
 	mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
 	mCamNode->attachObject(cam);
 
-	mCamNode->lookAt(Ogre::Vector3(0, 1, 0), Ogre::Node::TS_WORLD);
+	mCamNode->lookAt(Ogre::Vector3(0, -1, 0), Ogre::Node::TS_WORLD); // Mira hacia abajo.
 
 	// and tell it to render into the main window
 	Viewport* vp = getRenderWindow()->addViewport(cam);
 
-	vp->setBackgroundColour(Ogre::ColourValue(0, 0, 0, 1));
+	vp->setBackgroundColour(Ogre::ColourValue(0, 0, 0, 1)); // Fondo de la escena negro.
 
 	mCamMgr = new OgreBites::CameraMan(mCamNode);
 	addInputListener(mCamMgr);
 	mCamMgr->setStyle(OgreBites::CS_ORBIT);
 
-	mCamNode->setPosition(900, 2600, 1000); // PAIGRO AQUI: deberia cambiar dependiendo del mapa.
 
-
-	/*//------------------------------------------------------------------------
-	// Creating the light
-
-	//mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
-	Light* luz = mSM->createLight("Luz");
-	luz->setType(Ogre::Light::LT_DIRECTIONAL);
-	luz->setDiffuseColour(0.75, 0.75, 0.75);
-
-	mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
-	//mLightNode = mCamNode->createChildSceneNode("nLuz");
-	mLightNode->attachObject(luz);
-	mLightNode->setDirection(Ogre::Vector3(0.5, -1.0, 0.5));
-
-
-
-	//------------------------------------------------------------------------//*/
-
-	laberinto = new Labyrinth(LABERINTO1, mSM->getRootSceneNode(), mSM);
+	// ----------CREACION DEL JUEGO----------//
+	laberinto = new Labyrinth(LABERINTO1, mSM->getRootSceneNode(), mSM, mCamNode);
 
 	hero = laberinto->getHero();
 	std::vector<Enemy*> enemies = laberinto->getEnemies();
 
-	// ---------- ANIADE ENEMIGOS COMO INPUT LISTENERS----------//
+	// ----------ANIADE ENEMIGOS COMO INPUT LISTENERS----------//
 	for (auto e : enemies)
 	{
 		addInputListener(e);
@@ -149,7 +131,7 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 		getRoot()->queueEndRendering();
 	}
 
-	laberinto->updateLight();
+	laberinto->updateLight(); // Actualizamos la camara.
 
 	return IG2ApplicationContext::frameEnded(evt);
 }
