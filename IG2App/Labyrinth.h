@@ -32,6 +32,9 @@ private:
 	int nColumnas = 0; // Columnas del laberinto.
 
 	SceneNode* sNode; // Referencia al sceneNode en el que esta el laberinto.
+	Ogre::SceneNode* mLightNode = nullptr;
+	bool lightMoves = false;
+
 	// puntos para ganar
 	int maxPoints;
 	int actualPoints = 0;
@@ -87,12 +90,14 @@ public:
 	int getPoints() { return actualPoints; };
 	//
 	int getMaxPoints() { return maxPoints; };
-	//
+	// Vuelve invulnerable al heroe tras haber colisionado con un enemigo.
 	void setInvulnerable();
 
 
 	//------Metodos sobre luces:
 
-	//
-	char getLightType() { return lightType; }
+	// Crea la luz dependiendo del tipo leido del archivo.
+	void createLight(SceneManager* sCMan, char t);
+	// Actualiza la poscion de la camara si toda.
+	void updateLight();
 };

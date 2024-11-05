@@ -150,48 +150,7 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 		getRoot()->queueEndRendering();
 	}
 
-	if (lightMoves && hero != nullptr && mLightNode != nullptr)
-		mLightNode->setPosition(hero->getPosition().x, 500, hero->getPosition().z); // Por alguna razon tiene ese offset...
+	laberinto->updateLight();
 
 	return IG2ApplicationContext::frameEnded(evt);
-}
-
-void IG2App::createLight()
-{
-	// PAIGRO AQUI: hacerlo en el laberinto. Porque hay que eliminarla tras cambiar de nivel etc...
-	Light* luz = mSM->createLight("Luz");
-
-	switch (toupper(laberinto->getLightType()))
-	{
-	case 'D': // Luz direccional
-		std::cout << "Luz direccional." << std::endl;
-		luz->setType(Ogre::Light::LT_DIRECTIONAL);
-		break;
-
-	case 'S': // Luz spot.
-		std::cout << "Luz spot." << std::endl;
-		luz->setType(Ogre::Light::LT_SPOTLIGHT);
-		lightMoves = true;
-		break;
-
-	case 'P': // Luz point.
-		std::cout << "Luz point." << std::endl;
-		luz->setType(Ogre::Light::LT_POINT);
-		break;
-
-	default: // Default por si acaso.
-		std::cout << "Luz default: direccional." << std::endl;
-		luz->setType(Ogre::Light::LT_DIRECTIONAL);
-		break;
-	}
-
-	//mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
-
-
-	luz->setDiffuseColour(0.75, 0.75, 0.75);
-
-	mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
-	mLightNode->attachObject(luz);
-	mLightNode->setDirection(Ogre::Vector3(0.0, -1.0, 0.0)); // Apunta hacia abajo.
-	mLightNode->setPosition(laberinto->getCenter().x, laberinto->getCenter().y + 1000, laberinto->getCenter().z);
 }

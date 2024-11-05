@@ -31,8 +31,6 @@ public:
 
 	void nextLaberynth();
 
-	void createLight();
-
 protected:
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
 	virtual void setup();
@@ -53,7 +51,7 @@ protected:
 
 	Ogre::Light* light = nullptr;
 	Ogre::SceneNode* mLightParent = nullptr;
-	Ogre::SceneNode* mLightNode = nullptr;
+	//Ogre::SceneNode* mLightNode = nullptr;
 
 	Ogre::SceneNode* mCamNode = nullptr;
 	OgreBites::CameraMan* mCamMgr = nullptr;
@@ -66,7 +64,6 @@ protected:
 	OgreBites::Label* label;
 	OgreBites::TextBox* textBox;
 
-	bool lightMoves = false;
 };
 
 #endif

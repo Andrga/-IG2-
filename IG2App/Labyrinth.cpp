@@ -96,6 +96,7 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan)
 	}
 
 	createGround(sCMan, flootMat); // Se crea el suelo.
+	createLight(sCMan, lightType);
 
 	archivo.close();
 }
@@ -251,4 +252,46 @@ void Labyrinth::eatPerl(int idx, int idz)
 void Labyrinth::setInvulnerable()
 {
 	hero->setInvincible();
+}
+
+void Labyrinth::createLight(SceneManager* sCMan, char t)
+{
+	Light* luz = sCMan->createLight("Luz");
+
+	switch (toupper(t))
+	{
+	case 'D': // Luz direccional
+		std::cout << "Luz direccional." << std::endl;
+		luz->setType(Ogre::Light::LT_DIRECTIONAL);
+		break;
+
+	case 'S': // Luz spot.
+		std::cout << "Luz spot." << std::endl;
+		luz->setType(Ogre::Light::LT_SPOTLIGHT);
+		lightMoves = true;
+		break;
+
+	case 'P': // Luz point.
+		std::cout << "Luz point." << std::endl;
+		luz->setType(Ogre::Light::LT_POINT);
+		break;
+
+	default: // Default por si acaso.
+		std::cout << "Luz default: direccional." << std::endl;
+		luz->setType(Ogre::Light::LT_DIRECTIONAL);
+		break;
+	}
+
+	luz->setDiffuseColour(0.75, 0.75, 0.75);
+
+	mLightNode = sCMan->getRootSceneNode()->createChildSceneNode("nLuz");
+	mLightNode->attachObject(luz);
+	mLightNode->setDirection(Ogre::Vector3(0.0, -1.0, 0.0)); // Apunta hacia abajo.
+	mLightNode->setPosition(getCenter().x, getCenter().y + 1000, getCenter().z);
+}
+
+void Labyrinth::updateLight()
+{
+	if (lightMoves && hero != nullptr && mLightNode != nullptr)
+		mLightNode->setPosition(hero->getPosition().x, 500, hero->getPosition().z); // Por alguna razon tiene ese offset...
 }
