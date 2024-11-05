@@ -3,8 +3,6 @@
 using namespace Ogre;
 using namespace std;
 
-#include "Wall.h"
-
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
 
 	// ESC key finished the rendering...
@@ -12,13 +10,9 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
 		getRoot()->queueEndRendering();
 	}
 
-	cout << "Orientacion: " << mCamMgr->getCamera()->getOrientation() << endl;
-	cout << "Posicion: " << mCamMgr->getCamera()->getPosition() << endl;
 
-	if (hero == nullptr)
-		return false;
 
-	hero->keyPressed(evt);
+
 	return true;
 }
 
@@ -66,44 +60,95 @@ void IG2App::setupScene(void) {
 	cam->setNearClipDistance(1);
 	cam->setFarClipDistance(10000);
 	cam->setAutoAspectRatio(true);
-	//cam->setPolygonMode(Ogre::PM_WIREFRAME);
 
 	mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
 	mCamNode->attachObject(cam);
-
-	mCamNode->lookAt(Ogre::Vector3(0, 1, 0), Ogre::Node::TS_WORLD);
-
-	// and tell it to render into the main window
-	Viewport* vp = getRenderWindow()->addViewport(cam);
-
-	vp->setBackgroundColour(Ogre::ColourValue(0.7, 0.8, 0.9));
+	mCamNode->setPosition(0, 0, 600);
+	mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
 
 	mCamMgr = new OgreBites::CameraMan(mCamNode);
 	addInputListener(mCamMgr);
 	mCamMgr->setStyle(OgreBites::CS_ORBIT);
 
-	mCamNode->setPosition(900, 2600, 1000); // PAIGRO AQUI: deberia cambiar dependiendo del mapa.
+	// and tell it to render into the main window
+	Viewport* vp = getRenderWindow()->addViewport(cam);
+	//vp->setBackgroundColour(Ogre::ColourValue(0.7, 0.8, 0.9));
 
 
 	//------------------------------------------------------------------------
-	// Creating the light
+	// Creating the floor
 
-	//mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
-	Light* luz = mSM->createLight("Luz");
-	luz->setType(Ogre::Light::LT_DIRECTIONAL);
-	luz->setDiffuseColour(0.75, 0.75, 0.75);
+	MeshManager::getSingleton().createPlane("floor", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+		Plane(Vector3::UNIT_Y, 0),
+		1500, 1500, 200, 200, true, 1, 5, 5,
+		Vector3::UNIT_Z);
 
-	mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
-	//mLightNode = mCamNode->createChildSceneNode("nLuz");
-	mLightNode->attachObject(luz);
-	mLightNode->setDirection(Ogre::Vector3(0.5, -1.0, 0.5));
+	// Creating the plane
+	Entity* ent = mSM->createEntity("exampleFloor", "floor");
+	ent->setMaterialName("example/stonesFloor");
+	SceneNode* floor = mSM->getRootSceneNode()->createChildSceneNode();
+	floor->attachObject(ent);
+
+
+	//------------------------------------------------------------------------
+	// Creating the light (Directional light)
+
+	Ogre::Light* directionalLight1 = mSM->createLight("DirectionalLight1");
+	directionalLight1->setType(Light::LT_DIRECTIONAL);
+	directionalLight1->setDiffuseColour(1.0f, 1.0f, 1.0f);
+
+	// Node with the light attached
+	Ogre::SceneNode* nodeDir = mSM->getRootSceneNode()->createChildSceneNode();
+	nodeDir->setDirection(Ogre::Vector3(0, -1, -1));
+	nodeDir->attachObject(directionalLight1);
+
+	// Setting up the shadows
+	//mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+
+
+	//------------------------------------------------------------------------
+	// Creating Sinbad
+
+	sinbadEnt = mSM->createEntity("Sinbad.mesh");
+	sinbadNode = mSM->getRootSceneNode()->createChildSceneNode();
+	sinbadNode->attachObject(sinbadEnt);
+	sinbadNode->scale(5, 5, 5);
+	sinbadNode->setPosition(0, 25, 0); // On the floor!
+	sinbadNode->setInitialState();
+
+
+	//------------------------------------------------------------------------
+	// Billboard effect (smiley) in sphere
+
+	Entity* sphereEnt = mSM->createEntity("sphere.mesh");
+	SceneNode* sphereNode = mSM->getRootSceneNode()->createChildSceneNode();
+	sphereNode->attachObject(sphereEnt);
+	sphereNode->setPosition(Vector3(0, 100, 0));
+	sphereEnt->setMaterialName("example/esferaSmile");
 
 
 
-	//------------------------------------------------------------------------//
-	
-	laberinto = new Labyrinth(LABERINTO1, mSM->getRootSceneNode(), mSM);
+	//------------------------------------------------------------------------
+	// Billboard effect (panel) in sphere
 
-	hero = laberinto->getHero();
-	addInputListener(hero);
+//    SceneNode* bbNode = mSM->getRootSceneNode()->createChildSceneNode();
+//    Ogre::BillboardSet* bbSet = mSM->createBillboardSet(1);
+//    bbSet->setDefaultDimensions(80, 40);
+//    bbSet->setMaterialName("example/panel");
+//    bbNode->attachObject(bbSet);
+//    bbSet->createBillboard({ 0, 50, -50});
+
+
+
+	//------------------------------------------------------------------------
+	// Sistema de particulas:
+	SceneNode* nPSys = mSM->getRootSceneNode()->createChildSceneNode("particleSystem");
+	ParticleSystem * parSys = mSM->createParticleSystem("smoke", "example/smokeParticle");
+	parSys->setEmitting(true);
+	nPSys->attachObject(parSys);
 }
+
+
+void IG2App::frameRendered(const Ogre::FrameEvent& evt) {
+}
+

@@ -10,50 +10,42 @@
 #include <OgreInput.h>
 #include <SDL_keycode.h>
 #include <OgreMeshManager.h>
+#include <OgreEntity.h>
+#include <OgreSkeletonInstance.h>
+#include <OgreBone.h>
+#include <OgreKeyFrame.h>
+#include <OgreBillboardSet.h>
+#include <OgreParticleSystem.h>
 #include <sstream>
 #include <iostream>
 #include <string>
 
-
-#include "Labyrinth.h"
-
-
-const string LABERINTO1 = "../Labyrinths/stage1.txt";
-const string LABERINTO2 = "../Labyrinths/stage2.txt";
-
-
-
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener{
 
 public:
-    explicit IG2App() : IG2ApplicationContext("IG2App") { };  // new -> setup()
-    virtual ~IG2App() { };                                    // delete -> shutdown()
-
+    explicit IG2App() : IG2ApplicationContext("IG2App") { };
+    virtual ~IG2App() { };
+ 
 protected:
-    virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
+    virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
     virtual void setup();
     virtual void shutdown();
     virtual void setupScene();
+    virtual void frameRendered(const Ogre::FrameEvent& evt);
     
-
-    Ogre::SceneNode* mSinbad = nullptr;
-    Ogre::SceneNode* mColums = nullptr;
-    Ogre::SceneNode* mRBUpper = nullptr;
-    Ogre::SceneNode* mRBLower = nullptr;
-
-    Labyrinth* laberinto = nullptr;
-      
+private:
+    
+    // Sinbad
+    Ogre::SceneNode* sinbadNode = nullptr;
+    Ogre::Entity* sinbadEnt;
+    
+    // Scene manager and tray system
     Ogre::SceneManager* mSM = nullptr;
     OgreBites::TrayManager* mTrayMgr = nullptr;
-    
-    Ogre::Light* light = nullptr;
-    Ogre::SceneNode* mLightParent = nullptr;
-    Ogre::SceneNode* mLightNode = nullptr;
-    
+   
+    // Camera
     Ogre::SceneNode* mCamNode = nullptr;
     OgreBites::CameraMan* mCamMgr = nullptr;
-
-    IG2Object* hero = nullptr;
 };
 
 #endif
