@@ -136,7 +136,7 @@ Labyrinth::~Labyrinth()
 Block* Labyrinth::getBlock(Vector3 pos, Vector3 dir)
 {
 	int idx = trunc((pos.x) / 98) + dir.x;
-	int idy = trunc((pos.z) / 98) + dir.y;
+	int idy = trunc((pos.z) / 98) + dir.z;;
 
 	if (idy >= nColumnas || idx >= nFilas)
 		return nullptr;
@@ -146,18 +146,21 @@ Block* Labyrinth::getBlock(Vector3 pos, Vector3 dir)
 
 bool Labyrinth::checkDirectionAvailable(Character* charac, Vector3 dir)
 {
+	if (charac == hero) {
+		cout << "hero" << endl;
+		//cout << "x: " << idx << " z: " << idy << endl;
+	}
 	Block* bloq = getBlock(charac->getPosition(), dir);
 
 	if (bloq == nullptr)
 		return true;
 
 	if (charac == hero && bloq->getType() == 1 && bloq->getVisible())
+	{
 		eatPerl(bloq);
+		return true;
+	}	
 
-	if (charac == hero) {
-		cout << bloq->getType() << endl;
-		//cout << "x: " << idx << " z: " << idy << endl;
-	}
 	return  bloq->getType() != 0;
 }
 
