@@ -37,7 +37,6 @@ bool Hero::keyPressed(const OgreBites::KeyboardEvent& evt)
 		//cout << "RIGHT" << endl;
 		break;
 	default:
-		rotateDirection = { 0, 0, 0 };
 		break;
 	}
 

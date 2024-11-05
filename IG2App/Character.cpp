@@ -14,7 +14,7 @@ Character::~Character()
 void Character::frameRendered(const Ogre::FrameEvent& evt)
 {
 	if (isCenter()) {
-		if (laberynth->checkDirection(this, rotateDirection) && rotateDirection != direction) {
+		if (rotateDirection != direction && laberynth->checkDirection(this, rotateDirection)) {
 			rotate();
 			//cout << "rota" << endl;
 		}

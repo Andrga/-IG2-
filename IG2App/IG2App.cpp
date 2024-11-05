@@ -111,11 +111,12 @@ void IG2App::setupScene(void) {
 
 	//------------------------------------------------------------------------//*/
 
-	laberinto = new Labyrinth(LABERINTO2, mSM->getRootSceneNode(), mSM);
+	laberinto = new Labyrinth(LABERINTO1, mSM->getRootSceneNode(), mSM);
 
 	hero = laberinto->getHero();
 	std::vector<Enemy*> enemies = laberinto->getEnemies();
 
+	// ---------- ANIADE ENEMIGOS COMO INPUT LISTENERS----------//
 	for (auto e : enemies)
 	{
 		addInputListener(e);
@@ -126,8 +127,6 @@ void IG2App::setupScene(void) {
 	label = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "StageInfo", "Stage 1", 250);
 	textBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "GameInfo:", "GameInfo:", 250, 100);
 
-
-	createLight();
 }
 
 bool IG2App::frameEnded(const Ogre::FrameEvent& evt)

@@ -134,19 +134,20 @@ bool Labyrinth::checkDirection(Character* charac, Vector3 dir)
 {
 	int idx = trunc((charac->getPosition().x) / 98) + dir.x;
 	int idy = trunc((charac->getPosition().z) / 98) + dir.y;
-
+	idy -= 1;
 
 	if (idy >= nColumnas || idx >= nFilas)
 		return false;
 	else if (objs[idy][idx] == nullptr)
 		return true;
 
-	//cout << "x: " << idx << " z: " << idy << endl;
 	if (charac == hero && objs[idy][idx]->getType() == 1 && objs[idy][idx]->getVisible())
 		eatPerl(idy, idx);
 
-	if (charac == hero)
+	if (charac == hero) {
 		cout << objs[idx][idy]->getType() << endl;
+		cout << "x: " << idx << " z: " << idy << endl;
+	}
 	return  objs[idx][idy]->getType() != 0;
 }
 
