@@ -288,15 +288,14 @@ void Labyrinth::createLight(SceneManager* sCMan, char t)
 	}
 
 	luz->setDiffuseColour(0.75, 0.75, 0.75);
-
 	mLightNode = sCMan->getRootSceneNode()->createChildSceneNode("nLuz");
 	mLightNode->attachObject(luz);
 	mLightNode->setDirection(Ogre::Vector3(0.0, -1.0, 0.0)); // Apunta hacia abajo.
-	mLightNode->setPosition(getCenter().x, getCenter().y + 1000, getCenter().z);
+	mLightNode->setPosition(getCenter().x, getCenter().y + 500, getCenter().z);
 }
 
 void Labyrinth::updateLight()
 {
 	if (lightMoves && hero != nullptr && mLightNode != nullptr)
-		mLightNode->setPosition(hero->getPosition().x, 500, hero->getPosition().z); // Por alguna razon tiene ese offset...
+		mLightNode->setPosition(hero->getPosition().x, 250, hero->getPosition().z); // Por alguna razon tiene ese offset...
 }
