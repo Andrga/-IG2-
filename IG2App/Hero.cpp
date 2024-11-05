@@ -22,19 +22,19 @@ bool Hero::keyPressed(const OgreBites::KeyboardEvent& evt)
 	{
 	case SDLK_UP:
 		rotateDirection = { 0, 0, 1 };
-		cout << "UP" << endl;
+		//cout << "UP" << endl;
 		break;
 	case SDLK_DOWN:
 		rotateDirection = { 0, 0, -1 };
-		cout << "DOWN" << endl;
+		//cout << "DOWN" << endl;
 		break;
 	case SDLK_LEFT:
 		rotateDirection = { 1, 0, 0 };
-		cout << "LEFT" << endl;
+		//cout << "LEFT" << endl;
 		break;
 	case SDLK_RIGHT:
 		rotateDirection = { -1, 0, 0 };
-		cout << "RIGHT" << endl;
+		//cout << "RIGHT" << endl;
 		break;
 	default:
 		rotateDirection = { 0, 0, 0 };

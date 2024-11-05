@@ -142,6 +142,8 @@ bool Labyrinth::checkDirection(Character* charac, Vector3 dir)
 	if (charac == hero && objs[idy][idx]->getType() == 1 && objs[idy][idx]->getVisible())
 		eatPerl(idy, idx);
 
+	if (charac == hero)
+		cout << objs[idx][idy]->getType() << endl;
 	return  objs[idx][idy]->getType() != 0;
 }
 
