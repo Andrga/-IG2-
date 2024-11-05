@@ -66,7 +66,9 @@ void IG2App::setup(void) {
 	setupScene();
 }
 
-void IG2App::setupScene(void) {
+void IG2App::setupScene(void) 
+{
+	mSM->setShadowTechnique(ShadowTechnique::SHADOWTYPE_STENCIL_ADDITIVE); // Creo que he puesto sombras.
 
 	//------------------------------------------------------------------------
 	// Creating the camera

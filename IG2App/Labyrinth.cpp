@@ -283,6 +283,7 @@ void Labyrinth::createLight(SceneManager* sCMan, char t)
 	case 'P': // Luz point.
 		std::cout << "Luz point." << std::endl;
 		luz->setType(Ogre::Light::LT_POINT);
+		lightMoves = true;
 		break;
 
 	default: // Default por si acaso.
