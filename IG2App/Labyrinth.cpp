@@ -146,10 +146,6 @@ Block* Labyrinth::getBlock(Vector3 pos, Vector3 dir)
 
 bool Labyrinth::checkDirectionAvailable(Character* charac, Vector3 dir)
 {
-	if (charac == hero) {
-		cout << "hero" << endl;
-		//cout << "x: " << idx << " z: " << idy << endl;
-	}
 	Block* bloq = getBlock(charac->getPosition(), dir);
 
 	if (bloq == nullptr)

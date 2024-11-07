@@ -18,8 +18,8 @@
 #include "Labyrinth.h"
 
 
-const string LABERINTO1 = "../Labyrinths/stage1.txt"; // Ruta del laberinto 1.
-const string LABERINTO2 = "../Labyrinths/stage2.txt"; // Ruta del laberinto 2.
+const string LABERINTO1 = "stage1.txt"; // Ruta del laberinto 1.
+const string LABERINTO2 = "stage2.txt"; // Ruta del laberinto 2.
 
 
 

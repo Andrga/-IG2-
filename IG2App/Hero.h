@@ -21,7 +21,7 @@ public:
 	bool keyPressed(const OgreBites::KeyboardEvent& evt) override;
 
 	bool getInvincible() { return invincible; }
-	void setInvincible() { invincible = true; };
+	void setInvincible() { 		invincible = true; };
 
 	// Sobre carga del frameRenderer que hace de Update.
 	void frameRendered(const Ogre::FrameEvent& evt) override;

@@ -1,0 +1,30 @@
+material WallMat1
+{
+    technique
+    {
+        pass
+        {
+		    diffuse 0.75 0.5 0.25
+            specular 1 1 0.2 1
+            texture_unit {
+                texture RustySteel.jpg
+                colour_op modulate
+            }
+        }
+    }
+}
+material WallMat2
+{
+    technique
+    {
+        pass
+        {
+		    diffuse 0.25 0.5 0.75
+            specular 1 1 0.2 1
+            texture_unit {
+                texture tusk.jpg
+                colour_op modulate
+            }
+        }
+    }
+}
