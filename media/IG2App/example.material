@@ -8,45 +8,45 @@ material example/stonesFloor{
     }
 }
 
-material example/esferaSmile{
-    technique {
-		pass {
-			texture_unit {
-				texture spotlight_image.png
-				env_map spherical 
-	    	}
-		}
+material example/sky{
+ technique{
+        pass{
+            
+            lighting off
+            
+            texture_unit {
+                texture spaceSky.jpg
+            }
+        }
+    }
+}
+vertex_program shaderOrangeVS glsl{
+    source shaderOrangeVS.glsl
+    default_params{
+       param_named_auto modelViewProjMat worldviewproj_matrix
     }
 }
 
-material example/panel{
-	technique {
-		pass {
-			lighting off
-			texture_unit {
-				texture 10points.png
-				tex_address_mode clamp
-			}
-		}
-	}
+fragment_program shaderOrangeFS glsl{
+    source shaderOrangeFS.glsl
+    default_params{ 
+    }
 }
 
-material Examples/Smoke
-{
-	technique
-	{
-		pass
-		{
-			lighting off
-			scene_blend alpha_blend
-			depth_write off
-			diffuse vertexcolour
+material example/shaderOrange{
+    technique{
+        pass{
+            vertex_program_ref shaderOrangeVS{}
+            fragment_program_ref shaderOrangeFS{}
+        }
+    }
+}
 
-			texture_unit
-			{
-				texture smoke.png
-				tex_address_mode clamp
-			}
-		}
-	}
+material example/spaceSkyShader{
+    technique{
+        pass{
+            vertex_program_ref shaderOrangeVS{}
+            fragment_program_ref shaderOrangeFS{}
+        }
+    }
 }
