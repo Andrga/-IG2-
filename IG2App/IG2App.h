@@ -2,6 +2,9 @@
 #define __IG2App_H__
 
 #include "IG2ApplicationContext.h"
+#include "Intro.h"
+#include "Labyrinth.h"
+
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
 #include <OgreTrays.h>
@@ -15,7 +18,6 @@
 #include <string>
 
 
-#include "Labyrinth.h"
 
 
 const string LABERINTO1 = "stage1.txt"; // Ruta del laberinto 1.
@@ -46,6 +48,7 @@ protected:
 	Ogre::SceneNode* mRBLower = nullptr;
 
 	Labyrinth* laberinto = nullptr;
+	Intro* intro = nullptr;
 
 	Ogre::SceneManager* mSM = nullptr;
 	OgreBites::TrayManager* mTrayMgr = nullptr;
@@ -64,6 +67,10 @@ protected:
 	// UI nivel
 	OgreBites::Label* label;
 	OgreBites::TextBox* textBox;
+
+	// nodo intro/game
+	Ogre::SceneNode* nIntro = nullptr;
+	Ogre::SceneNode* nGame = nullptr;
 
 };
 

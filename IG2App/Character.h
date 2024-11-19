@@ -13,6 +13,7 @@ protected:
 	Vector3 rotateDirection{ 0,0,0 };
 	Labyrinth* laberynth = nullptr;
 
+	bool visible = true;
 public:
 
 	Character() : IG2Object(), laberynth(nullptr) {}
@@ -21,8 +22,10 @@ public:
 
 	void init() override {}
 
-	virtual void frameRendered(const Ogre::FrameEvent& evt) override;
+	//virtual void frameRendered(const Ogre::FrameEvent& evt) override;
+	virtual void update();
 	bool isCenter();
 
 	void rotate();
+	void setVisible(bool vis) { visible = vis; }
 };

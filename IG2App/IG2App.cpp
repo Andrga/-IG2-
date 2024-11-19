@@ -20,6 +20,11 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
 	if (evt.keysym.sym == SDLK_ESCAPE) {
 		getRoot()->queueEndRendering();
 	}
+	if (evt.keysym.sym == SDLK_s) {
+		if (intro == nullptr || laberinto == nullptr) return false;
+		intro->setVisible(false);
+		laberinto->setVisible(true);
+	}
 
 	//cout << "Orientacion: " << mCamMgr->getCamera()->getOrientation() << endl;
 	//cout << "Posicion: " << mCamMgr->getCamera()->getPosition() << endl;
@@ -93,9 +98,10 @@ void IG2App::setupScene(void)
 	addInputListener(mCamMgr);
 	mCamMgr->setStyle(OgreBites::CS_ORBIT);
 
-
+	nIntro = mSM->getRootSceneNode()->createChildSceneNode();
+	nGame = mSM->getRootSceneNode()->createChildSceneNode();
 	// ----------CREACION DEL JUEGO----------//
-	laberinto = new Labyrinth(LABERINTO1, mSM->getRootSceneNode(), mSM, mCamNode);
+	laberinto = new Labyrinth(LABERINTO1,nGame, mSM, mCamNode);
 
 	hero = laberinto->getHero();
 	std::vector<Enemy*> enemies = laberinto->getEnemies();
@@ -107,10 +113,15 @@ void IG2App::setupScene(void)
 	}
 	addInputListener(hero);
 
+	laberinto->setVisible(false);
+	
+	//--------------CREACION DE LA INTRO-------------//
+	intro = new Intro(mSM, nIntro);
+	
+	
 	//-------------CREACION DE LA UI------------//
 	label = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "StageInfo", "Stage 1", 250);
 	textBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "GameInfo:", "GameInfo:", 250, 100);
-
 }
 
 bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
@@ -118,6 +129,8 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 	// Actualizamos la ui
 	textBox->clearText();
 	textBox->appendText(" Lives: " + to_string(lives) + "\nPoints: " + to_string(laberinto->getPoints()));
+
+	laberinto->update();
 
 	if (laberinto->getPoints() >= laberinto->getMaxPoints())
 		nextLaberynth();

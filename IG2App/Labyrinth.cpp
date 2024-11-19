@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan, SceneNode* cNode)
+Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan, SceneNode* cNode) :gameNode(sNode)
 {
 	ifstream archivo(root);
 
@@ -126,8 +126,8 @@ Labyrinth::~Labyrinth()
 	}
 	enemies.clear();
 
-	delete sNode;
-	sNode = nullptr;
+	delete gameNode;
+	gameNode = nullptr;
 
 	delete mLightNode;
 	mLightNode = nullptr;
@@ -155,7 +155,7 @@ bool Labyrinth::checkDirectionAvailable(Character* charac, Vector3 dir)
 	{
 		eatPerl(bloq);
 		return true;
-	}	
+	}
 
 	return  bloq->getType() != 0;
 }
@@ -201,6 +201,14 @@ Vector3 Labyrinth::getDirection(Enemy* ene)
 	}
 	//cout << newDir << endl;
 	return newDir;
+}
+
+void Labyrinth::update()
+{
+	for (auto e : enemies) {
+		e->update();
+	}
+	hero->update();
 }
 
 bool Labyrinth::checkEnemyCollision()
@@ -308,5 +316,15 @@ void Labyrinth::createLight(SceneManager* sCMan, char t)
 void Labyrinth::updateLight()
 {
 	if (lightMoves && hero != nullptr && mLightNode != nullptr)
-		mLightNode->setPosition(hero->getPosition().x, 250, hero->getPosition().z); // Por alguna razon tiene ese offset...
+		mLightNode->setPosition(hero->getPosition().x, 250, hero->getPosition().z);
+}
+
+void Labyrinth::setVisible(bool vis)
+{
+	gameNode->setVisible(vis);
+
+	for (auto e : enemies) {
+		e->setVisible(vis);
+	}
+	hero->setVisible(vis);
 }

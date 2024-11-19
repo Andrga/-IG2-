@@ -42,9 +42,11 @@ bool Hero::keyPressed(const OgreBites::KeyboardEvent& evt)
 	return false;
 }
 
-void Hero::frameRendered(const Ogre::FrameEvent& evt)
+void Hero::update()
 {
-	Character::frameRendered(evt);
+	if (!visible) return;
+
+	Character::update();
 
 	if (timer->getMilliseconds() / 1000 >= timeinvincible)
 	{
@@ -52,3 +54,16 @@ void Hero::frameRendered(const Ogre::FrameEvent& evt)
 		timer->reset();
 	}
 }
+
+//void Hero::frameRendered(const Ogre::FrameEvent& evt)
+//{
+//	if (!visible) return;
+//
+//	Character::frameRendered(evt);
+//
+//	if (timer->getMilliseconds() / 1000 >= timeinvincible)
+//	{
+//		invincible = false;
+//		timer->reset();
+//	}
+//}

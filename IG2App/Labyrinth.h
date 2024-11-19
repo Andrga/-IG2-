@@ -31,7 +31,7 @@ private:
 	int nFilas = 0; // Filas del laberinto.
 	int nColumnas = 0; // Columnas del laberinto.
 
-	SceneNode* sNode; // Referencia al sceneNode en el que esta el laberinto.
+	SceneNode* gameNode; // Referencia al sceneNode en el que esta el laberinto.
 	Ogre::SceneNode* mLightNode = nullptr;
 	bool lightMoves = false;
 
@@ -68,6 +68,8 @@ public:
 	// 
 	Vector3 getDirection(Enemy* ene);
 
+	void update();
+
 
 	//------Metodos de colisiones:
 
@@ -101,4 +103,6 @@ public:
 	void createLight(SceneManager* sCMan, char t);
 	// Actualiza la poscion de la camara si toda.
 	void updateLight();
+
+	void setVisible(bool vis);
 };

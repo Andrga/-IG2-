@@ -24,5 +24,6 @@ public:
 	void setInvincible() { 		invincible = true; };
 
 	// Sobre carga del frameRenderer que hace de Update.
-	void frameRendered(const Ogre::FrameEvent& evt) override;
+	//void frameRendered(const Ogre::FrameEvent& evt) override;
+	void update()override;
 };

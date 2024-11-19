@@ -11,7 +11,29 @@ Character::~Character()
 {
 }
 
-void Character::frameRendered(const Ogre::FrameEvent& evt)
+//void Character::frameRendered(const Ogre::FrameEvent& evt)
+//{
+//	if (isCenter()) {
+//		if (rotateDirection != direction && laberynth->checkDirectionAvailable(this, rotateDirection)) {
+//			rotate();
+//		}
+//		if (!laberynth->checkDirectionAvailable(this, direction)) {
+//			direction = Vector3(0, 0, 0);
+//			//cout << "No puede andar" << endl;
+//		}
+//	}
+//
+//
+//	if (direction != Vector3(0, 0, 0))
+//	{
+//		mNode->translate(direction * vel);
+//		//cout << "ANDA" << endl;
+//		//cout << direction << endl;
+//	}
+//
+//}
+
+void Character::update()
 {
 	if (isCenter()) {
 		if (rotateDirection != direction && laberynth->checkDirectionAvailable(this, rotateDirection)) {
@@ -30,7 +52,6 @@ void Character::frameRendered(const Ogre::FrameEvent& evt)
 		//cout << "ANDA" << endl;
 		//cout << direction << endl;
 	}
-
 }
 
 bool Character::isCenter()
