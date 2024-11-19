@@ -476,9 +476,10 @@ C:\Users\pablo\Documents\GitHub\-IG2-\OGREsdk\include\OGRE\Bites\OgreTrays.h(189
 C:\Users\pablo\Documents\GitHub\-IG2-\OGREsdk\include\OGRE\Bites\OgreTrays.h(1174,20): warning C4251: 'OgreBites::TrayManager::mWidgetDeathRow': class 'std::vector<OgreBites::Widget *,std::allocator<OgreBites::Widget *>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OgreBites::TrayManager'
 C:\Users\pablo\Documents\GitHub\-IG2-\OGREsdk\include\OGRE\Bites\OgreTrays.h(189,18): message : vea la declaración de 'std::vector<OgreBites::Widget *,std::allocator<OgreBites::Widget *>>'
   Generando código
-  11 of 654 functions ( 1.7%) were compiled, the rest were copied from previous compilation.
+  0 of 655 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    21 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
+IG2ApplicationContext.obj : warning LNK4099: no se encontró PDB '' con 'IG2ApplicationContext.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 SDL2main.lib(SDL_windows_main.obj) : warning LNK4099: no se encontró PDB '' con 'SDL2main.lib(SDL_windows_main.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
   IG2App.vcxproj -> C:\Users\pablo\Documents\GitHub\-IG2-\bin\IG2AppRelease.exe
