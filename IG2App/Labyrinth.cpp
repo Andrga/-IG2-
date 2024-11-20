@@ -250,7 +250,7 @@ void Labyrinth::createGround(SceneManager* sCMan, string matFloor)
 		Vector3::UNIT_Z); // Orientacion.
 
 	Entity* eGround = sCMan->createEntity("suelo", "ground");
-	SceneNode* nGround = sCMan->getRootSceneNode()->createChildSceneNode("groundNode");
+	nGround = sCMan->getRootSceneNode()->createChildSceneNode("groundNode");
 	nGround->attachObject(eGround);
 
 	nGround->setPosition(Vector3(
@@ -329,4 +329,6 @@ void Labyrinth::setVisible(bool vis)
 		e->setVisible(vis);
 	}
 	hero->setVisible(vis);
+
+	nGround->setVisible(vis);
 }

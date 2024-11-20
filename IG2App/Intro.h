@@ -16,21 +16,21 @@ class Intro
 {
 private:
 
-	std::vector<Character*> actors;
+	std::vector<Character*> actors; // Vector de los elementos de la intro.
 
-	SceneNode* introNode = nullptr;
-	SceneManager* sMang = nullptr;
+	SceneNode* introNode = nullptr; // Referencia al SceneNode que tiene a Intro.
+	SceneManager* sMang = nullptr; // Referencia al SceneManager.
 
-	Camera* introCamera = nullptr;
+	Camera* introCamera = nullptr; // Referencia a la camara de la intro.
 
-	Light* introLight = nullptr;
+	HeroIntro* hero = nullptr; // Referencia al hero.
+	OgreHeadIntro* head = nullptr; // Referencia a la cabeza gigante.
 
-	HeroIntro* hero = nullptr;
-	OgreHeadIntro* head = nullptr;
+	// Nodos:
+	Ogre::SceneNode* mLightNode = nullptr; // Nodo de la luz.
+	SceneNode* nGround = nullptr; // Nodo del suelo.
 
-	Ogre::SceneNode* mLightNode = nullptr;
-
-	AnimationState* animationStateDance = nullptr;
+	AnimationState* animationStateDance = nullptr; // Animacion de Sinbad.
 
 
 public:
@@ -41,6 +41,8 @@ public:
 	void setUpScene();
 	void setVisible(bool vis);
 
-
 	void update(const Ogre::FrameEvent& evt);
+
+	// Crea el plano del suelo.
+	void createGround();
 };
