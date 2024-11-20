@@ -70,10 +70,27 @@ void Intro::createGround()
 		5, 5, // repeticiones de la textura.
 		Vector3::UNIT_Z); // Orientacion.
 
+
 	Entity* eGround = sMang->createEntity("sueloIntro", "groundIntro");
 	nGround = sMang->getRootSceneNode()->createChildSceneNode("groundNodeIntro");
 	nGround->attachObject(eGround);
 
 	nGround->setPosition({ 0, 0, 0 });
 	//eGround->setMaterialName("matFloor"); // Material del suelo.
+}
+
+void Intro::trackMovimiento()
+{
+	// Variables
+	int movementLength = 50;
+	Real duration = 16.0;
+	Vector3 keyframePos(0, 0, 0);
+	Real durStep = duration / 4.0;
+
+	// Create the animation and track
+	Ogre::Animation* animation = sMang->createAnimation("sinbadWalking", duration);
+	animation->setInterpolationMode(Ogre::Animation::IM_SPLINE);
+	Ogre::NodeAnimationTrack* track = animation->createNodeTrack(0);
+	track->setAssociatedNode(hero);
+	TransformKeyFrame* kf;
 }
