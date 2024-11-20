@@ -132,7 +132,7 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 	textBox->clearText();
 	textBox->appendText(" Lives: " + to_string(lives) + "\nPoints: " + to_string(laberinto->getPoints()));
 
-	intro->update();
+	intro->update(evt);
 	laberinto->update();
 
 	if (laberinto->getPoints() >= laberinto->getMaxPoints())
@@ -149,15 +149,15 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 		getRoot()->queueEndRendering();
 	}
 
-	// ESCENA DE INTR
+	/*// ESCENA DE INTRO
 	if (animationTimer->getMicroseconds() / 1000 == timesAnimation[animationStep]) {
 		animationStep++;
-		if (animationStep > timesAnimation.size())
+		if (animationStep >= timesAnimation.size())
 			animationStep = 0;
 		else {
 			// ponemos la animacion correspondiente a animation step
 		}
-	}
+	}*/
 
 	return IG2ApplicationContext::frameEnded(evt);
 }

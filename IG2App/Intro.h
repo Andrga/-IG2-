@@ -20,7 +20,7 @@ private:
 
 	SceneNode* introNode = nullptr;
 	SceneManager* sMang = nullptr;
-	
+
 	Camera* introCamera = nullptr;
 
 	Light* introLight = nullptr;
@@ -28,16 +28,19 @@ private:
 	HeroIntro* hero = nullptr;
 	OgreHeadIntro* head = nullptr;
 
-	Ogre::Light* light = nullptr;
+	Ogre::SceneNode* mLightNode = nullptr;
+
+	AnimationState* animationStateDance = nullptr;
+
 
 public:
 
-	Intro(SceneManager* SM,  SceneNode* sNode);
+	Intro(SceneManager* SM, SceneNode* sNode);
 	~Intro();
 
 	void setUpScene();
 	void setVisible(bool vis);
 
 
-	void update();
+	void update(const Ogre::FrameEvent& evt);
 };
