@@ -6,6 +6,8 @@
 #include "string"
 #include "HeroIntro.h"
 #include "OgreHeadIntro.h"
+#include "OgreAnimation.h"
+#include "OgreAnimationTrack.h"
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -41,6 +43,8 @@ public:
 	void setUpScene();
 	void setVisible(bool vis);
 
-
 	void update(const Ogre::FrameEvent& evt);
+
+private:
+	void trackMovimiento();
 };

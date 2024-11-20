@@ -51,3 +51,19 @@ void Intro::update(const Ogre::FrameEvent& evt)
 
 
 }
+
+void Intro::trackMovimiento()
+{
+	// Variables
+	int movementLength = 50;
+	Real duration = 16.0;
+	Vector3 keyframePos(0, 0, 0);
+	Real durStep = duration / 4.0;
+
+	// Create the animation and track
+	Ogre::Animation* animation = sMang->createAnimation("sinbadWalking", duration);
+	animation->setInterpolationMode(Ogre::Animation::IM_SPLINE);
+	Ogre::NodeAnimationTrack* track = animation->createNodeTrack(0);
+	track->setAssociatedNode(hero);
+	TransformKeyFrame* kf;
+}
