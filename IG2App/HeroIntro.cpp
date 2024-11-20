@@ -31,7 +31,7 @@ AnimationState* HeroIntro::addTrack(SceneManager* sMng)
 	int movementLength = 50;
 	Real duration = 16.0;
 	Vector3 keyframePos(0, 0, 0);
-	Quaternion keyframeRot(0, 0, 0, 0);
+	//Quaternion keyframeRot(0, 0, 0, 0);
 	Real durStep = duration / 4.0;
 
 	// Create the animation and track
@@ -48,15 +48,14 @@ AnimationState* HeroIntro::addTrack(SceneManager* sMng)
 	// Keyframe 1: Go to the right
 	kf = track->createNodeKeyFrame(durStep * 1);
 	keyframePos += Ogre::Vector3::UNIT_X * movementLength;
-	keyframeRot = keyframeRot + Quaternion(Ogre::Degree(90), Ogre::Vector3::UNIT_Y * movementLength);
+	//keyframeRot = keyframeRot + Quaternion(Ogre::Degree(90), Ogre::Vector3::UNIT_Y * movementLength);
 	kf->setTranslate(keyframePos);
-	kf->setRotation(keyframeRot);
+	//kf->setRotation(keyframeRot);
 	// Keyframe 2: Go to the initial position
 	kf = track->createNodeKeyFrame(durStep * 2);
 	keyframePos += Ogre::Vector3::NEGATIVE_UNIT_X * movementLength;
-	keyframeRot = keyframeRot + Quaternion(Ogre::Degree(270), Ogre::Vector3::UNIT_Y * movementLength);
+	//keyframeRot = keyframeRot + Quaternion(Ogre::Degree(270), Ogre::Vector3::UNIT_Y * movementLength);
 	kf->setTranslate(keyframePos);
-	kf->setRotation(keyframeRot);
 	// Keyframe 3: Go to the left
 	kf = track->createNodeKeyFrame(durStep * 3);
 	keyframePos += Ogre::Vector3::NEGATIVE_UNIT_X * movementLength;
