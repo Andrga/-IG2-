@@ -3,10 +3,16 @@
 
 class HeroIntro : public Character
 {
+private:
+
+
+
 public:
-	HeroIntro();
+
+	HeroIntro(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, Labyrinth* lab = nullptr);
 	~HeroIntro();
 
-	void frameRendered(const Ogre::FrameEvent& evt) override;
-};
+	void update() override;
 
+	AnimationState* setAnim(std::string anim);
+};

@@ -130,6 +130,7 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 	textBox->clearText();
 	textBox->appendText(" Lives: " + to_string(lives) + "\nPoints: " + to_string(laberinto->getPoints()));
 
+	intro->update();
 	laberinto->update();
 
 	if (laberinto->getPoints() >= laberinto->getMaxPoints())

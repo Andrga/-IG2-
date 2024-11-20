@@ -7,6 +7,5 @@ public:
 	OgreHeadIntro();
 	~OgreHeadIntro();
 
-	void frameRendered(const Ogre::FrameEvent& evt) override;
+	void update() override;
 };
-

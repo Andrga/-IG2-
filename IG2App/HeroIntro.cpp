@@ -1,8 +1,11 @@
 #include "HeroIntro.h"
 
-HeroIntro::HeroIntro()
+HeroIntro::HeroIntro(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, Labyrinth* lab)
+	: Character(initPos, node, sceneMng, "heroIntro", lab)
 {
-
+	entity = sceneMng->createEntity("Sinbad.mesh");
+	mNode->attachObject(entity);
+	this->setPosition(initialPosition);
 }
 
 HeroIntro::~HeroIntro()
@@ -10,7 +13,14 @@ HeroIntro::~HeroIntro()
 
 }
 
-void HeroIntro::frameRendered(const Ogre::FrameEvent& evt)
+void HeroIntro::update()
 {
 
+
+
+}
+
+AnimationState* HeroIntro::setAnim(std::string anim)
+{
+	return entity->getAnimationState(anim);
 }

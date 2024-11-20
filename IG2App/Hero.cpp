@@ -1,7 +1,7 @@
 #include "Hero.h"
 #include "Labyrinth.h"
 Hero::Hero(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, Labyrinth* lab)
-	:Character(initPos, node, sceneMng, "hero", lab)
+	: Character(initPos, node, sceneMng, "hero", lab)
 {
 	entity = sceneMng->createEntity("Sinbad.mesh");
 	mNode->attachObject(entity);

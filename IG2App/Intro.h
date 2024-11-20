@@ -4,8 +4,8 @@
 
 #include "IG2Object.h"
 #include "string"
-#include "Character.h"
-
+#include "HeroIntro.h"
+#include "OgreHeadIntro.h"
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -25,7 +25,10 @@ private:
 
 	Light* introLight = nullptr;
 
+	HeroIntro* hero = nullptr;
+	OgreHeadIntro* head = nullptr;
 
+	Ogre::Light* light = nullptr;
 
 public:
 
@@ -35,4 +38,6 @@ public:
 	void setUpScene();
 	void setVisible(bool vis);
 
+
+	void update();
 };
