@@ -66,6 +66,4 @@ AnimationState* HeroIntro::addTrack(SceneManager* sMng)
 	animationState->setEnabled(true);
 
 	return animationState;
-
-	track.get
 }
