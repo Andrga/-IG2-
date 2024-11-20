@@ -209,6 +209,8 @@ void Labyrinth::update()
 		e->update();
 	}
 	hero->update();
+
+	updateLight();
 }
 
 bool Labyrinth::checkEnemyCollision()

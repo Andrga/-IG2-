@@ -16,7 +16,7 @@
 #include <sstream>
 #include <iostream>
 #include <string>
-
+#include <vector>
 
 
 
@@ -71,6 +71,10 @@ protected:
 	// nodo intro/game
 	Ogre::SceneNode* nIntro = nullptr;
 	Ogre::SceneNode* nGame = nullptr;
+
+	std::vector<float> timesAnimation = { 5,3 };
+	Ogre::Timer* animationTimer;
+	int animationStep = 0;
 
 };
 

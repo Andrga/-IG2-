@@ -21,9 +21,11 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
 		getRoot()->queueEndRendering();
 	}
 	if (evt.keysym.sym == SDLK_s) {
-		if (intro == nullptr || laberinto == nullptr) return false;
-		intro->setVisible(false);
-		laberinto->setVisible(true);
+		// cambio de escena
+		if (!(intro == nullptr || laberinto == nullptr)) {
+			intro->setVisible(false);
+			laberinto->setVisible(true);
+		}
 	}
 
 	//cout << "Orientacion: " << mCamMgr->getCamera()->getOrientation() << endl;
@@ -71,7 +73,7 @@ void IG2App::setup(void) {
 	setupScene();
 }
 
-void IG2App::setupScene(void) 
+void IG2App::setupScene(void)
 {
 	mSM->setShadowTechnique(ShadowTechnique::SHADOWTYPE_STENCIL_ADDITIVE); // Creo que he puesto sombras.
 
@@ -101,7 +103,7 @@ void IG2App::setupScene(void)
 	nIntro = mSM->getRootSceneNode()->createChildSceneNode();
 	nGame = mSM->getRootSceneNode()->createChildSceneNode();
 	// ----------CREACION DEL JUEGO----------//
-	laberinto = new Labyrinth(LABERINTO1,nGame, mSM, mCamNode);
+	laberinto = new Labyrinth(LABERINTO1, nGame, mSM, mCamNode);
 
 	hero = laberinto->getHero();
 	std::vector<Enemy*> enemies = laberinto->getEnemies();
@@ -114,11 +116,11 @@ void IG2App::setupScene(void)
 	addInputListener(hero);
 
 	laberinto->setVisible(false);
-	
+
 	//--------------CREACION DE LA INTRO-------------//
 	intro = new Intro(mSM, nIntro);
-	
-	
+
+
 	//-------------CREACION DE LA UI------------//
 	label = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "StageInfo", "Stage 1", 250);
 	textBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "GameInfo:", "GameInfo:", 250, 100);
@@ -147,7 +149,15 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 		getRoot()->queueEndRendering();
 	}
 
-	laberinto->updateLight(); // Actualizamos la camara.
+	// ESCENA DE INTR
+	if (animationTimer->getMicroseconds() / 1000 == timesAnimation[animationStep]) {
+		animationStep++;
+		if (animationStep > timesAnimation.size())
+			animationStep = 0;
+		else {
+			// ponemos la animacion correspondiente a animation step
+		}
+	}
 
 	return IG2ApplicationContext::frameEnded(evt);
 }
