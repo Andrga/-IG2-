@@ -6,7 +6,6 @@
 #include "string"
 #include "HeroIntro.h"
 #include "OgreHeadIntro.h"
-#include "OgreAnimation.h"
 #include "OgreAnimationTrack.h"
 #include <iostream>
 #include <iomanip>

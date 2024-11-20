@@ -33,13 +33,15 @@ void Intro::setUpScene()
 	hero->setScale({ 20, 20, 20 });
 
 	// Una cabeza para pensar pensamientos,
-	head = new OgreHeadIntro({ 100, 0, 0 }, introNode, sMang);
-	head->setScale({ 5, 5, 5 });
+	//head = new OgreHeadIntro({ 100, 0, 0 }, introNode, sMang);
+	//head->setScale({ 5, 5, 5 });
+
+	animationStateDance = hero->addTrack(sMang);
 
 	// Y una animacion para alegrarnos el dia.
-	animationStateDance = hero->setAnim("Dance");
+	/*animationStateDance = hero->getAnim("sinbadWalking");
 	animationStateDance->setLoop(true);
-	animationStateDance->setEnabled(true);
+	animationStateDance->setEnabled(true);*/
 }
 
 
@@ -81,16 +83,7 @@ void Intro::createGround()
 
 void Intro::trackMovimiento()
 {
-	// Variables
-	int movementLength = 50;
-	Real duration = 16.0;
-	Vector3 keyframePos(0, 0, 0);
-	Real durStep = duration / 4.0;
 
-	// Create the animation and track
-	Ogre::Animation* animation = sMang->createAnimation("sinbadWalking", duration);
-	animation->setInterpolationMode(Ogre::Animation::IM_SPLINE);
-	Ogre::NodeAnimationTrack* track = animation->createNodeTrack(0);
-	track->setAssociatedNode(hero);
-	TransformKeyFrame* kf;
+
+
 }

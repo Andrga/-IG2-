@@ -149,15 +149,7 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 		getRoot()->queueEndRendering();
 	}
 
-	/*// ESCENA DE INTRO
-	if (animationTimer->getMicroseconds() / 1000 == timesAnimation[animationStep]) {
-		animationStep++;
-		if (animationStep >= timesAnimation.size())
-			animationStep = 0;
-		else {
-			// ponemos la animacion correspondiente a animation step
-		}
-	}*/
+	
 
 	return IG2ApplicationContext::frameEnded(evt);
 }

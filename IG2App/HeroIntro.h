@@ -1,5 +1,8 @@
 #pragma once
 #include "Character.h"
+#include "OgreAnimation.h"
+#include <OgreKeyFrame.h>
+
 
 class HeroIntro : public Character
 {
@@ -14,5 +17,9 @@ public:
 
 	void update() override;
 
-	AnimationState* setAnim(std::string anim);
+	AnimationState* getAnim(std::string anim);
+
+	AnimationState* addTrack(SceneManager* sMng);
+
+
 };
