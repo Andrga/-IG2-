@@ -33,7 +33,7 @@ void Intro::setUpScene()
 
 	// Un hero para salvarnos,
 	hero = new HeroIntro({ 0, 0, 0 }, introNode, sMang);
-	hero->setScale({ 20, 20, 20 });
+	hero->setScale({ 200, 200, 200 });
 
 	// Una cabeza para pensar pensamientos,
 	//head = new OgreHeadIntro({ 100, 0, 0 }, introNode, sMang);
@@ -42,9 +42,9 @@ void Intro::setUpScene()
 	animationStateDance = hero->addTrack(sMang);
 
 	// Y una animacion para alegrarnos el dia.
-	/*animationStateDance = hero->getAnim("sinbadWalking");
+	animationStateDance = hero->getAnim("Dance");
 	animationStateDance->setLoop(true);
-	animationStateDance->setEnabled(true);*/
+	animationStateDance->setEnabled(true);
 }
 
 

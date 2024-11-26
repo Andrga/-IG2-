@@ -7,7 +7,9 @@
 class HeroIntro : public Character
 {
 private:
-
+	AnimationState* dance = nullptr;
+	AnimationState* walk = nullptr;
+	//AnimationState* dance = nullptr;
 
 
 public:
