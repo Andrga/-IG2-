@@ -49,8 +49,8 @@ public:
 
 	// Crea el plano del suelo.
 	void createGround();
-	//
-	void createParticlesSystems();
+	// Crea los fuegos de detras del Hero.
+	void createFireParticlesSystems();
 
 private:
 	void trackMovimiento();

@@ -29,7 +29,7 @@ void Intro::setUpScene()
 	createGround();
 
 	// Unos fuegos para calentarnos,
-	createParticlesSystems();
+	createFireParticlesSystems();
 
 	// Un hero para salvarnos,
 	hero = new HeroIntro({ 0, 0, 0 }, introNode, sMang);
@@ -77,16 +77,16 @@ void Intro::createGround()
 
 
 	Entity* eGround = sMang->createEntity("sueloIntro", "groundIntro");
-	nGround = sMang->getRootSceneNode()->createChildSceneNode("groundNodeIntro");
+	nGround = introNode->createChildSceneNode("groundNodeIntro");
 	nGround->attachObject(eGround);
 
 	nGround->setPosition({ 0, 0, 0 });
 	//eGround->setMaterialName("matFloor"); // Material del suelo.
 }
 
-void Intro::createParticlesSystems()
+void Intro::createFireParticlesSystems()
 {
-	Vector3 pos{ -250,0,300 };
+	Vector3 pos{ -250, 10, -300 }; // Posicion del primer fuego.
 
 	for (int i = 0; i < 10; i++)
 	{
