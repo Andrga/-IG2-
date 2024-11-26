@@ -2,8 +2,8 @@
 #include "fstream"
 
 #include "IG2Object.h"
-#include "string"
 
+#include <OgreParticleSystem.h>
 
 #include "Wall.h"
 #include "Pearl.h"
@@ -25,7 +25,7 @@ private:
 	std::vector<std::vector<Block*>> objs; // Vector de bloques.
 	std::vector<Enemy*> enemies; // Vector de enemigos, incluye el master enemy.
 	Hero* hero = nullptr; // Referencia al heroe.
-	SceneNode* nGround = nullptr;
+	SceneNode* nGround = nullptr; // Nodo del suelo.
 
 	Vector3 boxSize = { 0, 0, 0 };
 
@@ -41,6 +41,8 @@ private:
 	int actualPoints = 0;
 
 	char lightType = ' '; // Char para guardar el tipo de luz segun se lea del archivo.
+
+	std::vector<ParticleSystem*> vParSys; // Vector de sistemas de particulas de humo.
 
 public:
 

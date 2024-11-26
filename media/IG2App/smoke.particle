@@ -1,6 +1,6 @@
-particle_system intro/fire
+particle_system laberinto/smoke
 {
-	material        	fire
+	material        	smoke
 	particle_width  	35
 	particle_height 	35
 	cull_each       	true
@@ -12,25 +12,15 @@ particle_system intro/fire
 	emitter Point
 	{
 		position 0 0 0
-		angle 35
-		emission_rate 15
+		angle 90
+		emission_rate 60
 		direction 0 1 0
-		velocity_min 50
-		velocity_max 80  
-		time_to_live 4 
-		repeat_delay 1 	
+		velocity_min 20
+		velocity_max 30  
+		time_to_live 5 
+		repeat_delay 1 
+        colour 1.0 0.5 0.0 0.2
 	}
-	affector ColourImage
-	{
-		image smokecolors.png
-	}
-   	affector Rotator
-   	{
-		rotation_range_start 60
-		rotation_range_end 90
-		rotation_speed_range_start -30
-		rotation_speed_range_end 50
-   	}
    	affector Scaler
    	{
        	rate 50

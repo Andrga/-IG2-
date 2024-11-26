@@ -38,24 +38,26 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan, SceneNo
 		{
 			Block* obj = nullptr;
 			Enemy* ene = nullptr;
+			ParticleSystem* parSys = nullptr;
+			SceneNode* snSmoke = nullptr;
 
 			switch (filas[i][j])
 			{
-			case 'x':
+			case 'x': // Caso pared:
 				obj = new Wall({ 0, 0, 0 }, sNode, sCMan, wallMat, "cube.mesh", "Wall" + to_string(i * nColumnas + j));
 
 				if (boxSize == Vector3{ 0, 0, 0 })
 					boxSize = obj->calculateBoxSize();
 
 				break;
-			case 'o':
+			case 'o': // Caso Perla:
 				obj = new Pearl({ 0, 0, 0 }, sNode, sCMan, perlMat, "sphere.mesh", "Pearl" + to_string(i * nColumnas + j));
 
 				obj->setScale({ .2, .2, .2 });
 				maxPoints++;
 
 				break;
-			case 'h':
+			case 'h': // Caso hero:
 				hero = new Hero({ 0, 0, 0 }, sNode, sCMan, this);
 
 				hero->setScale({ 15, 15, 15 });
@@ -63,21 +65,36 @@ Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan, SceneNo
 				hero->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
 
 				break;
-			case 'v':
+			case 'v': // Caso enemigo:
 				ene = new Enemy({ 0, 0, 0 }, sNode, sCMan, "Enemy" + to_string(nEnemies), this);
 				nEnemies++;
 				enemies.push_back(ene);
 				ene->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
 				break;
-			case 'V':
+			case 'V': // Caso MasterEnemy:
 				ene = new MasterEnemy({ 0, 0, 0 }, sNode, sCMan, "MasterEnemy" + to_string(nEnemies), this);
 				nEnemies++;
 				enemies.push_back(ene);
 				ene->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
 				break;
+			case 's': // Caso humo con perla:
+				// Perla.
+				obj = new Pearl({ 0, 0, 0 }, sNode, sCMan, perlMat, "sphere.mesh", "Pearl" + to_string(i * nColumnas + j));
+				obj->setScale({ .2, .2, .2 });
+				maxPoints++;
+				// Humo.
+				parSys = sCMan->createParticleSystem("humo" + to_string(i * nColumnas + j), "laberinto/smoke");
+				snSmoke = sNode->createChildSceneNode();
+				snSmoke->setPosition({ (boxSize.x * j) , 0, (boxSize.x * i) });
+				parSys->setEmitting(true);
+				snSmoke->attachObject(parSys);
+				vParSys.push_back(parSys);
+				break;
 			default:
 				obj = nullptr;
 				ene = nullptr;
+				parSys = nullptr;
+				snSmoke = nullptr;
 				break;
 			}
 
