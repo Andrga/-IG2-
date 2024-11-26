@@ -72,10 +72,6 @@ protected:
 	Ogre::SceneNode* nIntro = nullptr;
 	Ogre::SceneNode* nGame = nullptr;
 
-	std::vector<float> timesAnimation = { 5,3 };
-	Ogre::Timer* animationTimer;
-	int animationStep = 0;
-
 };
 
 #endif

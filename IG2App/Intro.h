@@ -28,7 +28,7 @@ private:
 	HeroIntro* hero = nullptr; // Referencia al hero.
 	OgreHeadIntro* head = nullptr; // Referencia a la cabeza gigante.
 
-	Ogre::Timer* timerHero = nullptr; // Timer cambio de animacion
+	Ogre::Timer timerHero; // Timer cambio de animacion
 
 	// Nodos:
 	Ogre::SceneNode* mLightNode = nullptr; // Nodo de la luz.

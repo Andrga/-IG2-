@@ -132,8 +132,10 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 	textBox->clearText();
 	textBox->appendText(" Lives: " + to_string(lives) + "\nPoints: " + to_string(laberinto->getPoints()));
 
-	if (intro != nullptr) intro->update(evt);
-	if (laberinto != nullptr)laberinto->update(evt);
+	if (intro != nullptr) 
+		intro->update(evt);
+	if (laberinto != nullptr)
+		laberinto->update(evt);
 
 	if (laberinto->getPoints() >= laberinto->getMaxPoints())
 		nextLaberynth();

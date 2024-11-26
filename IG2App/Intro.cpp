@@ -51,9 +51,9 @@ void Intro::setUpScene(SceneNode* cNode)
 
 	// Y una animacion para alegrarnos el dia.
 	hero->setAnimState(0);
-	/*animationStateDance = hero->getAnim("Dance");
-	animationStateDance->setLoop(true);
-	animationStateDance->setEnabled(true);*/
+
+
+	timerHero.reset();
 }
 
 
@@ -66,17 +66,19 @@ void Intro::update(const Ogre::FrameEvent& evt)
 {
 	hero->update(evt.timeSinceLastFrame);
 
-	if (timerHero->getMicroseconds() / 1000 >= 20)
+	if (timerHero.getMicroseconds() / 100 >= 20)
 	{
-		timerHero->reset(); // reinicio de la animacion
+		timerHero.reset(); // reinicio de la animacion
 		hero->setAnimState(0);
 	}
-	else if (timerHero->getMicroseconds() / 1000 >= 8) {
+	else if (timerHero.getMicroseconds() / 100 >= 8) {
 		hero->setAnimState(2); // animacion de sacar las espadas
 	}
-	else if (timerHero->getMicroseconds() / 1000 >= 8) {
+	else if (timerHero.getMicroseconds() / 100 >= 4) {
 		hero->setAnimState(1); // animacion de moverse y huir
 	}
+
+	cout << timerHero.getMicroseconds() << endl;
 }
 
 void Intro::createGround()
@@ -130,11 +132,4 @@ void Intro::createTrailParticleSystem()
 	snTrail->attachObject(parSys);
 	//snTrail->pitch(Degree(90));
 	vParSys.push_back(parSys);
-}
-
-void Intro::trackMovimiento()
-{
-
-
-
 }
