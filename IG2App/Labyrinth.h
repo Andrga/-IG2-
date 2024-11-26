@@ -71,7 +71,7 @@ public:
 	// 
 	Vector3 getDirection(Enemy* ene);
 
-	void update();
+	void update(const Ogre::FrameEvent& evt);
 
 
 	//------Metodos de colisiones:

@@ -7,6 +7,9 @@ HeroIntro::HeroIntro(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, L
 	mNode->attachObject(entity);
 	this->setPosition(initialPosition);
 
+	dance = entity->getAnimationState("Dance");
+	walk = entity->getAnimationState("RunBase");
+	sword = entity->getAnimationState("DrawSwords");
 }
 
 HeroIntro::~HeroIntro()
@@ -14,11 +17,12 @@ HeroIntro::~HeroIntro()
 
 }
 
-void HeroIntro::update()
+void HeroIntro::update(float t)
 {
-
-
-
+	if (activeAnim != nullptr)
+	{
+		activeAnim->addTime(t);
+	}
 }
 
 void HeroIntro::generateTrack(SceneManager* sMng)
@@ -130,15 +134,15 @@ void HeroIntro::setAnimState(int id)
 {
 	switch (id)
 	{
-	case 1:
+	case 0:
 		dance->setLoop(true);
 		dance->setEnabled(true);
 		break;
-	case 2:
+	case 1:
 		movement->setLoop(true);
 		movement->setEnabled(true);
 		break;
-	case 3:
+	case 2:
 		movement->setLoop(true);
 		movement->setEnabled(true);
 	default:

@@ -33,7 +33,7 @@ Character::~Character()
 //
 //}
 
-void Character::update()
+void Character::update(float t)
 {
 	if (isCenter()) {
 		if (rotateDirection != direction && laberynth->checkDirectionAvailable(this, rotateDirection)) {

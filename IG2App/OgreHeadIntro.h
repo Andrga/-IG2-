@@ -7,5 +7,5 @@ public:
 	OgreHeadIntro(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, Labyrinth* lab = nullptr);
 	~OgreHeadIntro();
 
-	void update() override;
+	void update(float t) override;
 };

@@ -19,11 +19,11 @@ Enemy::Enemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int n, st
 
 }
 
-void Enemy::update()
+void Enemy::update(float t)
 {
 	if (!visible) return;
 
-	Character::update();
+	Character::update(t);
 
 	if (laberynth == nullptr)
 		return;

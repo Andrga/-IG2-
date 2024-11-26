@@ -23,7 +23,7 @@ public:
 	void init() override {}
 
 	//virtual void frameRendered(const Ogre::FrameEvent& evt) override;
-	virtual void update();
+	virtual void update(float t);
 	bool isCenter();
 
 	void rotate();

@@ -13,6 +13,6 @@ OgreHeadIntro::~OgreHeadIntro()
 
 }
 
-void OgreHeadIntro::update()
+void OgreHeadIntro::update(float t)
 {
 }

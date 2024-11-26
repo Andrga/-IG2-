@@ -15,5 +15,5 @@ public:
 	Enemy(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int n, string name = "enemy", Labyrinth* lab = nullptr);
 
 	//void frameRendered(const Ogre::FrameEvent& evt) override;
-	void update() override;
+	void update(float t) override;
 };

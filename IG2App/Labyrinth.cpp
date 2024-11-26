@@ -220,12 +220,12 @@ Vector3 Labyrinth::getDirection(Enemy* ene)
 	return newDir;
 }
 
-void Labyrinth::update()
+void Labyrinth::update(const Ogre::FrameEvent& evt)
 {
 	for (auto e : enemies) {
-		e->update();
+		e->update(evt.timeSinceLastFrame);
 	}
-	hero->update();
+	hero->update(evt.timeSinceLastFrame);
 
 	updateLight();
 }

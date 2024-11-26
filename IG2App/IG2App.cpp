@@ -28,8 +28,8 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
 		}
 	}
 
-	cout << "Orientacion: " << mCamMgr->getCamera()->getOrientation() << endl;
-	cout << "Posicion: " << mCamMgr->getCamera()->getPosition() << endl;
+	//cout << "Orientacion: " << mCamMgr->getCamera()->getOrientation() << endl;
+	//cout << "Posicion: " << mCamMgr->getCamera()->getPosition() << endl;
 
 	if (hero == nullptr)
 		return false;
@@ -133,7 +133,7 @@ bool IG2App::frameEnded(const Ogre::FrameEvent& evt)
 	textBox->appendText(" Lives: " + to_string(lives) + "\nPoints: " + to_string(laberinto->getPoints()));
 
 	intro->update(evt);
-	laberinto->update();
+	laberinto->update(evt);
 
 	if (laberinto->getPoints() >= laberinto->getMaxPoints())
 		nextLaberynth();

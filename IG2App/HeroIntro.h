@@ -12,13 +12,14 @@ private:
 	AnimationState* sword = nullptr;
 	AnimationState* movement = nullptr;
 
+	AnimationState* activeAnim = nullptr;
 
 public:
 
 	HeroIntro(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, Labyrinth* lab = nullptr);
 	~HeroIntro();
 
-	void update() override;
+	void update(float t) override;
 
 	void generateTrack(SceneManager* sMng);
 

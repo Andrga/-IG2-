@@ -42,11 +42,11 @@ bool Hero::keyPressed(const OgreBites::KeyboardEvent& evt)
 	return false;
 }
 
-void Hero::update()
+void Hero::update(float t)
 {
 	if (!visible) return;
 
-	Character::update();
+	Character::update(t);
 
 	if (timer->getMilliseconds() / 1000 >= timeinvincible)
 	{

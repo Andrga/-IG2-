@@ -25,5 +25,5 @@ public:
 
 	// Sobre carga del frameRenderer que hace de Update.
 	//void frameRendered(const Ogre::FrameEvent& evt) override;
-	void update()override;
+	void update(float t)override;
 };
