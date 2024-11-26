@@ -38,12 +38,12 @@ void Intro::setUpScene(SceneNode* cNode)
 	createFireParticlesSystems();
 
 	// Un hero para salvarnos,
-	hero = new HeroIntro({ 0, 0, 0 }, introNode, sMang);
+	hero = new HeroIntro({ 0, 55, 0 }, introNode, sMang);
 	hero->setScale({ 10, 10, 10 });
 	hero->setAnimState(0);
 
 	// Una cabeza para pensar pensamientos,
-	head = new OgreHeadIntro({ 100, 0, 0 }, introNode, sMang);
+	head = new OgreHeadIntro({ 100, 10, 0 }, introNode, sMang);
 	head->setScale({ 2, 2, 2 });
 
 	// Una trail que nos siga siempre,
@@ -66,19 +66,19 @@ void Intro::update(const Ogre::FrameEvent& evt)
 {
 	hero->update(evt.timeSinceLastFrame);
 
-	if (timerHero.getMicroseconds() / 100 >= 20)
+	if (timerHero.getMilliseconds() / 1000 >= 20)
 	{
 		timerHero.reset(); // reinicio de la animacion
 		hero->setAnimState(0);
 	}
-	else if (timerHero.getMicroseconds() / 100 >= 8) {
+	else if (timerHero.getMilliseconds() / 1000 >= 8) {
 		hero->setAnimState(2); // animacion de sacar las espadas
 	}
-	else if (timerHero.getMicroseconds() / 100 >= 4) {
+	else if (timerHero.getMilliseconds() / 1000 >= 4) {
 		hero->setAnimState(1); // animacion de moverse y huir
 	}
 
-	cout << timerHero.getMicroseconds() << endl;
+	cout << timerHero.getMilliseconds()/1000 << endl;
 }
 
 void Intro::createGround()

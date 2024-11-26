@@ -12,8 +12,7 @@ private:
 	AnimationState* sword = nullptr;
 	AnimationState* movement = nullptr;
 
-	AnimationState* activeAnim = nullptr;
-
+	int idAnim = 0;
 public:
 
 	HeroIntro(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, Labyrinth* lab = nullptr);
