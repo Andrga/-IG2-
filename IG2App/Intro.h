@@ -11,6 +11,7 @@
 #include <iomanip>
 #include <fstream>
 #include <vector>
+#include <OgreParticleSystem.h>
 
 
 class Intro
@@ -33,6 +34,8 @@ private:
 
 	AnimationState* animationStateDance = nullptr; // Animacion de Sinbad.
 
+	std::vector<ParticleSystem*> vParSys;
+
 
 public:
 
@@ -46,6 +49,9 @@ public:
 
 	// Crea el plano del suelo.
 	void createGround();
+	//
+	void createParticlesSystems();
+
 private:
 	void trackMovimiento();
 };

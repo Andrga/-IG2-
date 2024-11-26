@@ -28,6 +28,9 @@ void Intro::setUpScene()
 	// Un suelo que pisar,
 	createGround();
 
+	// Unos fuegos para calentarnos,
+	createParticlesSystems();
+
 	// Un hero para salvarnos,
 	hero = new HeroIntro({ 0, 0, 0 }, introNode, sMang);
 	hero->setScale({ 20, 20, 20 });
@@ -79,6 +82,22 @@ void Intro::createGround()
 
 	nGround->setPosition({ 0, 0, 0 });
 	//eGround->setMaterialName("matFloor"); // Material del suelo.
+}
+
+void Intro::createParticlesSystems()
+{
+	Vector3 pos{ -250,0,300 };
+
+	for (int i = 0; i < 10; i++)
+	{
+		ParticleSystem* parSys = sMang->createParticleSystem("fuego" + std::to_string(i), "intro/fire");
+		SceneNode* snFire = introNode->createChildSceneNode();
+		snFire->setPosition(pos);
+		parSys->setEmitting(true);
+		snFire->attachObject(parSys);
+		vParSys.push_back(parSys);
+		pos.x += 50;
+	}
 }
 
 void Intro::trackMovimiento()
