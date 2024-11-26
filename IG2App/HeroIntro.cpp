@@ -7,10 +7,6 @@ HeroIntro::HeroIntro(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, L
 	mNode->attachObject(entity);
 	this->setPosition(initialPosition);
 
-	dance = getAnim("Dance");
-	walk = getAnim("Dance");
-	//dance = getAnim("sinbadWalking");
-
 }
 
 HeroIntro::~HeroIntro()
@@ -25,12 +21,7 @@ void HeroIntro::update()
 
 }
 
-AnimationState* HeroIntro::getAnim(std::string anim)
-{
-	return entity->getAnimationState(anim);
-}
-
-AnimationState* HeroIntro::generateTrack(SceneManager* sMng)
+void HeroIntro::generateTrack(SceneManager* sMng)
 {
 	// Variables
 	int movementLength = 50;

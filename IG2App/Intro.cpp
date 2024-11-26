@@ -42,9 +42,9 @@ void Intro::setUpScene(SceneNode* cNode)
 
 	// Una cabeza para pensar pensamientos,
 	//head = new OgreHeadIntro({ 100, 0, 0 }, introNode, sMang);
-	//head->setScale({ 5, 5, 5 });
+	//head->setScale({ 10, 10, 10 });
 
-	animationStateDance = hero->addTrack(sMang);
+	hero->setAnimState(0);
 
 	// Y una animacion para alegrarnos el dia.
 	/*animationStateDance = hero->getAnim("Dance");
