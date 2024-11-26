@@ -126,7 +126,7 @@ void HeroIntro::generateTrack(SceneManager* sMng)
 	kf->setTranslate(keyframePos);
 
 	movement = sMng->createAnimationState("sinbadWalking");
-	
+
 
 }
 
@@ -135,17 +135,19 @@ void HeroIntro::setAnimState(int id)
 	switch (id)
 	{
 	case 0:
-		dance->setLoop(true);
-		dance->setEnabled(true);
+		activeAnim = dance;
 		break;
 	case 1:
-		movement->setLoop(true);
-		movement->setEnabled(true);
+		activeAnim = movement;
 		break;
 	case 2:
-		movement->setLoop(true);
-		movement->setEnabled(true);
+		activeAnim = movement;
 	default:
 		break;
+	}
+
+	if (activeAnim != nullptr) {
+		activeAnim->setLoop(true);
+		activeAnim->setEnabled(true);
 	}
 }

@@ -64,9 +64,18 @@ void Intro::setVisible(bool vis)
 
 void Intro::update(const Ogre::FrameEvent& evt)
 {
-	if (animationStateDance != nullptr)
+	hero->update(evt.timeSinceLastFrame);
+
+	if (timerHero->getMicroseconds() / 1000 >= 20)
 	{
-		animationStateDance->addTime(evt.timeSinceLastFrame);
+		timerHero->reset(); // reinicio de la animacion
+		hero->setAnimState(0);
+	}
+	else if (timerHero->getMicroseconds() / 1000 >= 8) {
+		hero->setAnimState(2); // animacion de sacar las espadas
+	}
+	else if (timerHero->getMicroseconds() / 1000 >= 8) {
+		hero->setAnimState(1); // animacion de moverse y huir
 	}
 }
 

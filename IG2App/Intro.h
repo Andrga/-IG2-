@@ -12,7 +12,7 @@
 #include <fstream>
 #include <vector>
 #include <OgreParticleSystem.h>
-
+#include <OgreTimer.h>
 
 class Intro
 {
@@ -28,6 +28,8 @@ private:
 	HeroIntro* hero = nullptr; // Referencia al hero.
 	OgreHeadIntro* head = nullptr; // Referencia a la cabeza gigante.
 
+	Ogre::Timer* timerHero = nullptr; // Timer cambio de animacion
+
 	// Nodos:
 	Ogre::SceneNode* mLightNode = nullptr; // Nodo de la luz.
 	SceneNode* nGround = nullptr; // Nodo del suelo.
@@ -35,7 +37,6 @@ private:
 	AnimationState* animationStateDance = nullptr; // Animacion de Sinbad.
 
 	std::vector<ParticleSystem*> vParSys;
-
 
 public:
 
