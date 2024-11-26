@@ -28,8 +28,8 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt) {
 		}
 	}
 
-	//cout << "Orientacion: " << mCamMgr->getCamera()->getOrientation() << endl;
-	//cout << "Posicion: " << mCamMgr->getCamera()->getPosition() << endl;
+	cout << "Orientacion: " << mCamMgr->getCamera()->getOrientation() << endl;
+	cout << "Posicion: " << mCamMgr->getCamera()->getPosition() << endl;
 
 	if (hero == nullptr)
 		return false;
@@ -118,7 +118,7 @@ void IG2App::setupScene(void)
 	laberinto->setVisible(false);
 
 	//--------------CREACION DE LA INTRO-------------//
-	intro = new Intro(mSM, nIntro);
+	intro = new Intro(mSM, nIntro, mCamNode);
 
 
 	//-------------CREACION DE LA UI------------//

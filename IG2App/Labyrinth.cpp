@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan, SceneNode* cNode) :gameNode(sNode)
+Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan, SceneNode* cNode) :gameNode(sNode), camNode(cNode)
 {
 	ifstream archivo(root);
 
@@ -340,6 +340,13 @@ void Labyrinth::updateLight()
 
 void Labyrinth::setVisible(bool vis)
 {
+	if (vis) {
+		camNode->setPosition(getCenter().x, getCenter().y + 3000, getCenter().z);
+		camNode->rotate(Quaternion(Degree(-90), Vector3(0, 0, 1)));
+		camNode->rotate(Quaternion(Degree(90), Vector3(1, 0, 0)));
+		camNode->rotate(Quaternion(Degree(-90), Vector3(0, 1, 0)));
+	}
+
 	gameNode->setVisible(vis);
 
 	for (auto e : enemies) {

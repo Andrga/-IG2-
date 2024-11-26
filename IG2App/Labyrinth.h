@@ -21,7 +21,7 @@
 class Labyrinth
 {
 private:
-
+	SceneNode* camNode;
 	std::vector<std::vector<Block*>> objs; // Vector de bloques.
 	std::vector<Enemy*> enemies; // Vector de enemigos, incluye el master enemy.
 	Hero* hero = nullptr; // Referencia al heroe.

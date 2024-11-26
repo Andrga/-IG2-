@@ -9,7 +9,8 @@ class HeroIntro : public Character
 private:
 	AnimationState* dance = nullptr;
 	AnimationState* walk = nullptr;
-	//AnimationState* dance = nullptr;
+	AnimationState* sword = nullptr;
+	AnimationState* movement = nullptr;
 
 
 public:
@@ -19,9 +20,9 @@ public:
 
 	void update() override;
 
-	AnimationState* getAnim(std::string anim);
+	void generateTrack(SceneManager* sMng);
 
-	AnimationState* addTrack(SceneManager* sMng);
+	void setAnimState(int id);
 
 
 };

@@ -39,10 +39,10 @@ private:
 
 public:
 
-	Intro(SceneManager* SM, SceneNode* sNode);
+	Intro(SceneManager* SM, SceneNode* sNode, SceneNode* cNode);
 	~Intro();
 
-	void setUpScene();
+	void setUpScene(SceneNode* cNode);
 	void setVisible(bool vis);
 
 	void update(const Ogre::FrameEvent& evt);

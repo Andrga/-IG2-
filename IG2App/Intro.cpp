@@ -1,10 +1,10 @@
 #include "Intro.h"
 
-Intro::Intro(SceneManager* SM, SceneNode* sNode)
+Intro::Intro(SceneManager* SM, SceneNode* sNode, SceneNode* cNode)
 	: sMang(SM), introNode(sNode)
 {
 
-	setUpScene();
+	setUpScene(cNode);
 
 }
 
@@ -15,8 +15,14 @@ Intro::~Intro()
 
 }
 
-void Intro::setUpScene()
+void Intro::setUpScene(SceneNode* cNode)
 {
+	// posicion de la camara
+	cNode->setPosition(0, 90, 600);
+	cNode->rotate(Quaternion(Degree(90), Vector3(0, 1, 0)));
+	cNode->rotate(Quaternion(Degree(-90), Vector3(1, 0, 0)));
+	cNode->rotate(Quaternion(Degree(90), Vector3(0, 0, 1)));
+
 	// Una luz para guiarnos en la oscuridad,
 	Light* luz = sMang->createLight("LuzIntro");
 	luz->setType(Ogre::Light::LT_DIRECTIONAL);
@@ -33,7 +39,6 @@ void Intro::setUpScene()
 
 	// Un hero para salvarnos,
 	hero = new HeroIntro({ 0, 0, 0 }, introNode, sMang);
-	hero->setScale({ 200, 200, 200 });
 
 	// Una cabeza para pensar pensamientos,
 	//head = new OgreHeadIntro({ 100, 0, 0 }, introNode, sMang);
@@ -42,9 +47,9 @@ void Intro::setUpScene()
 	animationStateDance = hero->addTrack(sMang);
 
 	// Y una animacion para alegrarnos el dia.
-	animationStateDance = hero->getAnim("Dance");
+	/*animationStateDance = hero->getAnim("Dance");
 	animationStateDance->setLoop(true);
-	animationStateDance->setEnabled(true);
+	animationStateDance->setEnabled(true);*/
 }
 
 
