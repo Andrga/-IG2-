@@ -7,6 +7,20 @@ material example/stonesFloor{
 	}
     }
 }
+vertex_program spaceSkyVS glsl{
+    source spaceSkyVS.glsl
+    default_params{
+       param_named_auto modelViewProjMat worldviewproj_matrix
+    }
+}
+
+fragment_program spaceSkyFS glsl{
+    source spaceSkyFS.glsl
+    default_params{ 
+        param_named lightMap int 0
+        param_named spaceSky int 1
+    }
+}
 
 material example/sky{
  technique{
@@ -20,6 +34,7 @@ material example/sky{
         }
     }
 }
+
 vertex_program shaderOrangeVS glsl{
     source shaderOrangeVS.glsl
     default_params{
@@ -45,8 +60,18 @@ material example/shaderOrange{
 material example/spaceSkyShader{
     technique{
         pass{
-            vertex_program_ref shaderOrangeVS{}
-            fragment_program_ref shaderOrangeFS{}
+            vertex_program_ref spaceSkyVS{}
+            fragment_program_ref spaceSkyFS{}
+
+            texture_unit{
+                texture lightMap.jpg 2d
+                tex_address_mode clamp
+                filtering bilinear
+            }
+            texture_unit{
+                texture spaceSky.jpg 2d
+                tex_address_mode wrap
+            }
         }
     }
 }

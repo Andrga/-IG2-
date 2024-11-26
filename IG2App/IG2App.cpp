@@ -122,10 +122,10 @@ void IG2App::setupScene(void){
     //Creating a skyplane
     Ogre::Plane plane;
     plane.d = 1000;
-    plane.normal = Ogre::Vector3::UNIT_Z;
+    plane.normal = Ogre::Vector3::NEGATIVE_UNIT_Y;
     
     // Sky using multitexture
-    mSM->setSkyPlane(true, plane, "example/sky", 20, 1, true, 0, 50, 50);
+    mSM->setSkyPlane(true, plane, "example/sky", 1500, 50, true, 10, 50, 50);
     
     // Sky using shaders here!!!
     
