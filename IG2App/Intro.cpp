@@ -43,11 +43,14 @@ void Intro::setUpScene(SceneNode* cNode)
 	hero->setAnimState(0);
 
 	// Una cabeza para pensar pensamientos,
-	//head = new OgreHeadIntro({ 100, 0, 0 }, introNode, sMang);
-	//head->setScale({ 10, 10, 10 });
+	head = new OgreHeadIntro({ 100, 0, 0 }, introNode, sMang);
+	head->setScale({ 2, 2, 2 });
 
+	// Una trail que nos siga siempre,
+	createTrailParticleSystem();
 
 	// Y una animacion para alegrarnos el dia.
+	hero->setAnimState(0);
 	/*animationStateDance = hero->getAnim("Dance");
 	animationStateDance->setLoop(true);
 	animationStateDance->setEnabled(true);*/
@@ -61,7 +64,10 @@ void Intro::setVisible(bool vis)
 
 void Intro::update(const Ogre::FrameEvent& evt)
 {
-	
+	if (animationStateDance != nullptr)
+	{
+		animationStateDance->addTime(evt.timeSinceLastFrame);
+	}
 }
 
 void Intro::createGround()
@@ -89,7 +95,7 @@ void Intro::createGround()
 
 void Intro::createFireParticlesSystems()
 {
-	Vector3 pos{ -250, 10, -300 }; // Posicion del primer fuego.
+	Vector3 pos{ -150, 10, -300 }; // Posicion del primer fuego.
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -98,9 +104,23 @@ void Intro::createFireParticlesSystems()
 		snFire->setPosition(pos);
 		parSys->setEmitting(true);
 		snFire->attachObject(parSys);
+		// Shhh ganyanada.
+		if (i < 5) { snFire->roll(Degree(30)); }
+		else { snFire->roll(Degree(-30)); }
 		vParSys.push_back(parSys);
-		pos.x += 50;
+		pos.x += 30;
 	}
+}
+
+void Intro::createTrailParticleSystem()
+{
+	ParticleSystem* parSys = sMang->createParticleSystem("estela", "intro/trail");
+	SceneNode* snTrail = introNode->createChildSceneNode();
+	snTrail->setPosition(head->getPosition());
+	parSys->setEmitting(true);
+	snTrail->attachObject(parSys);
+	//snTrail->pitch(Degree(90));
+	vParSys.push_back(parSys);
 }
 
 void Intro::trackMovimiento()
