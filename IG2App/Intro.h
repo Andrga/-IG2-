@@ -52,9 +52,6 @@ public:
 	void createGround();
 	// Crea los fuegos de detras del Hero.
 	void createFireParticlesSystems();
-	// Crea la trail que le sale al OgreHead.
-	void createTrailParticleSystem();
-
-private:
-	void trackMovimiento();
+	//// Crea la trail que le sale al OgreHead.		PAIGRO AQUI (soy andres te lo he cambiado al ogre head para que sea hijo de su nodo y siga al nodo de la cabeza)
+	//void createTrailParticleSystem();
 };

@@ -3,14 +3,17 @@
 #include "OgreAnimation.h"
 #include <OgreKeyFrame.h>
 
-
 class HeroIntro : public Character
 {
 private:
 	AnimationState* dance = nullptr;
 	AnimationState* walk = nullptr;
+	AnimationState* topwalk = nullptr;
 	AnimationState* sword = nullptr;
 	AnimationState* movement = nullptr;
+
+	Entity* swrdR = nullptr;
+	Entity* swrdL = nullptr;
 
 	int idAnim = 0;
 public:
@@ -23,6 +26,5 @@ public:
 	void generateTrack(SceneManager* sMng);
 
 	void setAnimState(int id);
-
 
 };

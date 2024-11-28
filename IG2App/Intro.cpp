@@ -46,8 +46,8 @@ void Intro::setUpScene(SceneNode* cNode)
 	head = new OgreHeadIntro({ 100, 10, 0 }, introNode, sMang);
 	head->setScale({ 2, 2, 2 });
 
-	// Una trail que nos siga siempre,
-	createTrailParticleSystem();
+	//// Una trail que nos siga siempre, (lo siento no hay trail en la intro que valga, mira el .h)
+	//createTrailParticleSystem();
 
 	// Y una animacion para alegrarnos el dia.
 	hero->setAnimState(0);
@@ -65,6 +65,7 @@ void Intro::setVisible(bool vis)
 void Intro::update(const Ogre::FrameEvent& evt)
 {
 	hero->update(evt.timeSinceLastFrame);
+	head->update(evt.timeSinceLastFrame);
 
 	if (timerHero.getMilliseconds() / 1000 >= 20)
 	{
@@ -78,7 +79,7 @@ void Intro::update(const Ogre::FrameEvent& evt)
 		hero->setAnimState(1); // animacion de moverse y huir
 	}
 
-	cout << timerHero.getMilliseconds()/1000 << endl;
+	//cout << timerHero.getMilliseconds()/1000 << endl;
 }
 
 void Intro::createGround()
@@ -123,13 +124,3 @@ void Intro::createFireParticlesSystems()
 	}
 }
 
-void Intro::createTrailParticleSystem()
-{
-	ParticleSystem* parSys = sMang->createParticleSystem("estela", "intro/trail");
-	SceneNode* snTrail = introNode->createChildSceneNode();
-	snTrail->setPosition(head->getPosition());
-	parSys->setEmitting(true);
-	snTrail->attachObject(parSys);
-	//snTrail->pitch(Degree(90));
-	vParSys.push_back(parSys);
-}

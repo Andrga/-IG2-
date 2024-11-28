@@ -4,16 +4,23 @@ HeroIntro::HeroIntro(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, L
 	: Character(initPos, node, sceneMng, "heroIntro", lab)
 {
 	entity = sceneMng->createEntity("Sinbad.mesh");
-	//Entity* sinbadAnims = sceneMng->createEntity("Sinbad.mesh");
-	//SceneNode* monde = mNode->createChildSceneNode();
 	mNode->attachObject(entity);
 	this->setPosition(initialPosition);
+	swrdR = sceneMng->createEntity("Sword.mesh");;
+	swrdL = sceneMng->createEntity("Sword.mesh");;
+
+	entity->attachObjectToBone("Hand.R", swrdR);
+	entity->attachObjectToBone("Hand.L", swrdL);
+
+	swrdR->setVisible(false);
+	swrdL->setVisible(false);
 
 	generateTrack(sceneMng);
 
 	dance = entity->getAnimationState("Dance");
 	walk = entity->getAnimationState("RunBase");
 	sword = entity->getAnimationState("DrawSwords");
+	topwalk = entity->getAnimationState("RunTop");
 }
 
 HeroIntro::~HeroIntro()
@@ -30,11 +37,13 @@ void HeroIntro::update(float t)
 		break;
 	case 1:
 		if (walk != nullptr) walk->addTime(t);
+		if (topwalk != nullptr) topwalk->addTime(t);
 		if (movement != nullptr) movement->addTime(t);
 		break;
 	case 2:
 		if (sword != nullptr) sword->addTime(t);
 		if (walk != nullptr) walk->addTime(t);
+		if (topwalk != nullptr) topwalk->addTime(t);
 		if (movement != nullptr) movement->addTime(t);
 		break;
 	default:
@@ -154,6 +163,10 @@ void HeroIntro::setAnimState(int id)
 		walk->setLoop(false);
 		walk->setEnabled(false);
 		sword->setEnabled(false);
+		topwalk->setLoop(false);
+		topwalk->setEnabled(false);
+		swrdR->setVisible(false);
+		swrdL->setVisible(false);
 		break;
 	case 1:
 		dance->setLoop(false);
@@ -162,8 +175,12 @@ void HeroIntro::setAnimState(int id)
 		walk->setEnabled(true);
 		movement->setLoop(true);
 		movement->setEnabled(true);
+		topwalk->setLoop(true);
+		topwalk->setEnabled(true);
 		break;
 	case 2:
+		swrdR->setVisible(true);
+		swrdL->setVisible(true);
 		sword->setLoop(false);
 		sword->setEnabled(true);
 	default:
@@ -172,3 +189,5 @@ void HeroIntro::setAnimState(int id)
 
 	idAnim = id;
 }
+
+
