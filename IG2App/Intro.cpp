@@ -54,6 +54,17 @@ void Intro::setUpScene(SceneNode* cNode)
 
 
 	timerHero.reset();
+
+
+	// Esfera con shader
+
+	Entity* sphereEnt = sMang->createEntity("uv_sphere.mesh");
+	SceneNode* sphereNode = sMang->getRootSceneNode()->createChildSceneNode();
+	sphereNode->attachObject(sphereEnt);
+	sphereNode->setPosition(Vector3(0, 100, 0));
+
+	// Sphere with shaders here!!!
+	sphereEnt->setMaterialName("practica2/SphereHoles");
 }
 
 
