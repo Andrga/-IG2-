@@ -31,23 +31,35 @@ private:
 	Ogre::Timer timerHero; // Timer cambio de animacion
 
 	// Nodos:
-	Ogre::SceneNode* mLightNode = nullptr; // Nodo de la luz.
-	SceneNode* nGround = nullptr; // Nodo del suelo.
+	Ogre::SceneNode* mLightNode = nullptr; // Referencia al nodo de la luz.
+	SceneNode* nGround = nullptr; // Referencia al nodo del suelo.
 
 	AnimationState* animationStateDance = nullptr; // Animacion de Sinbad.
 
-	std::vector<ParticleSystem*> vParSys;
+	std::vector<ParticleSystem*> vParSys; // Vector de los sistemas de particulas.
 
 public:
 
+	//------Constructuras y destructoras:
+
+	// Constructora base de Intro.
 	Intro(SceneManager* SM, SceneNode* sNode, SceneNode* cNode);
+	// Destructora de Intro.
 	~Intro();
 
-	void setUpScene(SceneNode* cNode);
-	void setVisible(bool vis);
 
+	//------Metodos de la escena:
+
+	// Crea la escena.
+	void setUpScene(SceneNode* cNode);
+	// Hace el nivel visible o invisible.
+	void setVisible(bool vis);
+	// Update de la intro.
 	void update(const Ogre::FrameEvent& evt);
 
+
+	//------Creacion de la escena:
+	
 	// Crea el plano del suelo.
 	void createGround();
 	// Crea los fuegos de detras del Hero.

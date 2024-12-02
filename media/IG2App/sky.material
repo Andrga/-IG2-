@@ -1,0 +1,48 @@
+vertex_program skyVS glsl
+{
+    source skyVS.glsl
+
+    default_params
+    {
+       param_named_auto modelViewProjMat worldviewproj_matrix
+       param_named_auto time  sintime_0_2pi 50
+       param_named zoomMin float 0.3
+       param_named zoomMax float 1
+    }
+}
+
+fragment_program skyFS glsl
+{
+    source skyFS.glsl
+
+    default_params
+    { 
+        param_named texSky int 0
+        param_named texLight int 1
+        param_named_auto time  sintime_0_2pi 50
+        param_named lightMin float 0.3
+        param_named lightMax float 1
+    }
+}
+
+material skyShader{
+    technique
+    {
+        pass
+        {
+            lighting off
+
+            vertex_program_ref skyVS{}
+            fragment_program_ref skyFS{}
+
+            texture_unit
+            {
+                texture sky.jpg
+            }
+            texture_unit
+            {
+                texture lightMap.jpg
+            }
+        }   
+    }
+}

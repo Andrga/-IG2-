@@ -3,7 +3,8 @@
 
 using namespace std;
 
-Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan, SceneNode* cNode) :gameNode(sNode), camNode(cNode)
+Labyrinth::Labyrinth(string root, SceneNode* sNode, SceneManager* sCMan, SceneNode* cNode)
+	: gameNode(sNode), camNode(cNode), sMang(sCMan)
 {
 	ifstream archivo(root);
 
@@ -355,4 +356,10 @@ void Labyrinth::setVisible(bool vis)
 	hero->setVisible(vis);
 
 	nGround->setVisible(vis);
+
+	//-------------SKYPLANE------------//
+	Plane skyMap;
+	skyMap.d = 500;
+	skyMap.normal = Vector3::UNIT_Y;
+	sMang->setSkyPlane(vis, skyMap, "skyShader", 10, 1, true, 10, 50, 50);
 }

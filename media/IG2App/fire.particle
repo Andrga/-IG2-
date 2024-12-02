@@ -37,6 +37,5 @@ particle_system intro/fire
    	affector Scaler
    	{
        	rate 50
-		scale_range 1 1
    	}
 }

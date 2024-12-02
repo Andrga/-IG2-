@@ -102,11 +102,14 @@ void IG2App::setupScene(void)
 
 	nIntro = mSM->getRootSceneNode()->createChildSceneNode();
 	nGame = mSM->getRootSceneNode()->createChildSceneNode();
+
+
 	// ----------CREACION DEL JUEGO----------//
 	laberinto = new Labyrinth(LABERINTO1, nGame, mSM, mCamNode);
 
 	hero = laberinto->getHero();
 	std::vector<Enemy*> enemies = laberinto->getEnemies();
+
 
 	// ----------ANIADE ENEMIGOS COMO INPUT LISTENERS----------//
 	for (auto e : enemies)
@@ -116,6 +119,7 @@ void IG2App::setupScene(void)
 	addInputListener(hero);
 
 	laberinto->setVisible(false);
+
 
 	//--------------CREACION DE LA INTRO-------------//
 	intro = new Intro(mSM, nIntro, mCamNode);

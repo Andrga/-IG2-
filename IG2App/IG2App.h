@@ -19,14 +19,11 @@
 #include <vector>
 
 
-
 const string LABERINTO1 = "stage1.txt"; // Ruta del laberinto 1.
 const string LABERINTO2 = "stage2.txt"; // Ruta del laberinto 2.
 
 
-
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener {
-
 public:
 
 	explicit IG2App() : IG2ApplicationContext("IG2App") { };  // new -> setup()
@@ -35,17 +32,13 @@ public:
 	void nextLaberynth();
 
 protected:
+
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
 	virtual void setup();
 	virtual void shutdown();
 	virtual void setupScene();
 	bool frameEnded(const Ogre::FrameEvent& evt) override;
 
-
-	Ogre::SceneNode* mSinbad = nullptr;
-	Ogre::SceneNode* mColums = nullptr;
-	Ogre::SceneNode* mRBUpper = nullptr;
-	Ogre::SceneNode* mRBLower = nullptr;
 
 	Labyrinth* laberinto = nullptr;
 	Intro* intro = nullptr;
@@ -55,12 +48,12 @@ protected:
 
 	Ogre::Light* light = nullptr;
 	Ogre::SceneNode* mLightParent = nullptr;
-	//Ogre::SceneNode* mLightNode = nullptr;
 
 	Ogre::SceneNode* mCamNode = nullptr;
 	OgreBites::CameraMan* mCamMgr = nullptr;
 
 	IG2Object* hero = nullptr;
+
 	// Informacion del nivel
 	int lives = 10;
 
@@ -71,7 +64,6 @@ protected:
 	// nodo intro/game
 	Ogre::SceneNode* nIntro = nullptr;
 	Ogre::SceneNode* nGame = nullptr;
-
 };
 
 #endif

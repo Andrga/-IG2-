@@ -30,6 +30,5 @@ particle_system laberinto/smoke
    	affector Scaler
    	{
        	rate 50
-		scale_range 1 1
    	}
 }
