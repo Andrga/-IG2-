@@ -18,8 +18,10 @@ void main() {
 
     vec4 color;
     if(frontFacing)
-        color = texture(BumpyMetal, vUv0)
+        color = texture(BumpyMetal, vUv0);
     else
-        color = texture(Material_dirt, vUv0)
+        color = texture(Material_dirt, vUv0);
+
+    fFragColor = color;
 
 }
