@@ -103,14 +103,14 @@ void Intro::createGround()
 		ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, // Grupo.
 		ground, // Plano base.
 		1000, 1000, // Tamanyo.
-		20, 20, // Segmentos.
+		80, 80, // Segmentos.
 		true, 1, // Normales y numTexCoordSet.
 		5, 5, // repeticiones de la textura.
 		Vector3::UNIT_Z); // Orientacion.
 
 
 	Entity* eGround = sMang->createEntity("sueloIntro", "groundIntro");
-	eGround->setMaterialName("multiPlane"); // Multitextura.
+	eGround->setMaterialName("practica2/wavesShader"); // Multitextura.
 	nGround = introNode->createChildSceneNode("groundNodeIntro");
 	nGround->attachObject(eGround);
 
