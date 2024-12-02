@@ -31,6 +31,9 @@ particle_system intro/fire
 		rotation_speed_range_start -30
 		rotation_speed_range_end 50
    	}
+	affector DirectionRandomiser{
+		randomness 5
+	}
    	affector Scaler
    	{
        	rate 50

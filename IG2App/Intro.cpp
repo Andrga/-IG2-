@@ -98,11 +98,11 @@ void Intro::createGround()
 
 
 	Entity* eGround = sMang->createEntity("sueloIntro", "groundIntro");
+	eGround->setMaterialName("multiPlane"); // Multitextura.
 	nGround = introNode->createChildSceneNode("groundNodeIntro");
 	nGround->attachObject(eGround);
 
 	nGround->setPosition({ 0, 0, 0 });
-	//eGround->setMaterialName("matFloor"); // Material del suelo.
 }
 
 void Intro::createFireParticlesSystems()
