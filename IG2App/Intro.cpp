@@ -41,10 +41,12 @@ void Intro::setUpScene(SceneNode* cNode)
 	hero = new HeroIntro({ 0, 55, 0 }, introNode, sMang);
 	hero->setScale({ 10, 10, 10 });
 	hero->setAnimState(0);
+	hero->setMaterialName("orange");
 
 	// Una cabeza para pensar pensamientos,
 	head = new OgreHeadIntro({ 100, 10, 0 }, introNode, sMang);
 	head->setScale({ 2, 2, 2 });
+	head->setMaterialName("orange"); // No hace falta que sea naranja... pero lo va a ser :)
 
 	//// Una trail que nos siga siempre, (lo siento no hay trail en la intro que valga, mira el .h)
 	//createTrailParticleSystem();
@@ -59,7 +61,7 @@ void Intro::setUpScene(SceneNode* cNode)
 	// Esfera con shader
 
 	Entity* sphereEnt = sMang->createEntity("uv_sphere.mesh");
-	SceneNode* sphereNode = sMang->getRootSceneNode()->createChildSceneNode();
+	SceneNode* sphereNode = introNode->createChildSceneNode();
 	sphereNode->attachObject(sphereEnt);
 	sphereNode->setPosition(Vector3(0, 100, -150));
 	sphereNode->scale(0.5, 0.5, 0.5);
@@ -90,8 +92,6 @@ void Intro::update(const Ogre::FrameEvent& evt)
 	else if (timerHero.getMilliseconds() / 1000 >= 4) {
 		hero->setAnimState(1); // animacion de moverse y huir
 	}
-
-	//cout << timerHero.getMilliseconds()/1000 << endl;
 }
 
 void Intro::createGround()

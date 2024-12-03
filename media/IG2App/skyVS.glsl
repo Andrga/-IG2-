@@ -12,7 +12,7 @@ uniform float zoomMin; // 0.3
 uniform float zoomMax; // 1
 
 void main() {
-    float nextZoom = (zoomMin + zoomMax) / 2;
+    float nextZoom =0.1;// (zoomMin + zoomMax) / 2;
     float nextFactor = zoomMax - nextZoom;
 
     float factor = (time * nextFactor) + nextZoom;
