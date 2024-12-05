@@ -1,0 +1,13 @@
+material Fish
+{
+    technique
+    {
+        pass
+        {
+		    texture_unit
+			{
+			    texture steelhead.png
+			}
+        }
+    }
+}

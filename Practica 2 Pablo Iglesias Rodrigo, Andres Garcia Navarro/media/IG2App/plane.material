@@ -1,0 +1,13 @@
+material multiPlane{
+    technique{
+        pass{
+            texture_unit{
+                texture BumpyMetal.jpg
+            }
+            texture_unit{
+                texture flare.png
+                colour_op modulate
+            }
+        }   
+    }
+}

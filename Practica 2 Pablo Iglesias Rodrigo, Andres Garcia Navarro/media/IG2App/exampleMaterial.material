@@ -1,0 +1,74 @@
+vertex_program SphereHolesVS glsl{
+    source SphereHolesVS.glsl
+    default_params{
+       param_named_auto modelViewProjMat worldviewproj_matrix
+    }
+}
+
+fragment_program SphereHolesFS glsl{
+    source SphereHolesFS.glsl
+    default_params{ 
+        param_named corrosion int 0
+        param_named BumpyMetal int 1
+        param_named Material_dirt int 2
+		param_named_auto flipping render_target_flipping
+    }
+}
+
+material practica2/SphereHoles
+{
+    technique
+    { 
+        pass{
+            lighting off
+            cull_hardware none 
+            cull_software none 
+            
+            vertex_program_ref SphereHolesVS{}
+            fragment_program_ref SphereHolesFS{}
+
+            texture_unit{
+                texture  corrosion.jpg 2d
+            }
+            texture_unit{
+                texture BumpyMetal.jpg 2d
+            }
+            texture_unit{
+                texture Material_dirt.jpg 2d
+            }
+        }
+    }
+}
+
+vertex_program wavesShaderVS glsl{
+    source wavesShaderVS.glsl
+    default_params{
+       param_named_auto modelViewProjMat worldviewproj_matrix 
+       param_named_auto sintime sintime_0_2pi 100
+       //param_named_auto center vec2 2
+    }
+}
+
+fragment_program wavesShaderFS glsl{
+    source wavesShaderFS.glsl
+    default_params{ 
+        param_named Water int 0
+    }
+}
+
+material practica2/wavesShader
+{
+    technique
+    { 
+        pass{
+            lighting off
+            
+            vertex_program_ref wavesShaderVS{}
+            fragment_program_ref wavesShaderFS{}
+
+            texture_unit{
+                texture  Water02.jpg 2d
+            }
+        }
+    }
+}
